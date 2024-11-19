@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { TRPCProvider } from '@/trpc/client'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {/* wrap root layout with TRPCProvider. */}
-        <TRPCProvider>{children}</TRPCProvider>
+        <TRPCProvider>
+          <AppRouterCacheProvider>
+            {children}
+          </AppRouterCacheProvider>
+        </TRPCProvider>
       </body>
     </html>
   )
