@@ -3,6 +3,12 @@ import { Inter } from 'next/font/google'
 // import './globals.css'
 import { TRPCProvider } from '@/trpc/client'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Paper from '@mui/material/Paper';
+import Toolbar from '@mui/material/Toolbar';
+import HeaderNavigation from '@/components/layout/Header'
+import Sidebar from '@/components/layout/Sidebar';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,7 +28,32 @@ export default function RootLayout({
         {/* wrap root layout with TRPCProvider. */}
         <TRPCProvider>
           <AppRouterCacheProvider>
-            {children}
+            <HeaderNavigation />
+
+
+            <Box sx={{
+              display: 'flex',
+              minHeight: '100vh'
+            }}>
+              {/* Sidebar */}
+              <Sidebar />
+              {/* Main Content */}
+              <Box
+                component="main"
+                sx={{
+                  flex: 8, // 8:2 の割合を設定
+                  padding: 2,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  overflow: 'auto',
+                }}
+              >
+                {children}
+              </Box>
+            </Box>
+
+
+
           </AppRouterCacheProvider>
         </TRPCProvider>
       </body>

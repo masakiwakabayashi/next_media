@@ -6,6 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Box } from '@mui/system';
+import { Tag } from '@/components/ui/Tag'
 
 type BlogPostCardProps = {
   // children: ReactNode;
@@ -13,25 +15,59 @@ type BlogPostCardProps = {
   description: string,
   imagePath: string,
   url: string,
+  tags: string[],
 }
 
 export const BlogPostCard = (props: BlogPostCardProps) => {
-  const { title, description, imagePath, url } = props;
+  const { title, description, imagePath, url, tags } = props;
 
   return (
-    <Card sx={{ maxWidth: 545 }}>
-      <Link href={url} target="_blank">
-        <CardMedia
+    <Card
+      sx={{
+        // maxWidth: 545
+      }}
+    >
+      <Link href={url} target="_blank" style={{ textDecoration: 'none' }}>
+        {/* <CardMedia
           component="img"
           alt="image"
           height="140"
           image={imagePath}
-        />
+        /> */}
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Box
+            sx={{
+              display: "flex",
+            }}
+          >
+            {tags.map((tag, index) => (
+              <Box
+                key={index}
+                mx={1}
+              >
+                <Tag name={tag} />
+              </Box>
+            ))}
+          </Box>
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            my={2}
+            sx={{
+              color: "black",
+              textDecoration: 'none !important'
+            }}
+          >
             {title}
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: 'text.secondary',
+              textDecorationLine: 'none',
+            }}
+          >
             {description}
           </Typography>
         </CardContent>
