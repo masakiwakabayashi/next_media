@@ -19,3 +19,10 @@ model tasks {
   name String
   done Boolean
 }
+
+// Post model
+model posts {
+  id   Int     @id @default(autoincrement())
+  title String
+  content String
+}
