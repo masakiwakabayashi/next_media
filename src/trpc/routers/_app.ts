@@ -1,5 +1,11 @@
 import { z } from 'zod'
 import { baseProcedure, createTRPCRouter } from '@/trpc/init'
+import { postRouter } from './post'
+
+import { PrismaClient } from '@prisma/client';
+
+// TODO: ここの型はあとで修正する
+const prisma: any = new PrismaClient();
 
 /**
  * API Router 定義.
@@ -19,8 +25,40 @@ export const appRouter = createTRPCRouter({
       return {
         // コンテキスト `ctx` と入力 `input` を参照できる.
         greeting: `hello ${opts.ctx.userId}, ${opts.input.text}`,
+        jp: "こんにちは"
       }
     }),
+    // テスト
+    test: baseProcedure
+    // .input(
+    //   // zod による入力バリデーション.
+    //   z.object({
+    //     text: z.string(),
+    //   }),
+    // )
+    .query((opts) => {
+      // tRPC API 応答の実装.
+      return {
+        // コンテキスト `ctx` と入力 `input` を参照できる.
+        greeting: "こぴにちは",
+      }
+    }),
+    // 投稿の取得
+    getPosts: baseProcedure
+    .query(async () => {
+      const posts = await prisma.posts.findMany();
+      return posts; // 投稿データをそのまま返却
+    }),
+
+
+
+
+
+
+
+
+
+    postRouter,
 })
 
 // export type definition of API
