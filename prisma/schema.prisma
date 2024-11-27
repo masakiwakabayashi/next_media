@@ -13,16 +13,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Task model
-model tasks {
-  id   Int     @id @default(autoincrement())
-  name String
-  done Boolean
+model tags {
+  id    Int     @id @default(autoincrement())
+  title String
+  posts postsOnTags[]
 }
 
-// Post model
 model posts {
-  id   Int     @id @default(autoincrement())
-  title String
-  content String
+  id          Int            @id @default(autoincrement())
+  title       String
+  description String
+  content     String
+  tags        postsOnTags[]
+}
+
+model postsOnTags {
+  postId Int
+  tagId  Int
+
+  post posts @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag  tags  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId]) // 複合主キー
 }

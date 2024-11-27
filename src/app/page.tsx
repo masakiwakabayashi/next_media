@@ -27,6 +27,7 @@ export default function Home() {
 
   const posts = trpc.getPosts.useQuery().data
 
+  console.log(posts);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -35,20 +36,20 @@ export default function Home() {
       {
         posts ? (
           <>
-            {posts.map((post: Post, index: number) => (
-            <Box
-              key={index}
-              my={2}
-            >
-              <BlogPostCard
-                title={post.title}
-                description={post.content}
-                imagePath="image/path"
-                url="/home"
-                tags={tags}
-              />
-            </Box>
-          ))}
+            {/* {posts.map((post: Post, index: number) => (
+              <Box
+                key={index}
+                my={2}
+              >
+                <BlogPostCard
+                  title={post.title}
+                  description={post.content}
+                  imagePath="image/path"
+                  url="/home"
+                  tags={tags}
+                />
+              </Box>
+            ))} */}
           </>
         ) : (
           <></>
