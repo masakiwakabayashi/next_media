@@ -46,8 +46,17 @@ export const appRouter = createTRPCRouter({
     // 投稿の取得
     getPosts: baseProcedure
     .query(async () => {
-      const posts = await prisma.posts.findMany();
-      return posts; // 投稿データをそのまま返却
+      // const posts = await prisma.posts.findMany();
+      const posts = await prisma.posts.findMany({
+        include: {
+          tags: {
+            select: {
+              tag: true,
+            },
+          },
+        },
+      });
+      return posts;
     }),
 
 

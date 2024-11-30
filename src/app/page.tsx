@@ -1,11 +1,7 @@
 "use client"
-import { GreetingClient } from '@/components/greeting-client'
-import { GreetingServer } from '@/components/greeting-server'
-import { BasicButton } from '@/components/ui/Button'
-import { BasicTextField } from '@/components/ui/TextField'
+
 import { BlogPostCard } from '@/components/ui/Card'
-import Sidebar from '@/components/layout/Sidebar'
-import HeaderNavigation from '@/components/layout/Header'
+
 import { Tag } from '@/components/ui/Tag'
 import { Box } from '@mui/system'
 
@@ -36,7 +32,7 @@ export default function Home() {
       {
         posts ? (
           <>
-            {/* {posts.map((post: Post, index: number) => (
+            {posts.map((post: Post, index: number) => (
               <Box
                 key={index}
                 my={2}
@@ -49,7 +45,7 @@ export default function Home() {
                   tags={tags}
                 />
               </Box>
-            ))} */}
+            ))}
           </>
         ) : (
           <></>
