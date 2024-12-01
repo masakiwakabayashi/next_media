@@ -8,11 +8,12 @@ export default function Sidebar() {
     <Box
       component="aside"
       sx={{
-        flex: 2, // 2:8 の割合を設定
+        flex: 3, // サイドバーの幅
         backgroundColor: '#f4f4f4',
         display: 'flex',
         flexDirection: 'column',
         // boxShadow: 1,
+        margin: "20px 0"
       }}
     >
       <Box sx={{ flexGrow: 1, p: 2 }}>

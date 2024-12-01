@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import Toolbar from '@mui/material/Toolbar';
 import HeaderNavigation from '@/components/layout/Header'
 import Sidebar from '@/components/layout/Sidebar';
+import Footer from '@/components/layout/Footer';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,19 +30,15 @@ export default function RootLayout({
         <TRPCProvider>
           <AppRouterCacheProvider>
             <HeaderNavigation />
-
-
             <Box sx={{
               display: 'flex',
               minHeight: '100vh'
             }}>
-              {/* Sidebar */}
-              <Sidebar />
               {/* Main Content */}
               <Box
                 component="main"
                 sx={{
-                  flex: 8, // 8:2 の割合を設定
+                  flex: 7, // 8:2 の割合を設定
                   padding: 2,
                   display: 'flex',
                   flexDirection: 'column',
@@ -50,10 +47,10 @@ export default function RootLayout({
               >
                 {children}
               </Box>
+              {/* Sidebar */}
+              <Sidebar />
             </Box>
-
-
-
+            <Footer />
           </AppRouterCacheProvider>
         </TRPCProvider>
       </body>
