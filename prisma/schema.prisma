@@ -13,6 +13,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model users {
+  id         Int          @id @default(autoincrement())
+  name       String
+  email      String       @unique
+  password   String
+
+  followedBy followers[]  @relation("FollowedUser")
+  following  followers[]  @relation("FollowerUser")
+}
+
 model tags {
   id    Int     @id @default(autoincrement())
   title String
@@ -25,6 +35,7 @@ model posts {
   description String
   content     String
   tags        postsOnTags[]
+  commments   comments[]
 }
 
 model postsOnTags {
@@ -35,4 +46,44 @@ model postsOnTags {
   tag  tags  @relation(fields: [tagId], references: [id], onDelete: Cascade)
 
   @@id([postId, tagId]) // 複合主キー
+}
+
+model comments {
+  id    Int     @id @default(autoincrement())
+  postId Int
+  userId Int
+  content     String
+
+  user users @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post posts @relation(fields: [postId], references: [id], onDelete: Cascade)
+}
+
+
+model favorites {
+  id    Int     @id @default(autoincrement())
+  postId Int
+  userId Int
+
+  user users @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post posts @relation(fields: [postId], references: [id], onDelete: Cascade)
+}
+
+
+model bookmarks {
+  id    Int     @id @default(autoincrement())
+  postId Int
+  userId Int
+
+  user users @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post posts @relation(fields: [postId], references: [id], onDelete: Cascade)
+}
+
+
+model followers {
+  id         Int     @id @default(autoincrement())
+  followId   Int
+  followerId Int
+
+  followedUser users @relation("FollowedUser", fields: [followId], references: [id], onDelete: Cascade)
+  followerUser users @relation("FollowerUser", fields: [followerId], references: [id], onDelete: Cascade)
 }
