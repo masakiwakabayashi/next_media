@@ -8,6 +8,7 @@ import { Box } from '@mui/system'
 import { trpc } from '@/trpc/client'
 
 interface Post {
+  id: number;
   title: string;
   content: string;
   imagePath?: string;
@@ -41,7 +42,7 @@ export default function Home() {
                   title={post.title}
                   description={post.content}
                   imagePath="image/path"
-                  url="/home"
+                  url={`/post/${post.id}`}
                   tags={tags}
                 />
               </Box>

@@ -31,7 +31,9 @@ export default function RootLayout({
           <AppRouterCacheProvider>
             <HeaderNavigation />
             <Box sx={{
-              display: 'flex',
+              "@media screen and (min-width:600px)": {
+                display: 'flex',
+              },
               minHeight: '100vh'
             }}>
               {/* Main Content */}

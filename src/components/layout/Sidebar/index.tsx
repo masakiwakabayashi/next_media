@@ -19,7 +19,7 @@ export default function Sidebar() {
                 width: "100%", // 正方形の幅
                 height: 300,
                 overflow: 'hidden', // コンテンツのはみ出しを隠す
-                backgroundColor: "blue"
+                // backgroundColor: "blue"
               }}
             >
               <Image
@@ -34,7 +34,7 @@ export default function Sidebar() {
                 width: "100%", // 正方形の幅
                 height: 300,
                 overflow: 'hidden', // コンテンツのはみ出しを隠す
-                backgroundColor: "blue"
+                // backgroundColor: "blue"
               }}
             >
               <Image
@@ -49,7 +49,7 @@ export default function Sidebar() {
                 width: "100%", // 正方形の幅
                 height: 300,
                 overflow: 'hidden', // コンテンツのはみ出しを隠す
-                backgroundColor: "blue"
+                // backgroundColor: "blue"
               }}
             >
               <Image
