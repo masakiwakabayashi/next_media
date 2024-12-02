@@ -1,24 +1,70 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-
+import Image from 'next/image'
 
 export default function Sidebar() {
 
   return (
-    <Box
-      component="aside"
-      sx={{
-        flex: 3, // サイドバーの幅
-        backgroundColor: '#f4f4f4',
-        display: 'flex',
-        flexDirection: 'column',
-        // boxShadow: 1,
-        margin: "20px 0"
-      }}
-    >
-      <Box sx={{ flexGrow: 1, p: 2 }}>
-        サイドバーのコンテンツ
-      </Box>
+    <Box sx={{ flexGrow: 1, p: 2 }}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridAutoFlow: 'row',
+            gap: '20px',
+            justifyItems: 'center',
+          }}
+        >
+            <Box
+              sx={{
+                width: "100%", // 正方形の幅
+                height: 300,
+                overflow: 'hidden', // コンテンツのはみ出しを隠す
+                backgroundColor: "blue"
+              }}
+            >
+              <Image
+                src="/test.jpg"
+                width={500}
+                height={500}
+                alt="Picture of the author"
+              />
+            </Box>
+            <Box
+              sx={{
+                width: "100%", // 正方形の幅
+                height: 300,
+                overflow: 'hidden', // コンテンツのはみ出しを隠す
+                backgroundColor: "blue"
+              }}
+            >
+              <Image
+                src="/test.jpg"
+                width={500}
+                height={500}
+                alt="Picture of the author"
+              />
+            </Box>
+            <Box
+              sx={{
+                width: "100%", // 正方形の幅
+                height: 300,
+                overflow: 'hidden', // コンテンツのはみ出しを隠す
+                backgroundColor: "blue"
+              }}
+            >
+              <Image
+                src="/test.jpg"
+                width={500}
+                height={500}
+                alt="Picture of the author"
+              />
+            </Box>
+
+
+
+
+
+        </Box>
     </Box>
   );
 }

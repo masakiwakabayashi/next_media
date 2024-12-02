@@ -38,7 +38,7 @@ export default function RootLayout({
               <Box
                 component="main"
                 sx={{
-                  flex: 7, // 8:2 の割合を設定
+                  flex: 7, // メイン記事エリアの幅
                   padding: 2,
                   display: 'flex',
                   flexDirection: 'column',
@@ -48,7 +48,18 @@ export default function RootLayout({
                 {children}
               </Box>
               {/* Sidebar */}
-              <Sidebar />
+              <Box
+                component="aside"
+                sx={{
+                  flex: 3, // サイドバーの幅
+                  // backgroundColor: '#f4f4f4',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  margin: "20px 0"
+                }}
+              >
+                <Sidebar />
+              </Box>
             </Box>
             <Footer />
           </AppRouterCacheProvider>
