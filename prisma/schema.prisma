@@ -21,6 +21,9 @@ model users {
 
   followedBy followers[]  @relation("FollowedUser")
   following  followers[]  @relation("FollowerUser")
+  comments  comments[]
+  favorites favorites[]
+  bookmarks  bookmarks[]
 }
 
 model tags {
@@ -36,6 +39,8 @@ model posts {
   content     String
   tags        postsOnTags[]
   commments   comments[]
+  favorites favorites[]
+  bookmarks  bookmarks[]
 }
 
 model postsOnTags {
