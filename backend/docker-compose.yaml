@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  myapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PORT=8080
+    container_name: myapp
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/go/src/app
+    ports:
+      - 8080:8080
