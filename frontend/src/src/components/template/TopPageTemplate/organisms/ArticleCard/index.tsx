@@ -6,10 +6,11 @@ type ArticleCardProps = {
   title: string;
   category: string;
   authorName: string;
-  link:string;
+  publishedDate: string;
+  link: string;
 }
 
-const ArticleCard = ({ imagePath, title, category, authorName, link } : ArticleCardProps) => {
+const ArticleCard = ({ imagePath, title, category, authorName, publishedDate, link } : ArticleCardProps) => {
   return (
     <Link href={link} className="block rounded-lg shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow duration-300">
         <div className="relative">
@@ -26,7 +27,7 @@ const ArticleCard = ({ imagePath, title, category, authorName, link } : ArticleC
         </div>
         <div className="p-4 bg-white">
           <h2 className="text-lg font-bold text-teal-400">{title}</h2>
-          <p className="mt-2 text-sm text-gray-600">執筆者: {authorName}</p>
+          <p className="mt-2 text-sm text-gray-600">公開日: {publishedDate} 執筆者: {authorName}</p>
         </div>
     </Link>
   );

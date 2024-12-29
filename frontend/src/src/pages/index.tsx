@@ -13,6 +13,7 @@ export default function Home() {
             title="Next.jsとTailwindで始めるブログ作成"
             category="プログラミング"
             authorName="山田 太郎"
+            publishedDate="2024年12月29日"
             link="/post/1"
           />
           <ArticleCard
@@ -20,6 +21,7 @@ export default function Home() {
             title="Tealを活用した美しいデザイン"
             category="デザイン"
             authorName="鈴木 花子"
+            publishedDate="2024年12月29日"
             link="/post/1"
           />
           <ArticleCard
@@ -27,6 +29,7 @@ export default function Home() {
             title="Reactで効率的にコンポーネントを作る方法"
             category="開発"
             authorName="佐藤 一郎"
+            publishedDate="2024年12月29日"
             link="/post/1"
           />
           <ArticleCard
@@ -34,6 +37,7 @@ export default function Home() {
             title="Next.jsとTailwindで始めるブログ作成"
             category="プログラミング"
             authorName="山田 太郎"
+            publishedDate="2024年12月29日"
             link="/post/1"
           />
           <ArticleCard
@@ -41,6 +45,7 @@ export default function Home() {
             title="Tealを活用した美しいデザイン"
             category="デザイン"
             authorName="鈴木 花子"
+            publishedDate="2024年12月29日"
             link="/post/1"
           />
           <ArticleCard
@@ -48,6 +53,7 @@ export default function Home() {
             title="Reactで効率的にコンポーネントを作る方法"
             category="開発"
             authorName="佐藤 一郎"
+            publishedDate="2024年12月29日"
             link="/post/1"
           />
           <ArticleCard
@@ -55,6 +61,7 @@ export default function Home() {
             title="Next.jsとTailwindで始めるブログ作成"
             category="プログラミング"
             authorName="山田 太郎"
+            publishedDate="2024年12月29日"
             link="/post/1"
           />
           <ArticleCard
@@ -62,6 +69,7 @@ export default function Home() {
             title="Tealを活用した美しいデザイン"
             category="デザイン"
             authorName="鈴木 花子"
+            publishedDate="2024年12月29日"
             link="/post/1"
           />
         </div>
