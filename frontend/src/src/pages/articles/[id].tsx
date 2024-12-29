@@ -1,10 +1,7 @@
-import React from "react";
-
-import { CtaButton } from "@/components/common/atoms/Button";
 
 import { useRouter } from "next/router";
-import Link from "next/link";
-import Image from "next/image";
+
+import ArticlePageTemplate from "@/components/template/ArticlePageTemplate";
 
 const ArticlePage = () => {
   const router = useRouter();
@@ -13,63 +10,37 @@ const ArticlePage = () => {
   console.log(id);
 
   // 仮のデータ
-  const article = {
+  const ArticleData = {
     title: "Next.jsとTailwind CSSでブログを作る",
     authorName: "山田 太郎",
     publishedDate: "2024年12月29日",
     category: "プログラミング",
     content: `
       Next.jsとTailwind CSSを使ったブログ構築方法を解説します。
+
       初心者でも簡単に始められるフレームワークで、効率的に美しいデザインが作れます。
-    `,
-    imagePath: "/images/article-cover.jpg",
+      Next.jsはReactをベースにしたフレームワークで、サーバーサイドレンダリング（SSR）や静的サイト生成（SSG）など、
+      モダンなウェブ開発に必要な機能を簡単に実現できます。
+
+      Tailwind CSSは、ユーティリティファーストなCSSフレームワークです。
+      デザインをゼロから考える必要がなく、既存のクラスを組み合わせるだけで洗練されたUIを作ることが可能です。
+
+      ### 次に進むステップ
+      1. Next.jsのプロジェクトを作成する。
+      2. Tailwind CSSをインストールして設定する。
+      3. カスタムコンポーネントを作成し、ブログのデザインを構築する。
+
+      実際に手を動かしながら進めることで、両フレームワークの強みを最大限に活用できます。
+
+      このブログ記事では、コード例や具体的な設定方法を紹介しながら、
+      Next.jsとTailwind CSSの基本的な使い方を学んでいきましょう。
+      `,
+    imagePath: "",
   };
 
   return (
-    <div className="container mx-auto p-6">
-      {/* 記事のヘッダー */}
-      <div className="mb-6">
-        <div className="relative w-full h-64">
-          <Image
-            src={article.imagePath}
-            alt={article.title}
-            layout="fill"
-            objectFit="cover"
-            className="rounded-lg"
-          />
-        </div>
-        <h1 className="text-4xl font-bold text-teal-400 mt-6">{article.title}</h1>
-        <div className="flex items-center space-x-4 mt-2">
-          <p className="text-sm text-gray-600">著者: {article.authorName}</p>
-          <p className="text-sm text-gray-600">公開日: {article.publishedDate}</p>
-          <Link href={`/categories/${article.category}`}>
-            <span className="text-sm text-teal-500 hover:underline cursor-pointer">
-              {article.category}
-            </span>
-          </Link>
-        </div>
-      </div>
-
-      {/* 記事の本文 */}
-      <div className="prose prose-teal max-w-none">
-        <p>{article.content}</p>
-      </div>
-
-      {/* CTAボタン */}
-      <div className="py-5">
-        <CtaButton
-          onClick={()=>{}}
-        >
-          ボタン
-        </CtaButton>
-      </div>
-
-
-
-    </div>
+    <ArticlePageTemplate ArticleData={ArticleData}/>
   );
 };
 
 export default ArticlePage;
-
-
