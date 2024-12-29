@@ -14,11 +14,11 @@ const BaseLayout = (props: Props) => {
   return (
     <>
       <Header />
-      <div className="flex flex-1 mx-7 my-4">
+      <div className="flex flex-col md:flex-row flex-1 mx-7 my-4">
         <main className="flex-1 p-4">
           {children}
         </main>
-        <div className="py-4 pr-5">
+        <div className="py-4 pr-5 flex justify-center">
           <Sidebar />
         </div>
       </div>
