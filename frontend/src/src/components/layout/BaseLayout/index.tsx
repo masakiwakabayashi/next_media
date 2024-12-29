@@ -14,7 +14,7 @@ const BaseLayout = (props: Props) => {
   return (
     <>
       <Header />
-      <div className="flex flex-1">
+      <div className="flex flex-1 mx-7 my-4">
         <main className="flex-1 p-4">
           {children}
         </main>
