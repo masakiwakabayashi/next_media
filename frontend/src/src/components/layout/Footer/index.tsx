@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -21,36 +20,6 @@ const Footer = () => {
           </Link>
         </nav>
 
-        {/* SNSリンク */}
-        <div className="flex justify-center space-x-4">
-          <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-            <Image
-              src="/icons/twitter.svg"
-              alt="Twitter"
-              width={24}
-              height={24}
-              className="hover:opacity-80"
-            />
-          </Link>
-          <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <Image
-              src="/icons/facebook.svg"
-              alt="Facebook"
-              width={24}
-              height={24}
-              className="hover:opacity-80"
-            />
-          </Link>
-          <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <Image
-              src="/icons/instagram.svg"
-              alt="Instagram"
-              width={24}
-              height={24}
-              className="hover:opacity-80"
-            />
-          </Link>
-        </div>
       </div>
     </footer>
   );
