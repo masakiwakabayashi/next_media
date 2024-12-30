@@ -38,8 +38,22 @@ const ArticlePage = () => {
     imagePath: "",
   };
 
+  const CommentData = [
+    {
+      text: "とても参考になりました！",
+      date: "2024-12-20T10:00:00",
+    },
+    {
+      text: "次回の記事も楽しみにしています。",
+      date: "2024-12-21T15:30:00",
+    },
+  ];
+
   return (
-    <ArticlePageTemplate ArticleData={ArticleData}/>
+    <ArticlePageTemplate
+      ArticleData={ArticleData}
+      CommentData={CommentData}
+    />
   );
 };
 

@@ -1,5 +1,6 @@
 import BaseLayout from "@/components/layout/BaseLayout";
-import { CtaButton } from "@/components/common/atoms/Button";
+import CommentArea from "./organisms/CommentArea";
+// import { CtaButton } from "@/components/common/atoms/Button";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -13,12 +14,18 @@ type Article = {
   imagePath: string;
 }
 
+type CommentData = {
+  text: string;
+  date: string;
+}
+
 type ArticlePageProps = {
   ArticleData: Article;
+  CommentData: CommentData[];
 }
 
 const ArticlePageTemplate = (props: ArticlePageProps) => {
-  const { ArticleData } = props;
+  const { ArticleData, CommentData } = props;
 
   return (
     <BaseLayout>
@@ -51,14 +58,17 @@ const ArticlePageTemplate = (props: ArticlePageProps) => {
           <article>{ArticleData.content}</article>
         </div>
 
+        {/* コメントエリア */}
+        <CommentArea CommentData={CommentData} />
+
         {/* CTAボタン */}
-        <div className="py-5">
+        {/* <div className="py-5 text-center">
           <CtaButton
             onClick={()=>{}}
           >
             ボタン
           </CtaButton>
-        </div>
+        </div> */}
       </div>
     </BaseLayout>
   );
