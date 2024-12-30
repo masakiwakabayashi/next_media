@@ -1,10 +1,18 @@
+import { CtaButton } from "@/components/common/atoms/Button";
 
-const index = () => {
+
+const CtaArea = () => {
   return (
     <div>
-      Enter
+      <div className="py-5 text-center">
+        <CtaButton
+          onClick={()=>{}}
+        >
+          ボタン
+        </CtaButton>
+      </div>
     </div>
   );
 }
 
-export default index;
+export default CtaArea;
