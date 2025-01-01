@@ -20,8 +20,8 @@ const Header = () => {
           <Link href="/about" className="hover:underline">
             運営者について
           </Link>
-          <Link href="/articles" className="hover:underline">
-            記事一覧
+          <Link href="/sitemap" className="hover:underline">
+            サイトマップ
           </Link>
           <Link href="/contact" className="hover:underline">
             お問い合わせ
