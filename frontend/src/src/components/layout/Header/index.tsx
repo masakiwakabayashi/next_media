@@ -14,9 +14,9 @@ const Header = () => {
 
         {/* ナビゲーションメニュー */}
         <nav className="space-x-4">
-          <Link href="/" className="hover:underline">
+          {/* <Link href="/" className="hover:underline">
             ホーム
-          </Link>
+          </Link> */}
           <Link href="/about" className="hover:underline">
             運営者について
           </Link>
