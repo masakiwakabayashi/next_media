@@ -12,9 +12,6 @@ const Footer = () => {
           <Link href="/privacy" className="hover:underline text-sm">
             プライバシーポリシー
           </Link>
-          <Link href="/terms" className="hover:underline text-sm">
-            利用規約
-          </Link>
           <Link href="/contact" className="hover:underline text-sm">
             お問い合わせ
           </Link>
