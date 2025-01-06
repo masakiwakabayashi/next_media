@@ -3,30 +3,46 @@ import SitemapTemplate from "@/components/template/SitemapTemplate";
 
 const sitemapData = [
   {
-    category: "ホーム",
-    links: [{ title: "トップページ", href: "/" }],
-  },
-  {
-    category: "記事",
+    category: "焼肉",
     links: [
-      { title: "記事一覧", href: "/articles" },
-      { title: "Next.js入門", href: "/articles/nextjs" },
-      { title: "Tailwind CSSの基本", href: "/articles/tailwindcss" },
+      { title: "肉源 六本木店", href: "/articles/1" },
     ],
   },
   {
-    category: "カテゴリー",
+    category: "中華",
     links: [
-      { title: "プログラミング", href: "/categories/programming" },
-      { title: "デザイン", href: "/categories/design" },
-      { title: "マーケティング", href: "/categories/marketing" },
+      { title: "四川食堂KARyu 浅草橋店", href: "/articles/2" },
     ],
   },
   {
-    category: "その他",
+    category: "熟成肉",
     links: [
-      { title: "運営者について", href: "/about" },
-      { title: "お問い合わせ", href: "/contact" },
+      { title: "ツイテル(Tsui-teru!) 中野", href: "/articles/3" },
+    ],
+  },
+  {
+    category: "おにぎり",
+    links: [
+      { title: "浅草おにぎり はるちゃん", href: "/articles/4" },
+    ],
+  },
+  {
+    category: "蕎麦",
+    links: [
+      { title: "なぜ蕎麦にラー油を入れるのか。 秋葉原店", href: "/articles/5" },
+    ],
+  },
+  {
+    category: "まぜそば",
+    links: [
+      { title: "まぜはる 浅草橋", href: "/articles/6" },
+    ],
+  },
+  {
+    category: "カレー",
+    links: [
+      { title: "カレーは飲み物。 秋葉原店", href: "/articles/7" },
+      { title: "エスニック料理ギータ-GITA- 入谷", href: "/articles/8" },
     ],
   },
 ];

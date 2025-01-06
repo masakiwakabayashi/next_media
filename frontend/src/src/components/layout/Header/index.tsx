@@ -9,7 +9,7 @@ const Header = () => {
           {/* <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-teal-400 font-bold">
             B
           </div> */}
-          <span className="text-4xl font-bold">My Blog</span>
+          <span className="text-4xl font-bold">Next Media</span>
         </Link>
 
         {/* ナビゲーションメニュー */}

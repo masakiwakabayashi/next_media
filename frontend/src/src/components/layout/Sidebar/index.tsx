@@ -5,6 +5,17 @@ import Image from "next/image";
 
 import ProfileCard from "./ProfileCard";
 
+const articles = [
+  "肉源 六本木店",
+  "四川食堂KARyu 浅草橋店",
+  "ツイテル(Tsui-teru!) 中野",
+  "浅草おにぎり はるちゃん",
+  "なぜ蕎麦にラー油を入れるのか。 秋葉原店"
+];
+
+const categories = ["焼肉", "中華", "熟成肉", "おにぎり", "まぜそば", "蕎麦", "カレー"];
+
+
 const Sidebar = () => {
   return (
     <aside className="bg-teal-400 text-white w-80 shadow-lg">
@@ -13,8 +24,8 @@ const Sidebar = () => {
         <h2 className="text-lg font-bold mb-4">運営者プロフィール</h2>
         <ProfileCard
           image=""
-          name="山田 太郎"
-          bio="Web開発者として10年以上の経験を持ち、特にフロントエンド技術とデザインに強みがあります。このブログではプログラミングやデザインに関する記事を投稿しています。"
+          name="若林 将輝"
+          bio="東京の美味しい食べ物を紹介するブログを書いています。"
         />
       </div>
 
@@ -22,7 +33,7 @@ const Sidebar = () => {
       <div className="p-4">
         <h2 className="text-lg font-bold mb-4">人気記事Top5</h2>
         <ul className="space-y-2">
-          {["記事1", "記事2", "記事3", "記事4", "記事5"].map((article, index) => (
+          {articles.map((article, index) => (
             <li key={index}>
               <Link href={`/articles/${index + 1}`}>
                 <span className="block px-2 py-1 rounded hover:bg-teal-500 cursor-pointer">
@@ -38,7 +49,7 @@ const Sidebar = () => {
       <div className="p-4">
         <h2 className="text-lg font-bold mb-4">カテゴリー一覧</h2>
         <ul className="space-y-2">
-          {["プログラミング", "デザイン", "マーケティング", "ライフスタイル"].map((category, index) => (
+          {categories.map((category, index) => (
             <li key={index}>
               <Link href={`/categories/${category}`}>
                 <span className="block px-2 py-1 rounded hover:bg-teal-500 cursor-pointer">
