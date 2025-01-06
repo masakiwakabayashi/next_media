@@ -51,7 +51,7 @@ const Sidebar = () => {
         <ul className="space-y-2">
           {categories.map((category, index) => (
             <li key={index}>
-              <Link href={`/categories/${category}`}>
+              <Link href={`/categories/${index + 1}`}>
                 <span className="block px-2 py-1 rounded hover:bg-teal-500 cursor-pointer">
                   {category}
                 </span>
