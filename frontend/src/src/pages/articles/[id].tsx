@@ -18,7 +18,7 @@ const ArticlePage = () => {
     content: `
       ランチで食べられる焼肉と冷麺のセットがおすすめです。日比谷線の六本木駅の出口の近くにあります。
       `,
-    imagePath: "",
+    imagePath: "/no_image.webp",
   };
 
   const CommentData = [

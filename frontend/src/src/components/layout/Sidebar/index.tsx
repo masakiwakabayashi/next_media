@@ -1,7 +1,7 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 
 import ProfileCard from "./ProfileCard";
 
@@ -23,7 +23,7 @@ const Sidebar = () => {
       <div className="p-4">
         <h2 className="text-lg font-bold mb-4">運営者プロフィール</h2>
         <ProfileCard
-          image=""
+          imagePath="/no_image.webp"
           name="若林 将輝"
           bio="東京の美味しい食べ物を紹介するブログを書いています。"
         />
@@ -62,7 +62,7 @@ const Sidebar = () => {
       </div>
 
       {/* 正方形のバナー */}
-      <div className="p-4">
+      {/* <div className="p-4">
         <h2 className="text-lg font-bold mb-4">おすすめリンク</h2>
         <div className="relative w-full h-48 bg-white rounded shadow-md overflow-hidden">
           <Link href="https://example.com" target="_blank" rel="noopener noreferrer">
@@ -75,7 +75,7 @@ const Sidebar = () => {
             />
           </Link>
         </div>
-      </div>
+      </div> */}
     </aside>
   );
 };

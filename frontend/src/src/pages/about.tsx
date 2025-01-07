@@ -9,7 +9,7 @@ const AboutPage = () => {
       はじめまして!私は若林 将輝です。
       このブログでは、東京の美味しい食べ物を紹介しています。
     `,
-    profileImagePath: "/images/admin-profile.jpg",
+    profileImagePath: "/no_image.webp",
   };
 
   return (
