@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 
 type CommentData = {
   text: string;
@@ -12,16 +12,28 @@ type CommentAreaProps = {
 const CommentArea = (props: CommentAreaProps) => {
   const { CommentData } = props;
 
+  const [comments, setComments] = useState(CommentData);
+  const [commentInput, setCommentInput] = useState("");
+
+  const handleCommentSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const newComment = { text: commentInput, date: new Date().toISOString() };
+    // TODO: ここでコメントを登録するAPIを呼び出す
+    console.log(newComment);
+    setComments([...comments, newComment]);
+    setCommentInput("");
+  };
+
   return (
       <div className="mt-12">
         <h2 className="text-lg font-bold text-teal-400 mb-4">コメント</h2>
         {/* コメントフォーム */}
-        <form onSubmit={()=>{}} className="mb-6">
+        <form onSubmit={handleCommentSubmit} className="mb-6">
           <textarea
             className="w-full p-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-400"
             placeholder="コメントを入力してください..."
-            // value={}
-            onChange={()=>{}}
+            value={commentInput}
+            onChange={(e) => setCommentInput(e.target.value)}
           />
           <button
             type="submit"
