@@ -1,6 +1,6 @@
 
 import BaseLayout from "@/components/layout/BaseLayout";
-import ArticleCard from "@/components/template/TopPageTemplate/organisms/ArticleCard";
+import ArticleCard from "@/components/common/molecules/ArticleCard"
 
 type Article = {
   imagePath: string;
