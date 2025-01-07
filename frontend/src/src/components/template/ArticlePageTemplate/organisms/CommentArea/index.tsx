@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import { useComments } from "@/hooks/useComments";
 
 type CommentData = {
   text: string;
@@ -12,17 +13,8 @@ type CommentAreaProps = {
 const CommentArea = (props: CommentAreaProps) => {
   const { CommentData } = props;
 
-  const [comments, setComments] = useState(CommentData);
-  const [commentInput, setCommentInput] = useState("");
+  const { comments, commentInput, setCommentInput, handleCommentSubmit } = useComments(CommentData);
 
-  const handleCommentSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const newComment = { text: commentInput, date: new Date().toISOString() };
-    // TODO: ここでコメントを登録するAPIを呼び出す
-    console.log(newComment);
-    setComments([...comments, newComment]);
-    setCommentInput("");
-  };
 
   return (
       <div className="mt-12">
@@ -44,8 +36,8 @@ const CommentArea = (props: CommentAreaProps) => {
         </form>
         {/* コメント一覧 */}
         <div>
-          {CommentData.length > 0 ? (
-            CommentData.map((comment, index) => (
+          {comments.length > 0 ? (
+            comments.map((comment, index) => (
               <div key={index} className="mb-4 p-4 bg-gray-100 rounded">
                 <p className="text-gray-800">{comment.text}</p>
                 <p className="text-xs text-gray-500 mt-2">
