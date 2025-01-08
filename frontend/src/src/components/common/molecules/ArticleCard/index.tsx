@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { CategoryChip } from "@components/atoms/CategoryChip";
+import { CategoryChip } from "@/components/common/atoms/CategoryChip";
 
 
 
