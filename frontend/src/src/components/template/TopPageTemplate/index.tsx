@@ -2,6 +2,8 @@
 import BaseLayout from "@/components/layout/BaseLayout";
 import ArticleCard from "@/components/common/molecules/ArticleCard"
 
+// import { Pagination } from "@/components/common/molecules/Pagination"
+
 type Article = {
   imagePath: string;
   title: string;
@@ -34,6 +36,11 @@ const TopPageTemplate = (props: TopPageProps) => {
           />
         ))}
       </div>
+      {/* <Pagination
+        currentPage={1}
+        totalPages={10}
+        onPageChange={(page: number) => console.log("Selected page:", page)}
+      /> */}
     </BaseLayout>
   );
 }
