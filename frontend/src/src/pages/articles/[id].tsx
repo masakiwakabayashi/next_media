@@ -103,10 +103,47 @@ const ArticlePage = () => {
     },
   ];
 
+  const BreadcrumbItemsData = [
+    [
+      { label: "TOP", href: "/" },
+      { label: "肉源 六本木店", href: "/articles/1" },
+    ],
+    [
+      { label: "TOP", href: "/" },
+      { label: "四川食堂KARyu 浅草橋店", href: "/articles/2" },
+    ],
+    [
+      { label: "TOP", href: "/" },
+      { label: "ツイテル(Tsui-teru!) 中野", href: "/articles/3" },
+    ],
+    [
+      { label: "TOP", href: "/" },
+      { label: "浅草おにぎり はるちゃん", href: "/articles/4" },
+    ],
+    [
+      { label: "TOP", href: "/" },
+      { label: "なぜ蕎麦にラー油を入れるのか。 秋葉原店", href: "/articles/5" },
+    ],
+    [
+      { label: "TOP", href: "/" },
+      { label: "まぜはる 浅草橋", href: "/articles/6" },
+    ],
+    [
+      { label: "TOP", href: "/" },
+      { label: "カレーは飲み物。 秋葉原店", href: "/articles/7" },
+    ],
+    [
+      { label: "TOP", href: "/" },
+      { label: "エスニック料理ギータ-GITA- 入谷", href: "/articles/8" },
+    ],
+  ];
+
+
   return (
     <ArticlePageTemplate
       ArticleData={ArticleData[Number(id) - 1]}
       CommentData={CommentData}
+      BreadcrumbItems={BreadcrumbItemsData[Number(id) - 1]}
     />
   );
 };

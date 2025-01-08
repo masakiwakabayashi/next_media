@@ -2,6 +2,13 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { Breadcrumb } from "@/components/common/molecules/BreadCrumb"
+
+type BreadcrumbItem = {
+  label: string;
+  href: string;
+}
+
 type Article = {
   title: string;
   authorName: string;
@@ -13,14 +20,16 @@ type Article = {
 
 type ArticleAreaProps = {
   ArticleData: Article;
+  BreadcrumbItems: BreadcrumbItem[];
 }
 
 
 const ArticleArea = (props: ArticleAreaProps) => {
-  const { ArticleData } = props;
+  const { ArticleData, BreadcrumbItems } = props;
 
   return (
     <div>
+      <Breadcrumb items={BreadcrumbItems} />
       <div className="mb-6">
         <div className="relative w-full h-64">
           <Image
