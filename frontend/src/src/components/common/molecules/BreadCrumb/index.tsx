@@ -15,7 +15,7 @@ export const Breadcrumb = (props: BreadcrumbProps) => {
   const { items } = props;
 
   return (
-    <nav aria-label="パンくずリスト" className="text-sm mb-4">
+    <nav className="text-sm mb-4">
       <ul className="flex items-center space-x-2">
         {items.map((item, index) => (
           <li key={index} className="flex items-center">
