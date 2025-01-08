@@ -1,5 +1,5 @@
 import BaseLayout from "@/components/layout/BaseLayout";
-import ArticleCard from "@/components/common/molecules/ArticleCard"
+import { ArticleCard } from "@/components/common/molecules/ArticleCard"
 
 type Article = {
   imagePath: string;

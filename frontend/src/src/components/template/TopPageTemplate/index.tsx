@@ -1,6 +1,6 @@
 
 import BaseLayout from "@/components/layout/BaseLayout";
-import ArticleCard from "@/components/common/molecules/ArticleCard"
+import { ArticleCard } from "@/components/common/molecules/ArticleCard"
 
 // import { Pagination } from "@/components/common/molecules/Pagination"
 
