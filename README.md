@@ -1,12 +1,12 @@
 
-## Frontend
+## ⚡ Frontend
 
 ```
 cd frontend
 ```
 
 ```
-docker compose up
+docker compose up -d
 ```
 
 ### Storybook
@@ -19,12 +19,12 @@ cd app
 npm run storybook
 ```
 
-## Backend
+## ⚡ Backend
 
 ```
 cd backend
 ```
 
 ```
-docker compose up
+docker compose up -d
 ```
