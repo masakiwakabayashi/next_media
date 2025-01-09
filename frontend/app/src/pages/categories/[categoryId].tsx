@@ -93,10 +93,15 @@ const CategoryPage = () => {
 
   console.log(categoryId);
 
+  const categoryIndex = Number(categoryId) - 1;
+  if (categoryIndex < 0 || categoryIndex >= ArticleListData.length) {
+    return <div>カテゴリーが見つかりません。</div>;
+  }
+
   return (
     <CategoryPageTemplate
-      ArticleListData={ArticleListData[Number(categoryId) - 1]}
-      CategoryName={CategoryNames[Number(categoryId) - 1]}
+      ArticleListData={ArticleListData[categoryIndex]}
+      CategoryName={CategoryNames[categoryIndex]}
     />
   );
 }

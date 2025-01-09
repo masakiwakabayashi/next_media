@@ -138,12 +138,16 @@ const ArticlePage = () => {
     ],
   ];
 
+  const articleIndex = Number(id) - 1;
+  if (articleIndex < 0 || articleIndex >= ArticleData.length) {
+    return <div>記事が見つかりません。</div>;
+  }
 
   return (
     <ArticlePageTemplate
-      ArticleData={ArticleData[Number(id) - 1]}
+      ArticleData={ArticleData[articleIndex]}
       CommentData={CommentData}
-      BreadcrumbItems={BreadcrumbItemsData[Number(id) - 1]}
+      BreadcrumbItems={BreadcrumbItemsData[articleIndex]}
     />
   );
 };
