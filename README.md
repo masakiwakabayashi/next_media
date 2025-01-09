@@ -19,6 +19,16 @@ cd app
 npm run storybook
 ```
 
+### Testing
+
+```
+cd app
+```
+
+```
+npm run test
+```
+
 ## ⚡ Backend
 
 ```
