@@ -139,7 +139,7 @@ const ArticlePage = () => {
   ];
 
   const articleIndex = Number(id) - 1;
-  if (articleIndex < 0 || articleIndex >= ArticleData.length) {
+  if (articleIndex < 0 || articleIndex >= ArticleData.length || !articleIndex) {
     return <div>記事が見つかりません。</div>;
   }
 
