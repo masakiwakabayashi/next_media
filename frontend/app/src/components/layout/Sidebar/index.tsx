@@ -33,15 +33,21 @@ const Sidebar = () => {
       <div className="p-4">
         <h2 className="text-lg font-bold mb-4">人気記事Top5</h2>
         <ul className="space-y-2">
-          {articles.map((article, index) => (
-            <li key={index}>
-              <Link href={`/articles/${index + 1}`}>
-                <span className="block px-2 py-1 rounded hover:bg-teal-500 cursor-pointer">
-                  {index + 1}. {article}
-                </span>
-              </Link>
-            </li>
-          ))}
+          {
+            articles.length > 0 ? (
+              articles.map((article, index) => (
+                <li key={index}>
+                  <Link href={`/articles/${index + 1}`}>
+                    <span className="block px-2 py-1 rounded hover:bg-teal-500 cursor-pointer">
+                      {index + 1}. {article}
+                    </span>
+                  </Link>
+                </li>
+              ))
+            ) : (
+              <div>まだ記事がありません</div>
+            )
+          }
         </ul>
       </div>
 
@@ -49,15 +55,21 @@ const Sidebar = () => {
       <div className="p-4">
         <h2 className="text-lg font-bold mb-4">カテゴリー一覧</h2>
         <ul className="space-y-2">
-          {categories.map((category, index) => (
-            <li key={index}>
-              <Link href={`/categories/${index + 1}`}>
-                <span className="block px-2 py-1 rounded hover:bg-teal-500 cursor-pointer">
-                  {category}
-                </span>
-              </Link>
-            </li>
-          ))}
+          {
+            categories.length > 0 ? (
+              categories.map((category, index) => (
+                <li key={index}>
+                  <Link href={`/categories/${index + 1}`}>
+                    <span className="block px-2 py-1 rounded hover:bg-teal-500 cursor-pointer">
+                      {category}
+                    </span>
+                  </Link>
+                </li>
+              ))
+            ) : (
+              <div>カテゴリーデータがありません</div>
+            )
+          }
         </ul>
       </div>
 

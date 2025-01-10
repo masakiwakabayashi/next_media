@@ -14,7 +14,7 @@ const ProfileCard = ({ imagePath, name, bio } : ProfileCardProps) => {
         <Image
           width={100}
           height={100}
-          src={imagePath}
+          src={imagePath ? imagePath : "/no_image.webp"}
           alt={name}
           className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 w-24 h-24 rounded-full border-4 border-white shadow-md"
         />

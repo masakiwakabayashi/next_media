@@ -25,7 +25,7 @@ const ArticleArea = (props: ArticleAreaProps) => {
       <div className="mb-6">
         <div className="relative w-full h-64">
           <Image
-            src={ArticleData.imagePath}
+            src={ArticleData.imagePath ? ArticleData.imagePath : "/no_image.webp"}
             alt={ArticleData.title}
             layout="fill"
             objectFit="cover"

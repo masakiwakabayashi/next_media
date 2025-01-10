@@ -24,17 +24,21 @@ const TopPageTemplate = (props: TopPageProps) => {
   return (
     <BaseLayout>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-        {ArticleListData.map((article: Article, index: number) => (
-          <ArticleCard
-            key={index}
-            imagePath={article.imagePath}
-            title={article.title}
-            category={article.category}
-            authorName={article.authorName}
-            publishedDate={article.publishedDate}
-            link={article.link}
-          />
-        ))}
+        {ArticleListData?.length > 0 ? (
+          ArticleListData.map((article: Article, index: number) => (
+            <ArticleCard
+              key={index}
+              imagePath={article.imagePath}
+              title={article.title}
+              category={article.category}
+              authorName={article.authorName}
+              publishedDate={article.publishedDate}
+              link={article.link}
+            />
+          ))
+        ) : (
+          <p className="text-gray-500">まだ記事はありません。</p>
+        )}
       </div>
       {/* <Pagination
         currentPage={1}

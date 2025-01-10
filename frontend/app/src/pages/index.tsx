@@ -70,6 +70,13 @@ const ArticleListData = [
 ];
 
 export default function Home() {
+
+  if (!ArticleListData) {
+    return (
+      <div>データが見つかりません。</div>
+    );
+  }
+
   return (
     <TopPageTemplate ArticleListData={ArticleListData}/>
   );

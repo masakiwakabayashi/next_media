@@ -20,7 +20,7 @@ export const ArticleCard = (props : ArticleCardProps) => {
         <Image
           width={400}
           height={300}
-          src={imagePath}
+          src={imagePath ? imagePath : "/no_image.webp"}
           alt={title}
           className="w-full h-48 object-cover"
         />
