@@ -40,5 +40,5 @@ jobs:
           gcloud run deploy ${{ secrets.CLOUD_RUN_SERVICE }} \
             --image gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.CLOUD_RUN_SERVICE }} \
             --platform managed \
-            --region us-central1 \
+            --region asia-northeast1 \
             --allow-unauthenticated
