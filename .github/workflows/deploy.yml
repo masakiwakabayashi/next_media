@@ -33,18 +33,10 @@ jobs:
 
       # TODO: エラーが起きているのはここ
       # DockerイメージをビルドしてArtifact Registryにプッシュ
-      # - name: Build and push Docker image
-        # run: |
-        #   docker build -t gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.CLOUD_RUN_SERVICE }} ./frontend
-        #   docker push gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.CLOUD_RUN_SERVICE }}
-        # run: |
-        #   docker buildx build \
-        #     --platform linux/amd64 \
-        #     -t gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.CLOUD_RUN_SERVICE }} \
-        #     ./frontend
-
-        # docker push gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.CLOUD_RUN_SERVICE }}
-
+      - name: Build and push Docker image
+        run: |
+          docker build -t gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.CLOUD_RUN_SERVICE }} ./frontend
+          docker push gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.CLOUD_RUN_SERVICE }}
 
       # Cloud Runにデプロイ
       - name: Deploy to Cloud Run
