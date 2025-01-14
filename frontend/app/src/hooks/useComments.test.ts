@@ -11,7 +11,6 @@ describe("useComments", () => {
   it("初期コメントを設定する", () => {
     const initialComments = [{ text: "初期コメント", date: "2025-01-01T00:00:00.000Z" }];
     const { result } = renderHook(() => useComments(initialComments));
-
     expect(result.current.comments).toEqual(initialComments);
     expect(result.current.commentInput).toBe("");
   });
@@ -19,11 +18,9 @@ describe("useComments", () => {
   it("コメントを追加する", () => {
     const initialComments: CommentData[] = [];
     const { result } = renderHook(() => useComments(initialComments));
-
     act(() => {
       result.current.setCommentInput("新しいコメント");
     });
-
     act(() => {
       // モックイベントを作成
       const mockEvent = {
@@ -32,7 +29,6 @@ describe("useComments", () => {
       // モックイベントを渡す
       result.current.handleCommentSubmit(mockEvent);
     });
-
     expect(result.current.comments).toHaveLength(1);
     expect(result.current.comments[0].text).toBe("新しいコメント");
     expect(result.current.comments[0].date).toBeDefined();
@@ -42,11 +38,9 @@ describe("useComments", () => {
   it("空のコメントは追加されない", () => {
     const initialComments: CommentData[] = [];
     const { result } = renderHook(() => useComments(initialComments));
-
     act(() => {
       result.current.setCommentInput("");
     });
-
     act(() => {
       // モックイベントを作成
       const mockEvent = {
@@ -55,7 +49,6 @@ describe("useComments", () => {
       // モックイベントを渡す
       result.current.handleCommentSubmit(mockEvent);
     });
-
     expect(result.current.comments).toHaveLength(0);
     expect(result.current.commentInput).toBe("");
   });
