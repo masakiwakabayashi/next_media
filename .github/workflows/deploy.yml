@@ -42,7 +42,8 @@ jobs:
             --platform linux/amd64 \
             -t gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.CLOUD_RUN_SERVICE }} \
             ./frontend
-          docker push gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.CLOUD_RUN_SERVICE }}
+
+        # docker push gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.CLOUD_RUN_SERVICE }}
 
 
       # Cloud Runにデプロイ
