@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ThemeToggle } from "@/components/common/atoms/ThemeToggle";
 
 const Header = () => {
   return (
@@ -26,6 +27,8 @@ const Header = () => {
           <Link href="/contact" className="hover:underline">
             お問い合わせ
           </Link>
+          {/* ダークモードとライトモードを切り替える */}
+          <ThemeToggle />
         </nav>
       </div>
     </header>
