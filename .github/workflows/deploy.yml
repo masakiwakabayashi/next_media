@@ -28,6 +28,9 @@ jobs:
       # テストを実行
       - name: Run Vitest
         run: npm run test
+      # ビルドを実行
+      - name: Run Build
+        run: npm run build
 
   # deploy:
   #   runs-on: ubuntu-latest
