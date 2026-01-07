@@ -12,7 +12,7 @@ begin
   end if;
 
   if not exists (select 1 from pg_type where typname = 'restaurant_wish_status') then
-    create type restaurant_wish_status as enum ('want_to_go', ,'good' 'repeat');
+    create type restaurant_wish_status as enum ('want_to_go', 'good', 'repeat');
   end if;
 end $$;
 
@@ -110,5 +110,4 @@ create index if not exists idx_restaurant_links_restaurant_id
   on public.restaurant_links (restaurant_id);
 create index if not exists idx_restaurant_links_type
   on public.restaurant_links (link_type);
-
 
