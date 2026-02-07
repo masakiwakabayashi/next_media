@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase/client'
 
+// これはあとでfeatureに移す
+
 type Post = {
   id: string
   title: string
@@ -18,6 +20,7 @@ type Post = {
   } | null
 }
 
+// Supabaseのクエリはあとでリポジトリをつくって、そっちに移動させる
 async function getPosts(): Promise<Post[]> {
   const { data, error } = await supabase
     .from('posts')

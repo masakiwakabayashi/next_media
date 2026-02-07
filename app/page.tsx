@@ -1,6 +1,7 @@
 import Image from "next/image";
 import PostList from "@/components/PostList";
 
+// 次は詳細ページのコンポーネント
 
 export default function Home() {
   return (
