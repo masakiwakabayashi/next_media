@@ -34,18 +34,18 @@ insert into public.categories (
 ) values
   (
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
-    'グルメ',
-    'gourmet'
+    'また行きたい！',
+    'repeat'
   ),
   (
     'd4e5f6a7-b8c9-0123-def1-234567890123',
-    'カフェ',
-    'cafe'
+    'よかった！',
+    'good'
   ),
   (
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
-    'ライフスタイル',
-    'lifestyle'
+    '行ってみたい！',
+    'want_to_go'
   )
 on conflict (id) do update
 set
@@ -155,6 +155,7 @@ insert into public.posts (
   category_id,
   title,
   slug,
+  image_path,
   content,
   status,
   published_at
@@ -166,6 +167,7 @@ insert into public.posts (
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '肉源 六本木店',
     'nikugen-roppongi',
+    '/images/posts/nikugen-roppongi.jpg',
     'ランチで食べられる焼肉と冷麺のセットがおすすめ。
 
 住所: 東京都港区六本木７丁目１５−１７ ユニ六本木ビル 2F
@@ -180,6 +182,7 @@ Google Maps: https://maps.app.goo.gl/qQfA7vcWRgcVtCgMA',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '四川食堂KARyu 浅草橋店',
     'karyu-asakusabashi',
+    '/images/posts/karyu-asakusabashi.jpg',
     '辛くない料理もある。美味しい。
 
 住所: 東京都台東区浅草橋１丁目２３−４ 浅草橋サンロード １階
@@ -194,6 +197,7 @@ Google Maps: https://maps.app.goo.gl/8D4vhDByBAoBhAGv7',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     'ツイテル(Tsui-teru!)',
     'tsuiteru-nakano',
+    '/images/posts/tsuiteru-nakano.jpg',
     '熟成肉のお店
 
 住所: 東京都中野区中野５丁目３６−５ ヴィラＡＫ 2F
@@ -208,6 +212,7 @@ Google Maps: https://maps.app.goo.gl/eNb4refMJipwYv5v8',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '浅草おにぎり はるちゃん',
     'haruchan-asakusa',
+    '/images/posts/haruchan-asakusa.jpg',
     'ツナマヨと鶏そぼろのおにぎりが美味しかった。ねぎとろとツナマヨも美味しかった。豚汁も美味しい。',
     'published',
     now()
@@ -219,6 +224,7 @@ Google Maps: https://maps.app.goo.gl/eNb4refMJipwYv5v8',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     'まぜはる 浅草橋',
     'mazeharu-asakusabashi',
+    '/images/posts/mazeharu-asakusabashi.jpg',
     'ちょっと辛めだけど美味しい。',
     'published',
     now()
@@ -230,6 +236,7 @@ Google Maps: https://maps.app.goo.gl/eNb4refMJipwYv5v8',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     'エスニック料理ギータ-GITA-',
     'gita-ethnic',
+    '/images/posts/gita-ethnic.jpg',
     'チーズナンがめちゃくちゃ美味しい。',
     'published',
     now()
@@ -241,6 +248,7 @@ Google Maps: https://maps.app.goo.gl/eNb4refMJipwYv5v8',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     'カレーは飲み物。 秋葉原店',
     'curry-ha-nomimono-akihabara',
+    '/images/posts/curry-ha-nomimono-akihabara.jpg',
     'カツカレーは結構油っこい感じだけど美味しい。',
     'published',
     now()
@@ -252,6 +260,7 @@ Google Maps: https://maps.app.goo.gl/eNb4refMJipwYv5v8',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     'ココトモバウム',
     'cocotomo-baum',
+    '/images/posts/cocotomo-baum.jpg',
     '米粉のバウムクーヘン。玄米のやつが特に美味しい。犬山に店舗があるけど通販もある。
 
 住所: 愛知県犬山市犬山東古券76番地
@@ -266,6 +275,7 @@ Google Maps: https://maps.app.goo.gl/SRE1Ber2wNvauSea9',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     'りんごぽむぽむ',
     'ringo-pompom',
+    '/images/posts/ringo-pompom.jpg',
     'りんごの味がする日本酒。通販で購入可能。',
     'published',
     now()
@@ -277,6 +287,7 @@ Google Maps: https://maps.app.goo.gl/SRE1Ber2wNvauSea9',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '播磨屋本店',
     'harimaya-honten',
+    '/images/posts/harimaya-honten.jpg',
     '思想が強めなおかきのお店。味は美味しいと聞いている。通販で購入可能。',
     'draft',
     null
@@ -288,6 +299,7 @@ Google Maps: https://maps.app.goo.gl/SRE1Ber2wNvauSea9',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '上野 焼きそば 想夫恋',
     'sofuren-ueno',
+    '/images/posts/sofuren-ueno.jpg',
     '上野にある焼きそば専門店
 
 住所: 東京都台東区上野４丁目６−７ 白鳥舎ビル 1F
@@ -302,6 +314,7 @@ Google Maps: https://maps.app.goo.gl/YDJk6cmUi3NFRiL47',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '池袋肉劇場',
     'ikebukuro-nikugekijo',
+    '/images/posts/ikebukuro-nikugekijo.jpg',
     '色々なお肉が乗ったどんぶり。美味しい。
 
 住所: 東京都豊島区東池袋１丁目２−１１
@@ -316,6 +329,7 @@ Google Maps: https://maps.app.goo.gl/9uoRTrUXE3n1qRKS8',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '君に、揚げる。とんかつ',
     'kimini-ageru-tonkatsu',
+    '/images/posts/kimini-ageru-tonkatsu.jpg',
     '浅草の田原町付近にあるとんかつのお店。ランチのチキンカツが美味しかった。
 
 住所: 東京都台東区松が谷１丁目４−６ ライオンズマンション上野松が谷 1F
@@ -330,6 +344,7 @@ Google Maps: https://maps.app.goo.gl/A5LZWtyUMpMqm8Sw6',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '蔵前のピザ屋',
     'kuramae-pizza',
+    '/images/posts/kuramae-pizza.jpg',
     '蔵前にあるピザ屋。名前は忘れた。',
     'draft',
     null
@@ -341,6 +356,7 @@ Google Maps: https://maps.app.goo.gl/A5LZWtyUMpMqm8Sw6',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '田原町付近のそばと親子丼のお店',
     'tawaramachi-soba-oyakodon',
+    '/images/posts/tawaramachi-soba-oyakodon.jpg',
     '名前は忘れたけどめっちゃ美味しかった。',
     'draft',
     null
@@ -352,6 +368,7 @@ Google Maps: https://maps.app.goo.gl/A5LZWtyUMpMqm8Sw6',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '極(きわみ) 新宿食肉センター極 南越谷店',
     'kiwami-minamikoshigaya',
+    '/images/posts/kiwami-minamikoshigaya.jpg',
     '埼玉にある焼肉。極み。深夜ランチよく食べてたところ。レバーとピートロが美味しい。
 
 住所: 埼玉県越谷市南越谷１丁目２６−１４ KO''z-1ビル 3階
@@ -366,6 +383,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '浅草橋のギリシャ料理',
     'asakusabashi-greek',
+    '/images/posts/asakusabashi-greek.jpg',
     '浅草橋にあるギリシャ料理のお店。行ってみたい。',
     'draft',
     null
@@ -376,6 +394,7 @@ set
   category_id = excluded.category_id,
   title = excluded.title,
   slug = excluded.slug,
+  image_path = excluded.image_path,
   content = excluded.content,
   status = excluded.status,
   published_at = excluded.published_at;

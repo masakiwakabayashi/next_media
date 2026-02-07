@@ -65,6 +65,7 @@ create table public.posts (
   category_id uuid references public.categories(id) on delete set null,
   title text not null,
   slug text not null unique,
+  image_path text not null,
   content text not null,
   status text not null default 'draft', -- draft | published
   published_at timestamptz,
