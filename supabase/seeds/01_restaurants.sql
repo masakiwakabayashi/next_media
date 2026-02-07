@@ -187,27 +187,6 @@ insert into public.restaurants (
     'Googleマップ',
     ''
   ),
-  (
-    'e4f1dbe2-f05b-4c46-b0b1-83515a69f8da',
-    'good',
-    3,
-    '店名',
-    '詳細',
-    '住所',
-    'Google',
-    ''
-  ),
-  (
-    'e4f1dbe2-f05b-4c46-b0b1-83515a69f8da',
-    'good',
-    3,
-    '店名',
-    '詳細',
-    '住所',
-    'Googleマップ',
-    ''
-  ),
-
 
 
 
