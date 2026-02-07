@@ -14,12 +14,6 @@ insert into public.authors (
     'フードライター。東京を中心にグルメ情報を発信中。',
     null
   ),
-  (
-    'b2c3d4e5-f6a7-8901-bcde-f12345678901',
-    '佐藤花子',
-    'カフェ巡りが趣味のライター。',
-    null
-  )
 on conflict (id) do update
 set
   display_name = excluded.display_name,
@@ -289,8 +283,8 @@ Google Maps: https://maps.app.goo.gl/SRE1Ber2wNvauSea9',
     'harimaya-honten',
     '/images/posts/harimaya-honten.jpg',
     '思想が強めなおかきのお店。味は美味しいと聞いている。通販で購入可能。',
-    'draft',
-    null
+    'published',
+    now()
   ),
   -- 上野 焼きそば 想夫恋
   (
@@ -346,8 +340,8 @@ Google Maps: https://maps.app.goo.gl/A5LZWtyUMpMqm8Sw6',
     'kuramae-pizza',
     '/images/posts/kuramae-pizza.jpg',
     '蔵前にあるピザ屋。名前は忘れた。',
-    'draft',
-    null
+    'published',
+    now()
   ),
   -- 田原町付近のそばと親子丼のお店
   (
@@ -358,8 +352,8 @@ Google Maps: https://maps.app.goo.gl/A5LZWtyUMpMqm8Sw6',
     'tawaramachi-soba-oyakodon',
     '/images/posts/tawaramachi-soba-oyakodon.jpg',
     '名前は忘れたけどめっちゃ美味しかった。',
-    'draft',
-    null
+    'published',
+    now()
   ),
   -- 極(きわみ) 新宿食肉センター極 南越谷店
   (
@@ -385,9 +379,14 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'asakusabashi-greek',
     '/images/posts/asakusabashi-greek.jpg',
     '浅草橋にあるギリシャ料理のお店。行ってみたい。',
-    'draft',
-    null
+    'published',
+    now()
   )
+  -- 焼酎 宝山
+
+
+
+
 on conflict (id) do update
 set
   author_id = excluded.author_id,

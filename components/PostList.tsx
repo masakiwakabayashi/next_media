@@ -18,6 +18,13 @@ type Post = {
     name: string
     slug: string
   } | null
+  post_tags: {
+    tag: {
+      id: string
+      name: string
+      slug: string
+    }
+  }[]
 }
 
 // Supabaseのクエリはあとでリポジトリをつくって、そっちに移動させる
@@ -33,7 +40,10 @@ async function getPosts(): Promise<Post[]> {
       published_at,
       created_at,
       author:authors(display_name),
-      category:categories(name, slug)
+      category:categories(name, slug),
+      post_tags(
+        tag:tags(id, name, slug)
+      )
     `)
     .eq('status', 'published')
     .order('published_at', { ascending: false })
@@ -100,6 +110,20 @@ export default async function PostList() {
           <p className="mb-3 text-zinc-600 dark:text-zinc-400">
             {truncateContent(post.content)}
           </p>
+
+          {post.post_tags && post.post_tags.length > 0 && (
+            <div className="mb-3 flex flex-wrap gap-1">
+              {post.post_tags.map((pt) => (
+                <Link
+                  key={pt.tag.id}
+                  href={`/tags/${pt.tag.slug}`}
+                  className="rounded-full border border-zinc-200 px-2 py-0.5 text-xs text-zinc-500 hover:border-zinc-400 hover:text-zinc-700 dark:border-zinc-700 dark:hover:border-zinc-500 dark:hover:text-zinc-300"
+                >
+                  #{pt.tag.name}
+                </Link>
+              ))}
+            </div>
+          )}
 
           {post.author && (
             <div className="text-sm text-zinc-500">
