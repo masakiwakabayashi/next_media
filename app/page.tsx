@@ -1,7 +1,6 @@
 import Image from "next/image";
+import PostList from "@/components/PostList";
 
-// 次はサンプルのページをつくる
-// マイグレーションの情報をもとにしてcodexにページを作らせる
 
 export default function Home() {
   return (
@@ -9,6 +8,7 @@ export default function Home() {
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
 
 
+      <PostList />
 
 
 
