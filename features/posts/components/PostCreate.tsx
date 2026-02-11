@@ -23,6 +23,7 @@ type Props = {
   categories: Category[]
   authors: Author[]
   tags: Tag[]
+  redirectTo?: string
 }
 
 function generateSlug(title: string): string {
@@ -35,7 +36,7 @@ function generateSlug(title: string): string {
     .replace(/^-+|-+$/g, '')
 }
 
-export default function PostCreate({ categories, authors, tags }: Props) {
+export default function PostCreate({ categories, authors, tags, redirectTo = '/' }: Props) {
   const router = useRouter()
   const [title, setTitle] = useState('')
   const [slug, setSlug] = useState('')
@@ -104,7 +105,7 @@ export default function PostCreate({ categories, authors, tags }: Props) {
       }
     }
 
-    router.push('/')
+    router.push(redirectTo)
     router.refresh()
   }
 
