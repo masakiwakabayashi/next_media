@@ -1,5 +1,5 @@
 import Image from "next/image";
-import PostList from "@/components/PostList";
+import PostList from "@/features/posts/components/PostList";
 
 // 次は詳細ページのコンポーネント
 

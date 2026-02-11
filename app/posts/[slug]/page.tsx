@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import PostDetail from '@/components/PostDetail'
+import PostDetail from '@/features/posts/components/PostDetail'
 import { supabase } from '@/lib/supabase/client'
 
 type Props = {
