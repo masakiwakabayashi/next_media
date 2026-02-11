@@ -13,7 +13,7 @@ insert into public.authors (
     '山田太郎',
     'フードライター。東京を中心にグルメ情報を発信中。',
     null
-  ),
+  )
 on conflict (id) do update
 set
   display_name = excluded.display_name,
