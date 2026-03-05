@@ -46,6 +46,15 @@ export default async function Sidebar() {
 
   return (
     <aside className="space-y-8">
+      <div>
+        <Link
+          href="/posts/new"
+          className="flex items-center justify-center rounded-md bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+        >
+          記事を作成
+        </Link>
+      </div>
+
       {categories.length > 0 && (
         <div>
           <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-zinc-500">

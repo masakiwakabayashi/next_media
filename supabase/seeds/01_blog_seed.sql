@@ -336,10 +336,10 @@ Google Maps: https://maps.app.goo.gl/A5LZWtyUMpMqm8Sw6',
     'e3f4a5b6-c7d8-9012-6789-123456789012',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
-    '蔵前のピザ屋',
+    '蔵前のピザ屋 PIZZA LINDA',
     'kuramae-pizza',
     '/images/posts/kuramae-pizza.jpg',
-    '蔵前にあるピザ屋。名前は忘れた。',
+    '蔵前にあるピザ屋。イタリアで修行したシェフがピザ窯でピザを焼いてるところ。たぶんここ。https://pizzalinda.jp/',
     'published',
     now()
   ),
@@ -381,8 +381,54 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     '浅草橋にあるギリシャ料理のお店。行ってみたい。',
     'published',
     now()
-  )
+  ),
   -- 焼酎 宝山
+  (
+    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    '焼酎 宝山',
+    'houzan',
+    '/images/posts/sample.jpg',
+    'トリクラで飲んだ焼酎。美味しかったやつ。',
+    'published',
+    now()
+  ),
+  -- 扇屋製菓 メロンパフェ 静岡の伊豆にあるところ
+  (
+    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    '扇屋製菓 メロンパフェ',
+    'ougiya-melon',
+    '/images/posts/sample.jpg',
+    '静岡の伊豆にあるメロンパフェが食べられるところ。メロンを半玉使っているパフェ。http://ougiya-melon.com/cafe',
+    'published',
+    now()
+  ),
+  -- あつみのかりんとう(秋田で人気のお菓子)
+  (
+    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    'あつみのかりんとう',
+    'atsumi-karintou',
+    '/images/posts/sample.jpg',
+    '秋田県のお菓子。あつみのかりんとうは商品名？',
+    'published',
+    now()
+  ),
+
+
+
+
+
+
+-- これが行ってみたいのカテゴリーのid
+-- e5f6a7b8-c9d0-1234-ef12-345678901234
+
+
+
 
 
 
