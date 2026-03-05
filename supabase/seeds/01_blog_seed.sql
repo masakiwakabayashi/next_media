@@ -418,8 +418,54 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'published',
     now()
   ),
-
-
+  -- 渋谷のハワイのお店
+  (
+    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    "渋谷のハワイのお店 hale'aina HOA Shibuya",
+    'houzan',
+    '/images/posts/sample.jpg',
+    "チキンステーキが美味しかった。https://tabelog.com/tokyo/A1303/A130301/13298163/",
+    'published',
+    now()
+  ),
+  -- ウルフギャング
+  (
+    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    'ウルフギャング',
+    'wolfgangs-steak',
+    '/images/posts/sample.jpg',
+    'ステーキのお店。スカウトのグルコンで名前が上がっていたので行ってみたい。https://wolfgangssteakhouse.jp/',
+    'published',
+    now()
+  ),
+  -- 浅草 楓(みたらし団子が美味しそうなお店)
+  (
+    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    '浅草 楓',
+    'asakusa-kaede',
+    '/images/posts/sample.jpg',
+    'みたらし団子が美味しそうなお店。https://tabelog.com/tokyo/A1311/A131102/13009811/',
+    'published',
+    now()
+  ),
+  -- 浅草のつきたてのお餅が食べられるお店(餅屋半兵衛)
+  (
+    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    '餅屋半兵衛 浅草のつきたてのお餅が食べられるお店',
+    'asakusa-omochi',
+    '/images/posts/sample.jpg',
+    '浅草のつきたてのお餅が食べられるお店 https://hanbei.ltd/mochishop/',
+    'published',
+    now()
+  )
 
 
 
@@ -427,8 +473,13 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
 -- これが行ってみたいのカテゴリーのid
 -- e5f6a7b8-c9d0-1234-ef12-345678901234
 
-
-
+-- 他に追加するところ
+-- ・上野の中華のお店(火鍋の横のお店)
+-- ・上野の北京ダックのお店
+-- ・上野のシカゴピザ
+-- ・シェラスコ(サーロインとか色々食べられるお店)
+-- ・バターバトラー(渋谷のスクランブルスクエアにあるところ)
+-- 
 
 
 
