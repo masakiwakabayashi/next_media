@@ -372,7 +372,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
   ),
   -- 浅草橋のギリシャ料理
   (
-    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    '8401bbac-76b7-48e0-badf-62b6c979d6a0',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '浅草橋のギリシャ料理',
@@ -384,7 +384,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
   ),
   -- 焼酎 宝山
   (
-    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    '9c851a79-24e7-45d5-b4c7-c644d9cdcffb',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '焼酎 宝山',
@@ -396,7 +396,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
   ),
   -- 扇屋製菓 メロンパフェ 静岡の伊豆にあるところ
   (
-    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    '63d5eec0-33c3-442e-80a7-8c58eb73b7a4',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     '扇屋製菓 メロンパフェ',
@@ -408,7 +408,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
   ),
   -- あつみのかりんとう(秋田で人気のお菓子)
   (
-    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    '3a1ad2e8-5882-4fca-9b15-b8a8940e3be5',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     'あつみのかりんとう',
@@ -420,19 +420,19 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
   ),
   -- 渋谷のハワイのお店
   (
-    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    '7c427bc9-5e7c-4d4b-b20f-6e7e10db78cd',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
-    "渋谷のハワイのお店 hale'aina HOA Shibuya",
-    'houzan',
+    '渋谷のハワイのお店 hale’aina HOA Shibuya',
+    'haleaina-hoa-shibuya',
     '/images/posts/sample.jpg',
-    "チキンステーキが美味しかった。https://tabelog.com/tokyo/A1303/A130301/13298163/",
+    'チキンステーキが美味しかった。https://tabelog.com/tokyo/A1303/A130301/13298163/',
     'published',
     now()
   ),
   -- ウルフギャング
   (
-    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    'f7556089-5619-4c83-82aa-a06b3b056da2',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     'ウルフギャング',
@@ -444,7 +444,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
   ),
   -- 浅草 楓(みたらし団子が美味しそうなお店)
   (
-    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    '2f283474-5e28-417c-ac09-ba5112f7400e',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     '浅草 楓',
@@ -456,7 +456,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
   ),
   -- 浅草のつきたてのお餅が食べられるお店(餅屋半兵衛)
   (
-    'b6c7d8e9-f0a1-2345-9012-456789012345',
+    'e23e1ff8-d1c6-40a3-b750-2212ab85a9d1',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     '餅屋半兵衛 浅草のつきたてのお餅が食べられるお店',
@@ -535,5 +535,5 @@ insert into public.post_tags (
   -- 極 × 焼肉
   ('a5b6c7d8-e9f0-1234-8901-345678901234', 'f6a7b8c9-d0e1-2345-f123-456789012345'),
   -- 浅草橋ギリシャ料理 × ギリシャ料理
-  ('b6c7d8e9-f0a1-2345-9012-456789012345', 'c1d2e3f4-a5b6-7890-1234-567890123456')
+  ('8401bbac-76b7-48e0-badf-62b6c979d6a0', 'c1d2e3f4-a5b6-7890-1234-567890123456')
 on conflict (post_id, tag_id) do nothing;
