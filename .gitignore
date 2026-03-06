@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ユーザーのシーダー
+supabase/seeds/00_user_seed.sql
+
+
