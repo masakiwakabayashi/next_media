@@ -142,6 +142,9 @@ set
   name = excluded.name,
   slug = excluded.slug;
 
+  -- postsテーブルに
+  -- ・url (文字列null許容)を追加する
+
 -- 記事
 insert into public.posts (
   id,
