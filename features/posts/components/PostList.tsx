@@ -1,63 +1,6 @@
 import Link from 'next/link'
-import { supabase } from '@/lib/supabase/client'
 import PostThumbnail from './PostThumbnail'
-
-// これはあとでfeatureに移す
-
-type Post = {
-  id: string
-  title: string
-  slug: string
-  image_path: string
-  content: string
-  status: 'draft' | 'published'
-  published_at: string | null
-  created_at: string
-  author: {
-    display_name: string
-  } | null
-  category: {
-    name: string
-    slug: string
-  } | null
-  post_tags: {
-    tag: {
-      id: string
-      name: string
-      slug: string
-    }
-  }[]
-}
-
-// Supabaseのクエリはあとでリポジトリをつくって、そっちに移動させる
-async function getPosts(): Promise<Post[]> {
-  const { data, error } = await supabase
-    .from('posts')
-    .select(`
-      id,
-      title,
-      slug,
-      image_path,
-      content,
-      status,
-      published_at,
-      created_at,
-      author:authors(display_name),
-      category:categories(name, slug),
-      post_tags(
-        tag:tags(id, name, slug)
-      )
-    `)
-    .eq('status', 'published')
-    .order('published_at', { ascending: false })
-
-  if (error) {
-    console.error('Error fetching posts:', error)
-    return []
-  }
-
-  return (data as unknown as Post[]) || []
-}
+import { getPosts } from '../repositories/postRepository'
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString)

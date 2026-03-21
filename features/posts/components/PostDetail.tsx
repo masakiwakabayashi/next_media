@@ -1,66 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { supabase } from '@/lib/supabase/client'
-
-type Post = {
-  id: string
-  title: string
-  slug: string
-  image_path: string
-  content: string
-  status: 'draft' | 'published'
-  published_at: string | null
-  created_at: string
-  author: {
-    display_name: string
-    bio: string | null
-    avatar_url: string | null
-  } | null
-  category: {
-    name: string
-    slug: string
-  } | null
-  post_tags: {
-    tag: {
-      id: string
-      name: string
-      slug: string
-    }
-  }[]
-}
+import PostThumbnail from './PostThumbnail'
+import { getPost } from '../repositories/postRepository'
 
 type Props = {
   slug: string
-}
-
-async function getPost(slug: string): Promise<Post | null> {
-  const { data, error } = await supabase
-    .from('posts')
-    .select(`
-      id,
-      title,
-      slug,
-      image_path,
-      content,
-      status,
-      published_at,
-      created_at,
-      author:authors(display_name, bio, avatar_url),
-      category:categories(name, slug),
-      post_tags(
-        tag:tags(id, name, slug)
-      )
-    `)
-    .eq('slug', slug)
-    .eq('status', 'published')
-    .single()
-
-  if (error) {
-    console.error('Error fetching post:', error)
-    return null
-  }
-
-  return data as unknown as Post
 }
 
 function formatDate(dateString: string): string {
@@ -88,15 +32,7 @@ export default async function PostDetail({ slug }: Props) {
   return (
     <article className="mx-auto max-w-3xl">
       {/* アイキャッチ画像 */}
-      <div className="relative mb-6 aspect-video w-full overflow-hidden rounded-lg">
-        <Image
-          src={post.image_path}
-          alt={post.title}
-          fill
-          className="object-cover"
-          priority
-        />
-      </div>
+      <PostThumbnail src={post.image_path} alt={post.title} />
 
       {/* カテゴリ・日付 */}
       <div className="mb-4 flex items-center gap-3 text-sm text-zinc-500">

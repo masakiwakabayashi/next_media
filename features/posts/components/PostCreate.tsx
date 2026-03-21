@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import { supabase } from '@/lib/supabase/client'
+import { createPost, attachTagsToPost } from '../repositories/postRepository'
 
 type Category = {
   id: string
@@ -67,39 +67,28 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
     setError(null)
     setIsSubmitting(true)
 
-    const { data: post, error: postError } = await supabase
-      .from('posts')
-      .insert({
-        title,
-        slug,
-        content,
-        image_path: imagePath,
-        category_id: categoryId || null,
-        author_id: authorId,
-        status,
-        published_at: status === 'published' ? new Date().toISOString() : null,
-      })
-      .select('id')
-      .single()
+    const { data: post, error: postError } = await createPost({
+      title,
+      slug,
+      content,
+      image_path: imagePath,
+      category_id: categoryId || null,
+      author_id: authorId,
+      status,
+      published_at: status === 'published' ? new Date().toISOString() : null,
+    })
 
-    if (postError) {
-      setError(postError.message)
+    if (postError || !post) {
+      setError(postError)
       setIsSubmitting(false)
       return
     }
 
     if (selectedTagIds.length > 0) {
-      const postTags = selectedTagIds.map((tagId) => ({
-        post_id: post.id,
-        tag_id: tagId,
-      }))
-
-      const { error: tagError } = await supabase
-        .from('post_tags')
-        .insert(postTags)
+      const { error: tagError } = await attachTagsToPost(post.id, selectedTagIds)
 
       if (tagError) {
-        setError(tagError.message)
+        setError(tagError)
         setIsSubmitting(false)
         return
       }
