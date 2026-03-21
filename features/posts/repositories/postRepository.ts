@@ -97,6 +97,89 @@ export async function getPost(slug: string): Promise<Post | null> {
   return data as unknown as Post
 }
 
+export type PostForEdit = {
+  id: string
+  title: string
+  slug: string
+  image_path: string | null
+  content: string
+  status: 'draft' | 'published'
+  published_at: string | null
+  category_id: string | null
+  author_id: string
+  post_tags: {
+    tag: {
+      id: string
+      name: string
+      slug: string
+    }
+  }[]
+}
+
+export async function getDraftPostForEdit(slug: string): Promise<PostForEdit | null> {
+  const { data, error } = await supabase
+    .from('posts')
+    .select(`
+      id,
+      title,
+      slug,
+      image_path,
+      content,
+      status,
+      published_at,
+      category_id,
+      author_id,
+      post_tags(
+        tag:tags(id, name, slug)
+      )
+    `)
+    .eq('slug', slug)
+    .eq('status', 'draft')
+    .single()
+
+  if (error) {
+    console.error('Error fetching draft post for edit:', error)
+    return null
+  }
+
+  return data as unknown as PostForEdit
+}
+
+export async function updatePost(id: string, data: Partial<CreatePostData>): Promise<{ error: string | null }> {
+  const { error } = await supabase
+    .from('posts')
+    .update(data)
+    .eq('id', id)
+
+  if (error) {
+    return { error: error.message }
+  }
+
+  return { error: null }
+}
+
+export async function updatePostTags(postId: string, tagIds: string[]): Promise<{ error: string | null }> {
+  const { error: deleteError } = await supabase
+    .from('post_tags')
+    .delete()
+    .eq('post_id', postId)
+
+  if (deleteError) {
+    return { error: deleteError.message }
+  }
+
+  if (tagIds.length > 0) {
+    const postTags = tagIds.map((tagId) => ({ post_id: postId, tag_id: tagId }))
+    const { error: insertError } = await supabase.from('post_tags').insert(postTags)
+
+    if (insertError) {
+      return { error: insertError.message }
+    }
+  }
+
+  return { error: null }
+}
+
 export async function getDraftPosts(): Promise<Post[]> {
   const { data, error } = await supabase
     .from('posts')
