@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase/client'
+import PostThumbnail from './PostThumbnail'
 
 // これはあとでfeatureに移す
 
@@ -7,6 +8,7 @@ type Post = {
   id: string
   title: string
   slug: string
+  image_path: string
   content: string
   status: 'draft' | 'published'
   published_at: string | null
@@ -35,6 +37,7 @@ async function getPosts(): Promise<Post[]> {
       id,
       title,
       slug,
+      image_path,
       content,
       status,
       published_at,
@@ -88,6 +91,8 @@ export default async function PostList() {
           key={post.id}
           className="rounded-lg border border-zinc-200 p-6 transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700"
         >
+          <PostThumbnail src={post.image_path} alt={post.title} />
+
           <div className="mb-2 flex items-center gap-2 text-sm text-zinc-500">
             {post.category && (
               <span className="rounded bg-zinc-100 px-2 py-0.5 dark:bg-zinc-800">
