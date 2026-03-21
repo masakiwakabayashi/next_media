@@ -26,16 +26,6 @@ type Props = {
   redirectTo?: string
 }
 
-function generateSlug(title: string): string {
-  return title
-    .toLowerCase()
-    .trim()
-    .replace(/[\s]+/g, '-')
-    .replace(/[^\w\u3000-\u9FFF\uF900-\uFAFF-]/g, '')
-    .replace(/--+/g, '-')
-    .replace(/^-+|-+$/g, '')
-}
-
 export default function PostCreate({ categories, authors, tags, redirectTo = '/' }: Props) {
   const router = useRouter()
   const [title, setTitle] = useState('')
@@ -43,16 +33,11 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
   const [content, setContent] = useState('')
   const [imagePath, setImagePath] = useState('')
   const [categoryId, setCategoryId] = useState('')
-  const [authorId, setAuthorId] = useState('')
+  const authorId = authors.find((a) => a.display_name === '山田太郎')?.id ?? ''
   const [selectedTagIds, setSelectedTagIds] = useState<string[]>([])
   const [status, setStatus] = useState<'draft' | 'published'>('draft')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
-
-  function handleTitleChange(value: string) {
-    setTitle(value)
-    setSlug(generateSlug(value))
-  }
 
   function handleTagToggle(tagId: string) {
     setSelectedTagIds((prev) =>
@@ -71,7 +56,7 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
       title,
       slug,
       content,
-      image_path: imagePath,
+      image_path: imagePath || null,
       category_id: categoryId || null,
       author_id: authorId,
       status,
@@ -115,7 +100,7 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
           id="title"
           type="text"
           value={title}
-          onChange={(e) => handleTitleChange(e.target.value)}
+          onChange={(e) => setTitle(e.target.value)}
           required
           className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
         />
@@ -134,27 +119,6 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
           required
           className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
         />
-      </div>
-
-      {/* 著者 */}
-      <div>
-        <label htmlFor="author" className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
-          著者 <span className="text-red-500">*</span>
-        </label>
-        <select
-          id="author"
-          value={authorId}
-          onChange={(e) => setAuthorId(e.target.value)}
-          required
-          className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
-        >
-          <option value="">選択してください</option>
-          {authors.map((author) => (
-            <option key={author.id} value={author.id}>
-              {author.display_name}
-            </option>
-          ))}
-        </select>
       </div>
 
       {/* カテゴリ */}
@@ -180,14 +144,13 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
       {/* アイキャッチ画像 */}
       <div>
         <label htmlFor="imagePath" className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
-          アイキャッチ画像URL <span className="text-red-500">*</span>
+          アイキャッチ画像URL
         </label>
         <input
           id="imagePath"
           type="text"
           value={imagePath}
           onChange={(e) => setImagePath(e.target.value)}
-          required
           placeholder="https://example.com/image.jpg"
           className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
         />

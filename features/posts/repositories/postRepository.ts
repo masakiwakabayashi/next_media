@@ -4,7 +4,7 @@ export type Post = {
   id: string
   title: string
   slug: string
-  image_path: string
+  image_path: string | null
   content: string
   status: 'draft' | 'published'
   published_at: string | null
@@ -31,7 +31,7 @@ export type CreatePostData = {
   title: string
   slug: string
   content: string
-  image_path: string
+  image_path: string | null
   category_id: string | null
   author_id: string
   status: 'draft' | 'published'
