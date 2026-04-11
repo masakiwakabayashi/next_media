@@ -60,7 +60,12 @@ export default async function NewPostPage() {
       <h1 className="mb-8 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
         記事を作成
       </h1>
-      <PostCreate categories={categories} authors={authors} tags={tags} />
+      <PostCreate
+        categories={categories}
+        authors={authors}
+        tags={tags}
+        redirectTo="/admin/posts/drafts"
+      />
     </div>
   )
 }

@@ -78,7 +78,7 @@ export default async function DraftPostList() {
               </div>
             )}
             <Link
-              href={`/posts/drafts/${post.slug}/edit`}
+              href={`/admin/posts/drafts/${post.slug}/edit`}
               className="rounded-lg border border-zinc-300 px-3 py-1 text-sm text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
             >
               編集

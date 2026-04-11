@@ -74,7 +74,7 @@ export default function PostEdit({ post, categories, tags }: Props) {
       return
     }
 
-    router.push('/posts/drafts')
+    router.push('/admin/posts/drafts')
     router.refresh()
   }
 
