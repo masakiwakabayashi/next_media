@@ -472,6 +472,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'published',
     now()
   ),
+  -- 貝料理の専門店 牡蠣のまぜそばが美味しかったところ
   (
     'c1d2e3f4-a5b6-7890-4567-901234567890',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
@@ -483,6 +484,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'published',
     now()
   ),
+  -- ブラジル料理のお店 チキンが美味しかった
   (
     'c1d2e3f4-a5b6-7890-4567-901234567890',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
@@ -514,7 +516,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
 -- 中野の豚肉のお店も追加する
 -- うさぎが食べられるお店を行ってみたいに追加する
 -- わにの肉が食べられるお店も追加する
--- 
+-- 浅草のどじょう料理のお店も追加する
 
 
 
