@@ -471,7 +471,30 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     '浅草のつきたてのお餅が食べられるお店 https://hanbei.ltd/mochishop/',
     'published',
     now()
-  )
+  ),
+  (
+    'c1d2e3f4-a5b6-7890-4567-901234567890',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    '貝料理の専門店 牡蠣のまぜそばが美味しかった 貝料理 梵厨(ぼんず)',
+    'kairyouri',
+    '/images/posts/sample.jpg',
+    'https://tabelog.com/tokyo/A1311/A131101/13228306/',
+    'published',
+    now()
+  ),
+  (
+    'c1d2e3f4-a5b6-7890-4567-901234567890',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    '浅草にあるブラジル料理のお店 ランチに食べたチキンが美味しかった「シュハスカリア キボン 浅草店」',
+    'churrascaria',
+    '/images/posts/sample.jpg',
+    '創業20年だそう。https://tabelog.com/tokyo/A1311/A131102/13031549/',
+    'published',
+    now()
+  ),
+
 
 
 
