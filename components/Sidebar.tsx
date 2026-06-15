@@ -50,6 +50,12 @@ export default async function Sidebar() {
       {isDev && (
         <div className="space-y-2">
           <Link
+            href="/admin"
+            className="flex items-center justify-center rounded-md bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+          >
+            管理者ダッシュボード
+          </Link>
+          <Link
             href="/admin/posts/new"
             className="flex items-center justify-center rounded-md bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-zinc-700 dark:hover:bg-zinc-600"
           >
@@ -57,7 +63,7 @@ export default async function Sidebar() {
           </Link>
           <Link
             href="/admin/posts/drafts"
-            className="flex items-center justify-center rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-600 dark:text-zinc-300 dark:hover:bg-zinc-800"
+            className="flex items-center justify-center rounded-md bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-zinc-700 dark:hover:bg-zinc-600"
           >
             下書き一覧
           </Link>
