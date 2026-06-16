@@ -5,16 +5,18 @@
 docker compose up -d
 ```
 
-### Storybook
-
 ```
-yarn run storybook
+pnpm dev
 ```
 
 ### Testing
 
 ```
-yarn run test
+pnpm test
+```
+
+```
+pnpm exec playwright test
 ```
 
 ### Supabase

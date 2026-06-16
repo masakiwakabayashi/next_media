@@ -43,4 +43,10 @@ next-env.d.ts
 # ユーザーのシーダー
 supabase/seeds/00_user_seed.sql
 
-
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
