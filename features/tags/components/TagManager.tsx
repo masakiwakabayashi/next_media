@@ -19,6 +19,11 @@ type EditState = {
   slug: string
 }
 
+type DeleteConfirmState = {
+  tag: TagWithCount
+  slugInput: string
+}
+
 export default function TagManager({ initialTags }: Props) {
   const router = useRouter()
   const [tags, setTags] = useState(initialTags)
@@ -27,6 +32,7 @@ export default function TagManager({ initialTags }: Props) {
   const [newSlug, setNewSlug] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState<DeleteConfirmState | null>(null)
 
   function handleNewNameChange(value: string) {
     setNewName(value)
@@ -83,16 +89,18 @@ export default function TagManager({ initialTags }: Props) {
     router.refresh()
   }
 
-  async function handleDelete(id: string, name: string) {
-    if (!window.confirm(`「${name}」を削除しますか？この操作は元に戻せません。`)) return
+  async function handleDelete() {
+    if (!deleteConfirm) return
 
-    const { error: err } = await deleteTag(id)
+    const { error: err } = await deleteTag(deleteConfirm.tag.id)
     if (err) {
       setError(err)
+      setDeleteConfirm(null)
       return
     }
 
-    setTags((prev) => prev.filter((t) => t.id !== id))
+    setTags((prev) => prev.filter((t) => t.id !== deleteConfirm.tag.id))
+    setDeleteConfirm(null)
     router.refresh()
   }
 
@@ -241,7 +249,7 @@ export default function TagManager({ initialTags }: Props) {
                       編集
                     </button>
                     <button
-                      onClick={() => handleDelete(tag.id, tag.name)}
+                      onClick={() => setDeleteConfirm({ tag, slugInput: '' })}
                       className="rounded border border-red-200 px-2 py-0.5 text-xs text-red-500 hover:bg-red-50 dark:border-red-800 dark:text-red-400 dark:hover:bg-red-950"
                     >
                       削除
@@ -253,6 +261,55 @@ export default function TagManager({ initialTags }: Props) {
           </ul>
         )}
       </div>
+      {deleteConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="w-full max-w-md rounded-xl border border-zinc-200 bg-white p-6 shadow-xl dark:border-zinc-700 dark:bg-zinc-900">
+            <h3 className="mb-2 text-base font-semibold text-zinc-900 dark:text-zinc-100">
+              タグを削除
+            </h3>
+
+            {deleteConfirm.tag.postCount > 0 && (
+              <div className="mb-4 rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-300">
+                このタグは <strong>{deleteConfirm.tag.postCount} 件</strong> の記事で使用されています。削除するとそれらの記事からも取り除かれます。
+              </div>
+            )}
+
+            <p className="mb-4 text-sm text-zinc-600 dark:text-zinc-400">
+              削除を確認するには、スラッグ{' '}
+              <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+                {deleteConfirm.tag.slug}
+              </code>{' '}
+              を入力してください。この操作は元に戻せません。
+            </p>
+
+            <input
+              type="text"
+              value={deleteConfirm.slugInput}
+              onChange={(e) =>
+                setDeleteConfirm({ ...deleteConfirm, slugInput: e.target.value })
+              }
+              placeholder={deleteConfirm.tag.slug}
+              className="mb-4 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+            />
+
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => setDeleteConfirm(null)}
+                className="rounded-lg border border-zinc-300 px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800"
+              >
+                キャンセル
+              </button>
+              <button
+                onClick={handleDelete}
+                disabled={deleteConfirm.slugInput !== deleteConfirm.tag.slug}
+                className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                削除する
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
