@@ -209,6 +209,42 @@ export async function getDraftPosts(): Promise<Post[]> {
   return (data as unknown as Post[]) || []
 }
 
+export async function getPostsByCategory(categorySlug: string): Promise<{ posts: Post[]; categoryName: string | null }> {
+  const { data, error } = await supabase
+    .from('posts')
+    .select(`
+      id,
+      title,
+      slug,
+      image_path,
+      content,
+      status,
+      published_at,
+      created_at,
+      author:authors(display_name),
+      category:categories(name, slug),
+      post_tags(
+        tag:tags(id, name, slug)
+      )
+    `)
+    .eq('status', 'published')
+    .eq('category.slug', categorySlug)
+    .not('category', 'is', null)
+    .order('published_at', { ascending: false })
+
+  if (error) {
+    console.error('Error fetching posts by category:', error)
+    return { posts: [], categoryName: null }
+  }
+
+  const posts = ((data as unknown as Post[]) || []).filter(
+    (p) => p.category?.slug === categorySlug
+  )
+  const categoryName = posts[0]?.category?.name ?? null
+
+  return { posts, categoryName }
+}
+
 export async function createPost(data: CreatePostData): Promise<{ data: { id: string } | null; error: string | null }> {
   const { data: post, error } = await supabase
     .from('posts')
