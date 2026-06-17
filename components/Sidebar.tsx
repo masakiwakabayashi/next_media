@@ -67,6 +67,12 @@ export default async function Sidebar() {
           >
             下書き一覧
           </Link>
+          <Link
+            href="/admin/tags"
+            className="flex items-center justify-center rounded-md bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+          >
+            タグ管理
+          </Link>
         </div>
       )}
 
