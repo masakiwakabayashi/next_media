@@ -1,4 +1,4 @@
-import { test, expect } from './fixtures/index';
+import { test, expect } from '@playwright/test';
 import * as path from 'path';
 
 const ADMIN_STATE = path.join(__dirname, '.auth/admin.json');
@@ -8,11 +8,7 @@ test.use({ storageState: ADMIN_STATE });
 test.describe('記事の新規作成', () => {
   const testSlug = `test-post-creation-${Date.now()}`;
 
-  test.afterEach(async ({ supabaseAdmin }) => {
-    await supabaseAdmin.from('posts').delete().eq('slug', testSlug);
-  });
-
-  test('フォームを送信すると DB に下書きが保存され、下書き一覧に表示される', async ({ page, supabaseAdmin }) => {
+  test('フォームを送信すると DB に下書きが保存され、下書き一覧に表示される', async ({ page }) => {
     await page.goto('/admin/posts/new');
 
     await page.locator('#title').fill('E2Eテスト用記事');
