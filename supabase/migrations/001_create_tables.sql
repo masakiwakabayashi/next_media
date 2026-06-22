@@ -66,7 +66,8 @@ create table public.posts (
   title text not null,
   slug text not null unique,
   image_path text,
-  content text not null,
+  content text not null, -- ここに食べログのリンクを入れたり詳細とかを書く想定
+  google_maps_url text, -- Googleマップのリンクがあった方が場所がわかりやすい
   status text not null default 'draft', -- draft | published
   published_at timestamptz,
   created_at timestamptz not null default now(),

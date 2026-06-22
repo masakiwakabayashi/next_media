@@ -78,6 +78,20 @@ export default async function PostDetail({ slug }: Props) {
         ))}
       </div>
 
+      {/* Googleマップ */}
+      {post.google_maps_url && (
+        <div className="mt-6">
+          <a
+            href={post.google_maps_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:underline dark:text-blue-400"
+          >
+            Googleマップで見る
+          </a>
+        </div>
+      )}
+
       {/* 著者情報 */}
       {post.author && (
         <div className="mt-8 border-t border-zinc-200 pt-6 dark:border-zinc-800">

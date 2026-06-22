@@ -6,6 +6,7 @@ export type Post = {
   slug: string
   image_path: string | null
   content: string
+  google_maps_url: string | null
   status: 'draft' | 'published'
   published_at: string | null
   created_at: string
@@ -76,6 +77,7 @@ export async function getPost(slug: string): Promise<Post | null> {
       slug,
       image_path,
       content,
+      google_maps_url,
       status,
       published_at,
       created_at,
