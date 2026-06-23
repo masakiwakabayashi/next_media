@@ -44,6 +44,9 @@ next-env.d.ts
 # ユーザーのシーダー
 supabase/seeds/00_user_seed.sql
 
+# シードデータ記事のアイキャッチ画像
+supabase/seed_post_images
+
 # Playwright
 node_modules/
 /test-results/
