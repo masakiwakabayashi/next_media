@@ -45,7 +45,7 @@ export async function getRecentPosts(limit = 5): Promise<RecentPost[]> {
       created_at,
       status,
       category:categories(name),
-      author:authors(display_name)
+      author:profiles(display_name)
     `)
     .eq('status', 'published')
     .order('published_at', { ascending: false })
@@ -70,7 +70,7 @@ export async function getRecentDrafts(limit = 5): Promise<RecentPost[]> {
       created_at,
       status,
       category:categories(name),
-      author:authors(display_name)
+      author:profiles(display_name)
     `)
     .eq('status', 'draft')
     .order('created_at', { ascending: false })

@@ -1,6 +1,6 @@
 -- RLS を有効化
 ALTER TABLE public.posts ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.authors ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.categories ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.tags ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.post_tags ENABLE ROW LEVEL SECURITY;
@@ -31,18 +31,18 @@ CREATE POLICY "posts_delete"
   ON public.posts FOR DELETE
   USING (public.is_admin());
 
--- authors: 全認証ユーザーが読み取り可、書き込みは管理者のみ
-CREATE POLICY "authors_select"
-  ON public.authors FOR SELECT USING (true);
+-- profiles: 全認証ユーザーが読み取り可、書き込みは管理者のみ
+CREATE POLICY "profiles_select"
+  ON public.profiles FOR SELECT USING (true);
 
-CREATE POLICY "authors_insert"
-  ON public.authors FOR INSERT WITH CHECK (public.is_admin());
+CREATE POLICY "profiles_insert"
+  ON public.profiles FOR INSERT WITH CHECK (public.is_admin());
 
-CREATE POLICY "authors_update"
-  ON public.authors FOR UPDATE USING (public.is_admin());
+CREATE POLICY "profiles_update"
+  ON public.profiles FOR UPDATE USING (public.is_admin());
 
-CREATE POLICY "authors_delete"
-  ON public.authors FOR DELETE USING (public.is_admin());
+CREATE POLICY "profiles_delete"
+  ON public.profiles FOR DELETE USING (public.is_admin());
 
 -- categories: 全認証ユーザーが読み取り可、書き込みは管理者のみ
 CREATE POLICY "categories_select"

@@ -14,8 +14,8 @@ begin
 end;
 $$;
 
--- 著者
-create table public.authors (
+-- ユーザープロフィール
+create table public.profiles (
   id uuid primary key default gen_random_uuid(),
   display_name text not null,
   bio text,
@@ -24,8 +24,8 @@ create table public.authors (
   updated_at timestamptz not null default now()
 );
 
-create trigger authors_set_updated_at
-before update on public.authors
+create trigger profiles_set_updated_at
+before update on public.profiles
 for each row execute function public.set_updated_at();
 
 -- カテゴリ
@@ -61,7 +61,7 @@ for each row execute function public.set_updated_at();
 -- 記事
 create table public.posts (
   id uuid primary key default gen_random_uuid(),
-  author_id uuid not null references public.authors(id) on delete restrict,
+  author_id uuid not null references public.profiles(id) on delete restrict,
   category_id uuid references public.categories(id) on delete set null,
   title text not null,
   slug text not null unique,

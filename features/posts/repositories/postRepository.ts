@@ -51,7 +51,7 @@ export async function getPosts(): Promise<Post[]> {
       status,
       published_at,
       created_at,
-      author:authors(display_name),
+      author:profiles(display_name),
       category:categories(name, slug),
       post_tags(
         tag:tags(id, name, slug)
@@ -81,7 +81,7 @@ export async function getPost(slug: string): Promise<Post | null> {
       status,
       published_at,
       created_at,
-      author:authors(display_name, bio, avatar_url),
+      author:profiles(display_name, bio, avatar_url),
       category:categories(name, slug),
       post_tags(
         tag:tags(id, name, slug)
@@ -194,7 +194,7 @@ export async function getDraftPosts(): Promise<Post[]> {
       status,
       published_at,
       created_at,
-      author:authors(display_name),
+      author:profiles(display_name),
       category:categories(name, slug),
       post_tags(
         tag:tags(id, name, slug)
@@ -223,7 +223,7 @@ export async function getPostsByTag(tagSlug: string): Promise<{ posts: Post[]; t
       status,
       published_at,
       created_at,
-      author:authors(display_name),
+      author:profiles(display_name),
       category:categories(name, slug),
       post_tags(
         tag:tags(id, name, slug)
@@ -258,7 +258,7 @@ export async function getPostsByCategory(categorySlug: string): Promise<{ posts:
       status,
       published_at,
       created_at,
-      author:authors(display_name),
+      author:profiles(display_name),
       category:categories(name, slug),
       post_tags(
         tag:tags(id, name, slug)

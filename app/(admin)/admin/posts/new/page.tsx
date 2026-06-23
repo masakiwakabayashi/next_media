@@ -22,7 +22,7 @@ async function getCategories() {
 
 async function getAuthors() {
   const { data, error } = await supabase
-    .from('authors')
+    .from('profiles')
     .select('id, display_name')
     .order('display_name')
 
