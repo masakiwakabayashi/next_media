@@ -2,6 +2,12 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import UserManager, { UserProfile } from '@/features/users/components/UserManager'
 
+// 実装する機能
+// ・ユーザーの一覧表示
+// ・ユーザーの無効化
+// ・ユーザーの招待
+
+
 export const metadata: Metadata = {
   title: 'ユーザー管理',
 }

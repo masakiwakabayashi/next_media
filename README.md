@@ -25,7 +25,9 @@ pnpm exec playwright test
 supabase db diff -f create
 ```
 
-
+```
+supabase db dump --local --data-only -f dump.sql
+```
 
 
 
