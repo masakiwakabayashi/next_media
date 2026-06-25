@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import UserManager, { UserProfile } from '@/features/users/components/UserManager'
 
 // 実装する機能
@@ -34,7 +35,9 @@ export default async function AdminUsersPage() {
         </Link>
       </div>
 
-      <UserManager initialUsers={users} />
+      <Suspense>
+        <UserManager initialUsers={users} />
+      </Suspense>
     </div>
   )
 }

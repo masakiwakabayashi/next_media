@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
@@ -12,14 +12,16 @@ export default function SiteLayout({
   return (
     <>
       <Header />
-      <RequireAuth>
-        <div className="mx-auto flex w-full max-w-5xl gap-8 px-16 py-12">
-          <main className="min-w-0 flex-1">{children}</main>
-          <div className="hidden w-64 shrink-0 lg:block">
-            <Sidebar />
+      <Suspense>
+        <RequireAuth>
+          <div className="mx-auto flex w-full max-w-5xl gap-8 px-16 py-12">
+            <main className="min-w-0 flex-1">{children}</main>
+            <div className="hidden w-64 shrink-0 lg:block">
+              <Sidebar />
+            </div>
           </div>
-        </div>
-      </RequireAuth>
+        </RequireAuth>
+      </Suspense>
       <Footer />
     </>
   );

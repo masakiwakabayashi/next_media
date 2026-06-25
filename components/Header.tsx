@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthProvider'
 
 export default function Header() {
-  const { user, loading, signOut } = useAuth()
+  const { user, loading, isAdmin, signOut } = useAuth()
   const router = useRouter()
   const [isSigningOut, setIsSigningOut] = useState(false)
 
@@ -31,9 +31,16 @@ export default function Header() {
         </Link>
         <div className="flex items-center gap-4">
           {!loading && user && (
-            <span className="text-sm text-zinc-500 dark:text-zinc-400">
-              {user.email}
-            </span>
+            <div className="flex items-center gap-2">
+              {isAdmin && (
+                <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-semibold text-blue-700 dark:bg-blue-900/40 dark:text-blue-400">
+                  管理者
+                </span>
+              )}
+              <span className="text-sm text-zinc-500 dark:text-zinc-400">
+                {user.email}
+              </span>
+            </div>
           )}
           {!loading && (
             user ? (
