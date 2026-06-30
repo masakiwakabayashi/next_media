@@ -525,6 +525,13 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
 -- トロワ、プリンのお店、田原町にある、行ってみたい
 
 
+-- 入谷のぺりぺりチキン専門店
+-- https://tabelog.com/tokyo/A1311/A131104/13268713/
+
+-- 神保町のフレッシュムーン
+-- https://kanda-bunsendo.com/wagashi/freshmoon_freshroman
+
+
 
 
 on conflict (id) do update
