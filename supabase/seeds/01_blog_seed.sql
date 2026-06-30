@@ -3,24 +3,16 @@
 
 -- シーダーを整理する
 
--- プロフィール
-insert into public.profiles (
-  id,
-  user_id,
-  display_name,
-  bio,
-  avatar_url
-) values
-  (
-    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-    '123e4567-e89b-12d3-a456-426614174000',
-    '山田太郎',
-    'フードライター。東京を中心にグルメ情報を発信中。',
-    null
-  )
+-- プロフィール (user_id は auth ユーザー作成時にトリガーで設定されるため null)
+insert into public.profiles (id, display_name, bio, avatar_url)
+values (
+  'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+  '山田太郎',
+  'フードライター。東京を中心にグルメ情報を発信中。',
+  null
+)
 on conflict (id) do update
 set
-  user_id = excluded.user_id,
   display_name = excluded.display_name,
   bio = excluded.bio,
   avatar_url = excluded.avatar_url;
