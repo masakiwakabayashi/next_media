@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthProvider'
 
 export default function Header() {
-  const { user, loading, isAdmin, signOut } = useAuth()
+  const { user, loading, isAdmin, displayName, signOut } = useAuth()
   const router = useRouter()
   const [isSigningOut, setIsSigningOut] = useState(false)
 
@@ -37,9 +37,12 @@ export default function Header() {
                   管理者
                 </span>
               )}
-              <span className="text-sm text-zinc-500 dark:text-zinc-400">
-                {user.email}
-              </span>
+              <Link
+                href="/profile/edit"
+                className="text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+              >
+                {displayName ?? user.email}
+              </Link>
             </div>
           )}
           {!loading && (

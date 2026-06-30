@@ -16,6 +16,8 @@ type AuthContextValue = {
   session: Session | null
   loading: boolean
   isAdmin: boolean
+  displayName: string | null
+  refreshDisplayName: () => Promise<void>
   signOut: () => Promise<void>
 }
 
@@ -24,6 +26,7 @@ const AuthContext = createContext<AuthContextValue | undefined>(undefined)
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null)
   const [loading, setLoading] = useState(true)
+  const [displayName, setDisplayName] = useState<string | null>(null)
 
   useEffect(() => {
     let isMounted = true
@@ -44,17 +47,38 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
+  async function fetchDisplayName(userId: string) {
+    const { data } = await supabase
+      .from('profiles')
+      .select('display_name')
+      .eq('user_id', userId)
+      .single()
+    setDisplayName(data?.display_name ?? null)
+  }
+
+  useEffect(() => {
+    if (!session?.user) {
+      setDisplayName(null)
+      return
+    }
+    fetchDisplayName(session.user.id)
+  }, [session?.user?.id])
+
   const value = useMemo<AuthContextValue>(
     () => ({
       user: session?.user ?? null,
       session,
       loading,
       isAdmin: session?.user?.app_metadata?.role === 'admin',
+      displayName,
+      refreshDisplayName: async () => {
+        if (session?.user) await fetchDisplayName(session.user.id)
+      },
       signOut: async () => {
         await supabase.auth.signOut()
       },
     }),
-    [session, loading]
+    [session, loading, displayName]
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

@@ -31,7 +31,7 @@ CREATE POLICY "posts_delete"
   ON public.posts FOR DELETE
   USING (public.is_admin());
 
--- profiles: 全認証ユーザーが読み取り可、書き込みは管理者のみ
+-- profiles: 全認証ユーザーが読み取り可、書き込みは管理者のみ（自分自身の更新は本人も可）
 CREATE POLICY "profiles_select"
   ON public.profiles FOR SELECT USING (true);
 
@@ -39,7 +39,7 @@ CREATE POLICY "profiles_insert"
   ON public.profiles FOR INSERT WITH CHECK (public.is_admin());
 
 CREATE POLICY "profiles_update"
-  ON public.profiles FOR UPDATE USING (public.is_admin());
+  ON public.profiles FOR UPDATE USING (public.is_admin() OR user_id = auth.uid());
 
 CREATE POLICY "profiles_delete"
   ON public.profiles FOR DELETE USING (public.is_admin());
