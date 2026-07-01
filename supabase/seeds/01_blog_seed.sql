@@ -1,6 +1,7 @@
 -- ブログ関連テーブルのシーダー
 -- お店と商品(お菓子やお酒)を同じ記事という括りにしたいので、こういう構成にする
 
+-- データのバックアップをどうやって取るか？
 -- シーダーを整理する
 
 -- プロフィール (user_id は auth ユーザー作成時にトリガーで設定されるため null)
@@ -8,7 +9,7 @@ insert into public.profiles (id, display_name, bio, avatar_url)
 values (
   'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
   '山田太郎',
-  'フードライター。東京を中心にグルメ情報を発信中。',
+  '東京を中心にグルメ情報を発信中。',
   null
 )
 on conflict (id) do update
@@ -151,6 +152,7 @@ insert into public.posts (
   slug,
   image_path,
   content,
+  google_maps_url,
   status,
   published_at
 ) values
@@ -164,8 +166,8 @@ insert into public.posts (
     '/images/posts/nikugen-roppongi.jpg',
     'ランチで食べられる焼肉と冷麺のセットがおすすめ。
 
-住所: 東京都港区六本木７丁目１５−１７ ユニ六本木ビル 2F
-Google Maps: https://maps.app.goo.gl/qQfA7vcWRgcVtCgMA',
+住所: 東京都港区六本木７丁目１５−１７ ユニ六本木ビル 2F',
+    'https://maps.app.goo.gl/qQfA7vcWRgcVtCgMA',
     'published',
     now()
   ),
@@ -179,8 +181,8 @@ Google Maps: https://maps.app.goo.gl/qQfA7vcWRgcVtCgMA',
     '/images/posts/karyu-asakusabashi.jpg',
     '辛くない料理もある。美味しい。
 
-住所: 東京都台東区浅草橋１丁目２３−４ 浅草橋サンロード １階
-Google Maps: https://maps.app.goo.gl/8D4vhDByBAoBhAGv7',
+住所: 東京都台東区浅草橋１丁目２３−４ 浅草橋サンロード １階',
+    'https://maps.app.goo.gl/8D4vhDByBAoBhAGv7',
     'published',
     now()
   ),
@@ -194,8 +196,8 @@ Google Maps: https://maps.app.goo.gl/8D4vhDByBAoBhAGv7',
     '/images/posts/tsuiteru-nakano.jpg',
     '熟成肉のお店
 
-住所: 東京都中野区中野５丁目３６−５ ヴィラＡＫ 2F
-Google Maps: https://maps.app.goo.gl/eNb4refMJipwYv5v8',
+住所: 東京都中野区中野５丁目３６−５ ヴィラＡＫ 2F',
+    'https://maps.app.goo.gl/eNb4refMJipwYv5v8',
     'published',
     now()
   ),
@@ -208,6 +210,7 @@ Google Maps: https://maps.app.goo.gl/eNb4refMJipwYv5v8',
     'haruchan-asakusa',
     '/images/posts/haruchan-asakusa.jpg',
     'ツナマヨと鶏そぼろのおにぎりが美味しかった。ねぎとろとツナマヨも美味しかった。豚汁も美味しい。',
+    null,
     'published',
     now()
   ),
@@ -220,6 +223,7 @@ Google Maps: https://maps.app.goo.gl/eNb4refMJipwYv5v8',
     'mazeharu-asakusabashi',
     '/images/posts/mazeharu-asakusabashi.jpg',
     'ちょっと辛めだけど美味しい。',
+    null,
     'published',
     now()
   ),
@@ -232,6 +236,7 @@ Google Maps: https://maps.app.goo.gl/eNb4refMJipwYv5v8',
     'gita-ethnic',
     '/images/posts/gita-ethnic.jpg',
     'チーズナンがめちゃくちゃ美味しい。',
+    null,
     'published',
     now()
   ),
@@ -244,6 +249,7 @@ Google Maps: https://maps.app.goo.gl/eNb4refMJipwYv5v8',
     'curry-ha-nomimono-akihabara',
     '/images/posts/curry-ha-nomimono-akihabara.jpg',
     'カツカレーは結構油っこい感じだけど美味しい。',
+    null,
     'published',
     now()
   ),
@@ -257,8 +263,8 @@ Google Maps: https://maps.app.goo.gl/eNb4refMJipwYv5v8',
     '/images/posts/cocotomo-baum.jpg',
     '米粉のバウムクーヘン。玄米のやつが特に美味しい。犬山に店舗があるけど通販もある。
 
-住所: 愛知県犬山市犬山東古券76番地
-Google Maps: https://maps.app.goo.gl/SRE1Ber2wNvauSea9',
+住所: 愛知県犬山市犬山東古券76番地',
+    'https://maps.app.goo.gl/SRE1Ber2wNvauSea9',
     'published',
     now()
   ),
@@ -271,6 +277,7 @@ Google Maps: https://maps.app.goo.gl/SRE1Ber2wNvauSea9',
     'ringo-pompom',
     '/images/posts/ringo-pompom.jpg',
     'りんごの味がする日本酒。通販で購入可能。',
+    null,
     'published',
     now()
   ),
@@ -283,6 +290,7 @@ Google Maps: https://maps.app.goo.gl/SRE1Ber2wNvauSea9',
     'harimaya-honten',
     '/images/posts/harimaya-honten.jpg',
     '思想が強めなおかきのお店。味は美味しいと聞いている。通販で購入可能。',
+    null,
     'published',
     now()
   ),
@@ -296,8 +304,8 @@ Google Maps: https://maps.app.goo.gl/SRE1Ber2wNvauSea9',
     '/images/posts/sofuren-ueno.jpg',
     '上野にある焼きそば専門店
 
-住所: 東京都台東区上野４丁目６−７ 白鳥舎ビル 1F
-Google Maps: https://maps.app.goo.gl/YDJk6cmUi3NFRiL47',
+住所: 東京都台東区上野４丁目６−７ 白鳥舎ビル 1F',
+    'https://maps.app.goo.gl/YDJk6cmUi3NFRiL47',
     'published',
     now()
   ),
@@ -311,8 +319,8 @@ Google Maps: https://maps.app.goo.gl/YDJk6cmUi3NFRiL47',
     '/images/posts/ikebukuro-nikugekijo.jpg',
     '色々なお肉が乗ったどんぶり。美味しい。
 
-住所: 東京都豊島区東池袋１丁目２−１１
-Google Maps: https://maps.app.goo.gl/9uoRTrUXE3n1qRKS8',
+住所: 東京都豊島区東池袋１丁目２−１１',
+    'https://maps.app.goo.gl/9uoRTrUXE3n1qRKS8',
     'published',
     now()
   ),
@@ -326,8 +334,8 @@ Google Maps: https://maps.app.goo.gl/9uoRTrUXE3n1qRKS8',
     '/images/posts/kimini-ageru-tonkatsu.jpg',
     '浅草の田原町付近にあるとんかつのお店。ランチのチキンカツが美味しかった。
 
-住所: 東京都台東区松が谷１丁目４−６ ライオンズマンション上野松が谷 1F
-Google Maps: https://maps.app.goo.gl/A5LZWtyUMpMqm8Sw6',
+住所: 東京都台東区松が谷１丁目４−６ ライオンズマンション上野松が谷 1F',
+    'https://maps.app.goo.gl/A5LZWtyUMpMqm8Sw6',
     'published',
     now()
   ),
@@ -340,6 +348,7 @@ Google Maps: https://maps.app.goo.gl/A5LZWtyUMpMqm8Sw6',
     'kuramae-pizza',
     '/images/posts/kuramae-pizza.jpg',
     '蔵前にあるピザ屋。イタリアで修行したシェフがピザ窯でピザを焼いてるところ。たぶんここ。https://pizzalinda.jp/',
+    null,
     'published',
     now()
   ),
@@ -352,6 +361,7 @@ Google Maps: https://maps.app.goo.gl/A5LZWtyUMpMqm8Sw6',
     'tawaramachi-soba-oyakodon',
     '/images/posts/tawaramachi-soba-oyakodon.jpg',
     '名前は忘れたけどめっちゃ美味しかった。',
+    null,
     'published',
     now()
   ),
@@ -365,8 +375,8 @@ Google Maps: https://maps.app.goo.gl/A5LZWtyUMpMqm8Sw6',
     '/images/posts/kiwami-minamikoshigaya.jpg',
     '埼玉にある焼肉。極み。深夜ランチよく食べてたところ。レバーとピートロが美味しい。
 
-住所: 埼玉県越谷市南越谷１丁目２６−１４ KO''z-1ビル 3階
-Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
+住所: 埼玉県越谷市南越谷１丁目２６−１４ KO''z-1ビル 3階',
+    'https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'published',
     now()
   ),
@@ -379,6 +389,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'asakusabashi-greek',
     '/images/posts/asakusabashi-greek.jpg',
     '浅草橋にあるギリシャ料理のお店。行ってみたい。',
+    null,
     'published',
     now()
   ),
@@ -391,6 +402,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'houzan',
     '/images/posts/sample.jpg',
     'トリクラで飲んだ焼酎。美味しかったやつ。',
+    null,
     'published',
     now()
   ),
@@ -403,6 +415,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'ougiya-melon',
     '/images/posts/sample.jpg',
     '静岡の伊豆にあるメロンパフェが食べられるところ。メロンを半玉使っているパフェ。http://ougiya-melon.com/cafe',
+    null,
     'published',
     now()
   ),
@@ -415,6 +428,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'atsumi-karintou',
     '/images/posts/sample.jpg',
     '秋田県のお菓子。あつみのかりんとうは商品名？',
+    null,
     'published',
     now()
   ),
@@ -427,6 +441,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'haleaina-hoa-shibuya',
     '/images/posts/sample.jpg',
     'チキンステーキが美味しかった。https://tabelog.com/tokyo/A1303/A130301/13298163/',
+    null,
     'published',
     now()
   ),
@@ -439,6 +454,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'wolfgangs-steak',
     '/images/posts/sample.jpg',
     'ステーキのお店。スカウトのグルコンで名前が上がっていたので行ってみたい。https://wolfgangssteakhouse.jp/',
+    null,
     'published',
     now()
   ),
@@ -451,6 +467,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'asakusa-kaede',
     '/images/posts/sample.jpg',
     'みたらし団子が美味しそうなお店。https://tabelog.com/tokyo/A1311/A131102/13009811/',
+    null,
     'published',
     now()
   ),
@@ -463,6 +480,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'asakusa-omochi',
     '/images/posts/sample.jpg',
     '浅草のつきたてのお餅が食べられるお店 https://hanbei.ltd/mochishop/',
+    null,
     'published',
     now()
   ),
@@ -475,6 +493,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'kairyouri',
     '/images/posts/sample.jpg',
     'https://tabelog.com/tokyo/A1311/A131101/13228306/',
+    null,
     'published',
     now()
   ),
@@ -487,6 +506,7 @@ Google Maps: https://maps.app.goo.gl/diFz6VCn1RyznG6S7',
     'churrascaria',
     '/images/posts/sample.jpg',
     '創業20年だそう。https://tabelog.com/tokyo/A1311/A131102/13031549/',
+    null,
     'published',
     now()
   )
@@ -534,6 +554,7 @@ set
   slug = excluded.slug,
   image_path = excluded.image_path,
   content = excluded.content,
+  google_maps_url = excluded.google_maps_url,
   status = excluded.status,
   published_at = excluded.published_at;
 
