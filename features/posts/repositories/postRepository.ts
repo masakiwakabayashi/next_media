@@ -39,7 +39,7 @@ export type CreatePostData = {
   published_at: string | null
 }
 
-export async function getPosts(): Promise<Post[]> {
+export async function getPosts(query?: string): Promise<Post[]> {
   const { data, error } = await supabase
     .from('posts')
     .select(`
@@ -65,7 +65,18 @@ export async function getPosts(): Promise<Post[]> {
     return []
   }
 
-  return (data as unknown as Post[]) || []
+  const posts = (data as unknown as Post[]) || []
+
+  if (!query) {
+    return posts
+  }
+
+  const lowerQuery = query.toLowerCase()
+  return posts.filter(
+    (post) =>
+      post.title.toLowerCase().includes(lowerQuery) ||
+      post.content.toLowerCase().includes(lowerQuery)
+  )
 }
 
 export async function getPost(slug: string): Promise<Post | null> {

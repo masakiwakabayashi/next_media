@@ -16,13 +16,13 @@ function truncateContent(content: string, maxLength: number = 100): string {
   return content.slice(0, maxLength) + '...'
 }
 
-export default async function PostList() {
-  const posts = await getPosts()
+export default async function PostList({ query }: { query?: string }) {
+  const posts = await getPosts(query)
 
   if (posts.length === 0) {
     return (
-      <div className="py-8 text-center text-zinc-500">
-        記事がありません
+      <div className="text-center text-zinc-500">
+        {query ? `「${query}」に一致する記事がありません` : '記事がありません'}
       </div>
     )
   }
