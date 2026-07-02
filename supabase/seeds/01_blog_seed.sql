@@ -218,7 +218,7 @@ insert into public.posts (
   (
     'b4c5d6e7-f8a9-0123-7890-234567890123',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    'd4e5f6a7-b8c9-0123-def1-234567890123',
     'まぜはる 浅草橋',
     'mazeharu-asakusabashi',
     '/images/posts/mazeharu-asakusabashi.jpg',
@@ -231,24 +231,11 @@ insert into public.posts (
   (
     'c5d6e7f8-a9b0-1234-8901-345678901234',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    'd4e5f6a7-b8c9-0123-def1-234567890123',
     'エスニック料理ギータ-GITA-',
     'gita-ethnic',
     '/images/posts/gita-ethnic.jpg',
     'チーズナンがめちゃくちゃ美味しい。',
-    null,
-    'published',
-    now()
-  ),
-  -- カレーは飲み物。 秋葉原店
-  (
-    'd6e7f8a9-b0c1-2345-9012-456789012345',
-    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-    'c3d4e5f6-a7b8-9012-cdef-123456789012',
-    'カレーは飲み物。 秋葉原店',
-    'curry-ha-nomimono-akihabara',
-    '/images/posts/curry-ha-nomimono-akihabara.jpg',
-    'カツカレーは結構油っこい感じだけど美味しい。',
     null,
     'published',
     now()
@@ -285,7 +272,7 @@ insert into public.posts (
   (
     'a9b0c1d2-e3f4-5678-2345-789012345678',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
     '播磨屋本店',
     'harimaya-honten',
     '/images/posts/harimaya-honten.jpg',
@@ -357,10 +344,10 @@ insert into public.posts (
     'f4a5b6c7-d8e9-0123-7890-234567890123',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
-    '田原町付近のそばと親子丼のお店',
+    '田原町付近のそばと親子丼のお店(さ和鳥)',
     'tawaramachi-soba-oyakodon',
     '/images/posts/tawaramachi-soba-oyakodon.jpg',
-    '名前は忘れたけどめっちゃ美味しかった。',
+    'そばも親子丼もめっちゃ美味しかった。https://sawacyo-kamo.foodre.jp/',
     null,
     'published',
     now()
@@ -436,7 +423,7 @@ insert into public.posts (
   (
     '7c427bc9-5e7c-4d4b-b20f-6e7e10db78cd',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    'd4e5f6a7-b8c9-0123-def1-234567890123',
     '渋谷のハワイのお店 hale’aina HOA Shibuya',
     'haleaina-hoa-shibuya',
     '/images/posts/sample.jpg',
@@ -509,41 +496,254 @@ insert into public.posts (
     null,
     'published',
     now()
+  ),
+  -- 上野の中華のお店 駅近の火鍋のお店の隣
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    '上野の中華のお店 駅近の火鍋のお店の隣',
+    'slag',
+    '/images/posts/sample.jpg',
+    '上野駅のすぐそばの1993年の火鍋のお店の隣にある中華料理のお店。本格中華って感じで美味しい',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- シェラスコ 渋谷にあるところ
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    'シェラスコ アレグリア渋谷',
+    'slag',
+    '/images/posts/sample.jpg',
+    'お店の名前は忘れたけど、たぶんここ。 https://tabelog.com/tokyo/A1303/A130301/13244702/',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- 上野のシカゴピザのお店(デリリウムカフェ)
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    '上野のシカゴピザのお店「デリリウムカフェ」',
+    'slag',
+    '/images/posts/sample.jpg',
+    'シカゴピザが食べられるお店。ビールが特に美味しい。料理は全般的に美味しい。',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- 千駄ヶ谷の茶そば屋さん
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    '千駄ヶ谷の茶そば屋さん「お茶処 辰吉 （オチャドコロ シンキチ）」',
+    'slag',
+    '/images/posts/sample.jpg',
+    '茶そば唐揚げセットがおすすめ。卵かけご飯もついててよかった。',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- しきんはんてん
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    '千駄ヶ谷にある中華屋さん「紫金飯店 原宿店」',
+    'slag',
+    '/images/posts/sample.jpg',
+    '昭和41年創業だそう。千駄ヶ谷にある美味しい中華屋さん。お店の読み方は「しきんはんてん」',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- しきんはんてんの隣のパスタ のりとチーズのパスタが美味しいところ
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    'しきんはんてんの隣のパスタ「SPAGO(スパゴ)」',
+    'slag',
+    '/images/posts/sample.jpg',
+    '千駄ヶ谷のしきんはんてんの隣にあるパスタのお店。のりとチーズのパスタが美味しい。 https://tabelog.com/tokyo/A1306/A130601/13012687/',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- まんてん 代々木にある焼肉屋
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    'まんてん 代々木にある焼肉屋',
+    'slag',
+    '/images/posts/sample.jpg',
+    '代々木にある焼肉屋。はらみとかまるちょうが美味しい。ランチのカレーも美味しい',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- 千駄ヶ谷のカレーうどん「黒うどん山長 原宿店」
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    '千駄ヶ谷のカレーうどん「黒うどん山長 原宿店」',
+    'slag',
+    '/images/posts/sample.jpg',
+    '検索しても煮込みうどんの写真しか出てこないけど、カレーうどんが美味しいお店はここのはず',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- とりくら
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    'とりくら',
+    'slag',
+    '/images/posts/sample.jpg',
+    '普通のコースと水炊きのコースがあって、両方美味しいけど個人的に水炊きの方が好き。デザートのプリンがめっちゃ美味しかった。',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- The God Dineer 
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    'The God Dineer 上野にあるハンバーガーのお店',
+    'slag',
+    '/images/posts/sample.jpg',
+    'ハンバーガーが肉肉しくて美味しかった。入口が自販機になってる。初見だとお店だとわからないような感じ。',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- 浅草どぜう「どぜう飯田屋」 
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    '浅草どぜう「どぜう飯田屋」',
+    'slag',
+    '/images/posts/sample.jpg',
+    '浅草のどぜうのお店。気になっているところ1つ目。 https://dozeu-iidaya.com/',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- 浅草どぜう「駒形どぜう 本店」
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    '浅草どぜう「駒形どぜう 本店」',
+    'slag',
+    '/images/posts/sample.jpg',
+    '浅草のどぜうのお店。気になっているところ2つ目。 https://dozeu.com/',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- 上野の北京ダックのお店
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    '上野の北京ダックのお店',
+    'slag',
+    '/images/posts/sample.jpg',
+    '上野駅のすぐ近くにある北京ダックのお店',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- トロワ 田原町にあるプリンのお店
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    'トロワ 田原町にあるプリンのお店',
+    'slag',
+    '/images/posts/sample.jpg',
+    'プリンが美味しそう。',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- 入谷のぺりぺりチキン専門店
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    '入谷のぺりぺりチキン専門店',
+    'slag',
+    '/images/posts/sample.jpg',
+    'https://tabelog.com/tokyo/A1311/A131104/13268713/',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- 神保町のフレッシュムーン
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    '神保町のフレッシュムーン',
+    'slag',
+    '/images/posts/sample.jpg',
+    'https://kanda-bunsendo.com/wagashi/freshmoon_freshroman',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- うさぎが食べられるお店　御徒町にある
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    'うさぎが食べられるお店 御徒町にある',
+    'slag',
+    '/images/posts/sample.jpg',
+    'https://tabelog.com/tokyo/A1311/A131101/13189152/',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- ズーガンズー　ワニとカンガルーの肉が食べられる
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    'ズーガンズー ワニとカンガルーの肉が食べられる',
+    'slag',
+    '/images/posts/sample.jpg',
+    'https://zoogunzoo.com/',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- 中野にある豚肉のお店
+  (
+    'uuid',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'd4e5f6a7-b8c9-0123-def1-234567890123',
+    '幸運豚人/Tsui-teru ! Porkman',
+    'slag',
+    '/images/posts/sample.jpg',
+    '中野にある豚肉のお店。けっこうがっつりめのお店。ツイテルの系列店っぽい。 https://tabelog.com/tokyo/A1319/A131902/13214614/',
+    'GoogleマップのURL',
+    'published',
+    now()
   )
-
-
-
-
-
--- これが行ってみたいのカテゴリーのid
--- e5f6a7b8-c9d0-1234-ef12-345678901234
-
--- 他に追加するところ
--- ・上野の中華のお店(火鍋の横のお店)
--- ・上野の北京ダックのお店
--- ・上野のシカゴピザ
--- ・シェラスコ(サーロインとか色々食べられるお店)
--- ・バターバトラー(渋谷のスクランブルスクエアにあるところ)
--- ・親子丼のお店(さ和鳥)　https://sawacyo-kamo.foodre.jp/
-
--- 千駄ヶ谷近辺のお店も全て追加する(茶そば、しきんはんてん、その隣のパスタ、カレーうどん、焼肉のお店も追加)
--- 中野の豚肉のお店も追加する
--- うさぎが食べられるお店を行ってみたいに追加する
--- わにの肉が食べられるお店も追加する
--- 浅草のどじょう料理のお店も追加する
--- とりくらも追加しておく
--- The God Dineer ハンバーガーは美味しかったので追加
--- さわやかも一応追加しておく
--- トロワ、プリンのお店、田原町にある、行ってみたい
-
-
--- 入谷のぺりぺりチキン専門店
--- https://tabelog.com/tokyo/A1311/A131104/13268713/
-
--- 神保町のフレッシュムーン
--- https://kanda-bunsendo.com/wagashi/freshmoon_freshroman
-
-
 
 
 on conflict (id) do update
