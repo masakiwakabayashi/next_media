@@ -499,11 +499,11 @@ insert into public.posts (
   ),
   -- 上野の中華のお店 駅近の火鍋のお店の隣
   (
-    'uuid',
+    'd478cecd-7a2b-45fe-adff-f1f4b925b6f9',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '上野の中華のお店 駅近の火鍋のお店の隣',
-    'slag',
+    'ueno-chinese-near-hotpot',
     '/images/posts/sample.jpg',
     '上野駅のすぐそばの1993年の火鍋のお店の隣にある中華料理のお店。本格中華って感じで美味しい',
     'GoogleマップのURL',
@@ -512,11 +512,11 @@ insert into public.posts (
   ),
   -- シェラスコ 渋谷にあるところ
   (
-    'uuid',
+    '162bb720-e55f-4b82-b42a-ac4b0fc879b8',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     'シェラスコ アレグリア渋谷',
-    'slag',
+    'churrasco-alegria-shibuya',
     '/images/posts/sample.jpg',
     'お店の名前は忘れたけど、たぶんここ。 https://tabelog.com/tokyo/A1303/A130301/13244702/',
     'GoogleマップのURL',
@@ -525,11 +525,11 @@ insert into public.posts (
   ),
   -- 上野のシカゴピザのお店(デリリウムカフェ)
   (
-    'uuid',
+    '2a0597b7-465f-4527-a336-3672f59f4a09',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '上野のシカゴピザのお店「デリリウムカフェ」',
-    'slag',
+    'delirium-cafe-ueno',
     '/images/posts/sample.jpg',
     'シカゴピザが食べられるお店。ビールが特に美味しい。料理は全般的に美味しい。',
     'GoogleマップのURL',
@@ -538,11 +538,11 @@ insert into public.posts (
   ),
   -- 千駄ヶ谷の茶そば屋さん
   (
-    'uuid',
+    '5a4d7f52-dafe-41a8-aded-31aed7ed85a3',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '千駄ヶ谷の茶そば屋さん「お茶処 辰吉 （オチャドコロ シンキチ）」',
-    'slag',
+    'ochadokoro-shinkichi',
     '/images/posts/sample.jpg',
     '茶そば唐揚げセットがおすすめ。卵かけご飯もついててよかった。',
     'GoogleマップのURL',
@@ -551,11 +551,11 @@ insert into public.posts (
   ),
   -- しきんはんてん
   (
-    'uuid',
+    'e2b98ab8-9933-4d28-9911-c8229baa1040',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '千駄ヶ谷にある中華屋さん「紫金飯店 原宿店」',
-    'slag',
+    'shikinhanten-harajuku',
     '/images/posts/sample.jpg',
     '昭和41年創業だそう。千駄ヶ谷にある美味しい中華屋さん。お店の読み方は「しきんはんてん」',
     'GoogleマップのURL',
@@ -564,11 +564,11 @@ insert into public.posts (
   ),
   -- しきんはんてんの隣のパスタ のりとチーズのパスタが美味しいところ
   (
-    'uuid',
+    '73d87d09-7e34-402e-ac18-60b1b45fb884',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     'しきんはんてんの隣のパスタ「SPAGO(スパゴ)」',
-    'slag',
+    'spago-sendagaya',
     '/images/posts/sample.jpg',
     '千駄ヶ谷のしきんはんてんの隣にあるパスタのお店。のりとチーズのパスタが美味しい。 https://tabelog.com/tokyo/A1306/A130601/13012687/',
     'GoogleマップのURL',
@@ -577,11 +577,11 @@ insert into public.posts (
   ),
   -- まんてん 代々木にある焼肉屋
   (
-    'uuid',
+    '0f94ad6a-abfa-4b5b-9526-fdb85d501c8f',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     'まんてん 代々木にある焼肉屋',
-    'slag',
+    'manten-yoyogi',
     '/images/posts/sample.jpg',
     '代々木にある焼肉屋。はらみとかまるちょうが美味しい。ランチのカレーも美味しい',
     'GoogleマップのURL',
@@ -590,11 +590,11 @@ insert into public.posts (
   ),
   -- 千駄ヶ谷のカレーうどん「黒うどん山長 原宿店」
   (
-    'uuid',
+    'cabdaff4-7d9d-46e1-99de-1578eee0a4b0',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     '千駄ヶ谷のカレーうどん「黒うどん山長 原宿店」',
-    'slag',
+    'kuroudon-yamacho-harajuku',
     '/images/posts/sample.jpg',
     '検索しても煮込みうどんの写真しか出てこないけど、カレーうどんが美味しいお店はここのはず',
     'GoogleマップのURL',
@@ -603,11 +603,11 @@ insert into public.posts (
   ),
   -- とりくら
   (
-    'uuid',
+    '260ee3c5-0b99-48e2-abbf-bb6d3b97f041',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     'とりくら',
-    'slag',
+    'torikura',
     '/images/posts/sample.jpg',
     '普通のコースと水炊きのコースがあって、両方美味しいけど個人的に水炊きの方が好き。デザートのプリンがめっちゃ美味しかった。',
     'GoogleマップのURL',
@@ -616,11 +616,11 @@ insert into public.posts (
   ),
   -- The God Dineer 
   (
-    'uuid',
+    'cce91deb-790f-4a1e-9afb-09cca966ad43',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
     'The God Dineer 上野にあるハンバーガーのお店',
-    'slag',
+    'the-god-dineer-ueno',
     '/images/posts/sample.jpg',
     'ハンバーガーが肉肉しくて美味しかった。入口が自販機になってる。初見だとお店だとわからないような感じ。',
     'GoogleマップのURL',
@@ -629,11 +629,11 @@ insert into public.posts (
   ),
   -- 浅草どぜう「どぜう飯田屋」 
   (
-    'uuid',
+    'd204765c-137c-4026-b813-4c1eba53729e',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     '浅草どぜう「どぜう飯田屋」',
-    'slag',
+    'dozeu-iidaya',
     '/images/posts/sample.jpg',
     '浅草のどぜうのお店。気になっているところ1つ目。 https://dozeu-iidaya.com/',
     'GoogleマップのURL',
@@ -642,11 +642,11 @@ insert into public.posts (
   ),
   -- 浅草どぜう「駒形どぜう 本店」
   (
-    'uuid',
+    '66f6ba2b-84ee-4a1e-b9f3-b36a08c6b0c8',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     '浅草どぜう「駒形どぜう 本店」',
-    'slag',
+    'komagata-dozeu',
     '/images/posts/sample.jpg',
     '浅草のどぜうのお店。気になっているところ2つ目。 https://dozeu.com/',
     'GoogleマップのURL',
@@ -655,11 +655,11 @@ insert into public.posts (
   ),
   -- 上野の北京ダックのお店
   (
-    'uuid',
+    '29776b16-843b-4a6c-b43c-27558e9a0fa2',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     '上野の北京ダックのお店',
-    'slag',
+    'ueno-peking-duck',
     '/images/posts/sample.jpg',
     '上野駅のすぐ近くにある北京ダックのお店',
     'GoogleマップのURL',
@@ -668,11 +668,11 @@ insert into public.posts (
   ),
   -- トロワ 田原町にあるプリンのお店
   (
-    'uuid',
+    '6e6bebbe-6f37-47fd-80fe-c63ad963a1b1',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     'トロワ 田原町にあるプリンのお店',
-    'slag',
+    'trois-tawaramachi-pudding',
     '/images/posts/sample.jpg',
     'プリンが美味しそう。',
     'GoogleマップのURL',
@@ -681,11 +681,11 @@ insert into public.posts (
   ),
   -- 入谷のぺりぺりチキン専門店
   (
-    'uuid',
+    '5ce42dc6-2aa9-43ba-b142-dc10d6592972',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     '入谷のぺりぺりチキン専門店',
-    'slag',
+    'iriya-peri-peri-chicken',
     '/images/posts/sample.jpg',
     'https://tabelog.com/tokyo/A1311/A131104/13268713/',
     'GoogleマップのURL',
@@ -694,11 +694,11 @@ insert into public.posts (
   ),
   -- 神保町のフレッシュムーン
   (
-    'uuid',
+    'f1b90691-6c56-41af-9368-df0bf3c4f159',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     '神保町のフレッシュムーン',
-    'slag',
+    'freshmoon-jimbocho',
     '/images/posts/sample.jpg',
     'https://kanda-bunsendo.com/wagashi/freshmoon_freshroman',
     'GoogleマップのURL',
@@ -707,11 +707,11 @@ insert into public.posts (
   ),
   -- うさぎが食べられるお店　御徒町にある
   (
-    'uuid',
+    '0a9bd73a-93f5-4d20-b496-b18942d04924',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     'うさぎが食べられるお店 御徒町にある',
-    'slag',
+    'okachimachi-rabbit',
     '/images/posts/sample.jpg',
     'https://tabelog.com/tokyo/A1311/A131101/13189152/',
     'GoogleマップのURL',
@@ -720,11 +720,11 @@ insert into public.posts (
   ),
   -- ズーガンズー　ワニとカンガルーの肉が食べられる
   (
-    'uuid',
+    'b1c79d35-8dc5-428f-a7b9-ec542337a39c',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     'ズーガンズー ワニとカンガルーの肉が食べられる',
-    'slag',
+    'zoogunzoo',
     '/images/posts/sample.jpg',
     'https://zoogunzoo.com/',
     'GoogleマップのURL',
@@ -733,11 +733,11 @@ insert into public.posts (
   ),
   -- 中野にある豚肉のお店
   (
-    'uuid',
+    '9e459503-c056-42ce-a88d-c568882c0041',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'd4e5f6a7-b8c9-0123-def1-234567890123',
     '幸運豚人/Tsui-teru ! Porkman',
-    'slag',
+    'porkman',
     '/images/posts/sample.jpg',
     '中野にある豚肉のお店。けっこうがっつりめのお店。ツイテルの系列店っぽい。 https://tabelog.com/tokyo/A1319/A131902/13214614/',
     'GoogleマップのURL',
@@ -776,8 +776,6 @@ insert into public.post_tags (
   ('b4c5d6e7-f8a9-0123-7890-234567890123', 'f2a3b4c5-d6e7-8901-2345-678901234567'),
   -- ギータ × エスニック
   ('c5d6e7f8-a9b0-1234-8901-345678901234', 'a3b4c5d6-e7f8-9012-3456-789012345678'),
-  -- カレーは飲み物 × カレー
-  ('d6e7f8a9-b0c1-2345-9012-456789012345', 'b8c9d0e1-f2a3-4567-1234-678901234567'),
   -- ココトモバウム × スイーツ
   ('e7f8a9b0-c1d2-3456-0123-567890123456', 'c9d0e1f2-a3b4-5678-2345-789012345678'),
   -- りんごぽむぽむ × 日本酒
