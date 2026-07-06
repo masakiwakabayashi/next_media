@@ -770,7 +770,7 @@ insert into public.posts (
     '神保町のフレッシュムーン',
     'freshmoon-jimbocho',
     '/images/posts/sample.jpg',
-    'https://kanda-bunsendo.com/wagashi/freshmoon_freshroman',
+    '邪神ちゃんドロップキックに出てくるやつ。https://kanda-bunsendo.com/wagashi/freshmoon_freshroman',
     'GoogleマップのURL',
     'published',
     now()
@@ -814,6 +814,36 @@ insert into public.posts (
     'published',
     now()
   )
+
+
+
+
+
+
+
+
+
+
+
+-- ・ニューヨークチーズケーキ(専門店の通販) https://www.papajons.net/shopdetail/010001000002/
+-- ・神保町のカレー ボンディ 邪神ちゃんドロップキックに出てきたカレー屋さん https://tabelog.com/tokyo/A1310/A131003/13000439/
+-- ・神保町 大丸やき 邪神ちゃんドロップキックに出てきたやつ https://retty.me/area/PRE13/ARE11/SUB1104/100000862770/
+-- ・神保町 生いちごジュース 邪神ちゃんドロップキックに出てくるやつ。邪神ちゃんがよく飲んでる。 https://tabelog.com/tokyo/A1310/A131003/13000609/
+-- ・北海道 釧路の勝手丼(自分の好きなものを乗せられるやつ)
+-- ・北海道 笹谷商店のいくら ここのお店で食べられるっぽい。https://tabelog.com/hokkaido/A0112/A011201/1051822/dtlrvwlst/B420467842/
+
+-- ・まりもようかん
+-- ・アイヌ料理 鹿
+-- ・北海道のみるくのジェラート
+-- ・北海道 帯広のあんバターサンド
+-- ・北海道 帯広のスイートポテト
+-- ・北海道 帯広の豚丼
+-- 
+
+
+
+
+
 
 
 on conflict (id) do update
