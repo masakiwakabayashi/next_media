@@ -2,7 +2,8 @@
 -- お店と商品(お菓子やお酒)を同じ記事という括りにしたいので、こういう構成にする
 
 -- データのバックアップをどうやって取るか？
--- シーダーを整理する
+
+-- シードデータのGoogleマップのリンクを正しいものに更新する
 
 -- プロフィール (user_id は auth ユーザー作成時にトリガーで設定されるため null)
 insert into public.profiles (id, display_name, bio, avatar_url)
@@ -813,32 +814,99 @@ insert into public.posts (
     'GoogleマップのURL',
     'published',
     now()
+  ),
+  -- ニューヨークチーズケーキ(専門店の通販) 
+  (
+    'b1c79d35-8dc5-428f-a7b9-ec542337a39c',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    'ニューヨークチーズケーキ(専門店の通販)',
+    'zoogunzoo',
+    '/images/posts/sample.jpg',
+    'https://www.papajons.net/shopdetail/010001000002/',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- 邪神ちゃんドロップキックに出てきた神保町のカレー屋さん ボンディ 
+  (
+    'b1c79d35-8dc5-428f-a7b9-ec542337a39c',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    '神保町のカレー「ボンディ」',
+    'zoogunzoo',
+    '/images/posts/sample.jpg',
+    '邪神ちゃんドロップキックに出てきたカレー屋さん。 https://tabelog.com/tokyo/A1310/A131003/13000439/',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- 邪神ちゃんドロップキックに出てきた神保町の大丸やき
+  (
+    'b1c79d35-8dc5-428f-a7b9-ec542337a39c',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    '邪神ちゃんドロップキックに出てきた神保町の大丸やきのお店',
+    'zoogunzoo',
+    '/images/posts/sample.jpg',
+    'https://retty.me/area/PRE13/ARE11/SUB1104/100000862770/',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- 邪神ちゃんドロップキックの生いちごジュース
+  (
+    'b1c79d35-8dc5-428f-a7b9-ec542337a39c',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    '神保町の生いちごジュース。邪神ちゃんドロップキックに出てきたやつ',
+    'zoogunzoo',
+    '/images/posts/sample.jpg',
+    '神保町の生いちごジュース 邪神ちゃんドロップキックに出てくるやつ。邪神ちゃんがよく飲んでる。 https://tabelog.com/tokyo/A1310/A131003/13000609/',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- 北海道 釧路の勝手丼
+  (
+    'b1c79d35-8dc5-428f-a7b9-ec542337a39c',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    '北海道 釧路の勝手丼',
+    'zoogunzoo',
+    '/images/posts/sample.jpg',
+    '自分の好きなものを乗せられるやつ。釧路で食べられるっぽい',
+    'GoogleマップのURL',
+    'published',
+    now()
+  ),
+  -- 北海道 笹谷商店のいくら
+  (
+    'b1c79d35-8dc5-428f-a7b9-ec542337a39c',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'e5f6a7b8-c9d0-1234-ef12-345678901234',
+    '北海道 笹谷商店のいくら',
+    'zoogunzoo',
+    '/images/posts/sample.jpg',
+    'ここのお店で食べられるっぽい。 https://tabelog.com/hokkaido/A0112/A011201/1051822/dtlrvwlst/B420467842/',
+    'GoogleマップのURL',
+    'published',
+    now()
   )
 
 
+-- ・釧路のまりもようかん
+-- 1953年創業の北海まりも製菓。https://hokkai-marimoseika.jimdofree.com/
 
 
+-- ・ 十勝銘菓 あんバタサン
+-- 北海道 帯広のあんバターサンド。邪神ちゃんドロップキックに出てきたお菓子。 https://www.ryugetsu.co.jp/items/anbatasan
 
 
+-- ・北海道 帯広のスイートポテト「クランベリー 本店」
+-- 1972年開業の洋菓子店。邪神ちゃんドロップキックに出てきたお店。 https://tabelog.com/hokkaido/A0111/A011101/1001664/
 
 
-
-
-
--- ・ニューヨークチーズケーキ(専門店の通販) https://www.papajons.net/shopdetail/010001000002/
--- ・神保町のカレー ボンディ 邪神ちゃんドロップキックに出てきたカレー屋さん https://tabelog.com/tokyo/A1310/A131003/13000439/
--- ・神保町 大丸やき 邪神ちゃんドロップキックに出てきたやつ https://retty.me/area/PRE13/ARE11/SUB1104/100000862770/
--- ・神保町 生いちごジュース 邪神ちゃんドロップキックに出てくるやつ。邪神ちゃんがよく飲んでる。 https://tabelog.com/tokyo/A1310/A131003/13000609/
--- ・北海道 釧路の勝手丼(自分の好きなものを乗せられるやつ)
--- ・北海道 笹谷商店のいくら ここのお店で食べられるっぽい。https://tabelog.com/hokkaido/A0112/A011201/1051822/dtlrvwlst/B420467842/
-
--- ・まりもようかん
--- ・アイヌ料理 鹿
--- ・北海道のみるくのジェラート
--- ・北海道 帯広のあんバターサンド
--- ・北海道 帯広のスイートポテト
--- ・北海道 帯広の豚丼
--- 
 
 
 
