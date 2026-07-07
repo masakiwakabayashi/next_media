@@ -3,7 +3,9 @@
 
 -- データのバックアップをどうやって取るか？
 
+-- 次
 -- シードデータのGoogleマップのリンクを正しいものに更新する
+
 
 -- プロフィール (user_id は auth ユーザー作成時にトリガーで設定されるため null)
 insert into public.profiles (id, display_name, bio, avatar_url)
@@ -281,7 +283,7 @@ insert into public.posts (
     'haruchan-asakusa',
     '/images/posts/haruchan-asakusa.jpg',
     'ツナマヨと鶏そぼろのおにぎりが美味しかった。ねぎとろとツナマヨも美味しかった。豚汁も美味しい。',
-    null,
+    'https://maps.app.goo.gl/atCcgzAZamGLCCwm7',
     'published',
     now()
   ),
@@ -406,7 +408,7 @@ insert into public.posts (
     'kuramae-pizza',
     '/images/posts/kuramae-pizza.jpg',
     '蔵前にあるピザ屋。イタリアで修行したシェフがピザ窯でピザを焼いてるところ。たぶんここ。https://pizzalinda.jp/',
-    null,
+    'https://maps.app.goo.gl/w49ixJdtnu9UGmKD6',
     'published',
     now()
   ),
@@ -419,7 +421,7 @@ insert into public.posts (
     'tawaramachi-soba-oyakodon',
     '/images/posts/tawaramachi-soba-oyakodon.jpg',
     'そばも親子丼もめっちゃ美味しかった。https://sawacyo-kamo.foodre.jp/',
-    null,
+    'https://maps.app.goo.gl/PKcKv8JseRkofJSE6',
     'published',
     now()
   ),
@@ -443,11 +445,11 @@ insert into public.posts (
     '8401bbac-76b7-48e0-badf-62b6c979d6a0',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
-    '浅草橋のギリシャ料理',
+    '浅草橋のギリシャ料理「フィリ」',
     'asakusabashi-greek',
     '/images/posts/asakusabashi-greek.jpg',
     '浅草橋にあるギリシャ料理のお店。行ってみたい。',
-    null,
+    'https://maps.app.goo.gl/xMy4Q3Ps1HSg9Uf98',
     'published',
     now()
   ),
@@ -525,7 +527,7 @@ insert into public.posts (
     'asakusa-kaede',
     '/images/posts/sample.jpg',
     'みたらし団子が美味しそうなお店。https://tabelog.com/tokyo/A1311/A131102/13009811/',
-    null,
+    'https://maps.app.goo.gl/c5WzrkyKVfET1LW5A',
     'published',
     now()
   ),
@@ -538,7 +540,7 @@ insert into public.posts (
     'asakusa-omochi',
     '/images/posts/sample.jpg',
     '浅草のつきたてのお餅が食べられるお店 https://hanbei.ltd/mochishop/',
-    null,
+    'https://maps.app.goo.gl/Y2YH9FMkkaFeEC7k8',
     'published',
     now()
   ),
@@ -550,8 +552,8 @@ insert into public.posts (
     '貝料理の専門店 牡蠣のまぜそばが美味しかった 貝料理 梵厨(ぼんず)',
     'kairyouri',
     '/images/posts/sample.jpg',
-    'https://tabelog.com/tokyo/A1311/A131101/13228306/',
-    null,
+    '夜は混むらしい。昼に行ったときは空いてた。https://tabelog.com/tokyo/A1311/A131101/13228306/',
+    'https://maps.app.goo.gl/oGS9JEsPont1x3EBA',
     'published',
     now()
   ),
@@ -564,7 +566,7 @@ insert into public.posts (
     'churrascaria',
     '/images/posts/sample.jpg',
     '創業20年だそう。https://tabelog.com/tokyo/A1311/A131102/13031549/',
-    null,
+    'https://maps.app.goo.gl/WYbJFWHXgf4gnfNJ6',
     'published',
     now()
   ),
@@ -577,7 +579,7 @@ insert into public.posts (
     'ueno-chinese-near-hotpot',
     '/images/posts/sample.jpg',
     '上野駅のすぐそばの1993年の火鍋のお店の隣にある中華料理のお店。本格中華って感じで美味しい',
-    'GoogleマップのURL',
+    null,
     'published',
     now()
   ),
@@ -590,7 +592,7 @@ insert into public.posts (
     'churrasco-alegria-shibuya',
     '/images/posts/sample.jpg',
     'お店の名前は忘れたけど、たぶんここ。 https://tabelog.com/tokyo/A1303/A130301/13244702/',
-    'GoogleマップのURL',
+    null,
     'published',
     now()
   ),
@@ -603,7 +605,7 @@ insert into public.posts (
     'delirium-cafe-ueno',
     '/images/posts/sample.jpg',
     'シカゴピザが食べられるお店。ビールが特に美味しい。料理は全般的に美味しい。',
-    'GoogleマップのURL',
+    null,
     'published',
     now()
   ),
@@ -616,7 +618,7 @@ insert into public.posts (
     'ochadokoro-shinkichi',
     '/images/posts/sample.jpg',
     '茶そば唐揚げセットがおすすめ。卵かけご飯もついててよかった。',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/9PXWbWXn5yfDjYQB7',
     'published',
     now()
   ),
@@ -629,7 +631,7 @@ insert into public.posts (
     'shikinhanten-harajuku',
     '/images/posts/sample.jpg',
     '昭和41年創業だそう。千駄ヶ谷にある美味しい中華屋さん。お店の読み方は「しきんはんてん」',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/A7uMa6c8GAvmU6hHA',
     'published',
     now()
   ),
@@ -642,7 +644,7 @@ insert into public.posts (
     'spago-sendagaya',
     '/images/posts/sample.jpg',
     '千駄ヶ谷のしきんはんてんの隣にあるパスタのお店。のりとチーズのパスタが美味しい。 https://tabelog.com/tokyo/A1306/A130601/13012687/',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/pVvy4qAMhSNnX6QV6',
     'published',
     now()
   ),
@@ -655,7 +657,7 @@ insert into public.posts (
     'manten-yoyogi',
     '/images/posts/sample.jpg',
     '代々木にある焼肉屋。はらみとかまるちょうが美味しい。ランチのカレーも美味しい',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/LCnFrHLXpw7cdsXn8',
     'published',
     now()
   ),
@@ -668,7 +670,7 @@ insert into public.posts (
     'kuroudon-yamacho-harajuku',
     '/images/posts/sample.jpg',
     '検索しても煮込みうどんの写真しか出てこないけど、カレーうどんが美味しいお店はここのはず',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/cbYDaG41zo2VW5vq7',
     'published',
     now()
   ),
@@ -681,20 +683,20 @@ insert into public.posts (
     'torikura',
     '/images/posts/sample.jpg',
     '普通のコースと水炊きのコースがあって、両方美味しいけど個人的に水炊きの方が好き。デザートのプリンがめっちゃ美味しかった。',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/kAex59KuoHTPJKmG9',
     'published',
     now()
   ),
-  -- The God Dineer 
+  -- The God Diner 
   (
     'cce91deb-790f-4a1e-9afb-09cca966ad43',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
-    'The God Dineer 上野にあるハンバーガーのお店',
+    'The God Diner 上野にあるハンバーガーのお店',
     'the-god-dineer-ueno',
     '/images/posts/sample.jpg',
     'ハンバーガーが肉肉しくて美味しかった。入口が自販機になってる。初見だとお店だとわからないような感じ。',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/GvdAWXR3Kj6NR6FJ9',
     'published',
     now()
   ),
@@ -707,7 +709,7 @@ insert into public.posts (
     'dozeu-iidaya',
     '/images/posts/sample.jpg',
     '浅草のどぜうのお店。気になっているところ1つ目。 https://dozeu-iidaya.com/',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/o18eQQxT38bN7E8X6',
     'published',
     now()
   ),
@@ -720,7 +722,7 @@ insert into public.posts (
     'komagata-dozeu',
     '/images/posts/sample.jpg',
     '浅草のどぜうのお店。気になっているところ2つ目。 https://dozeu.com/',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/EoesfaAiqTLXmC8J9',
     'published',
     now()
   ),
@@ -733,7 +735,7 @@ insert into public.posts (
     'ueno-peking-duck',
     '/images/posts/sample.jpg',
     '上野駅のすぐ近くにある北京ダックのお店',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/RUyK1sMr1a4tUeDo6',
     'published',
     now()
   ),
@@ -746,7 +748,7 @@ insert into public.posts (
     'trois-tawaramachi-pudding',
     '/images/posts/sample.jpg',
     'プリンが美味しそう。',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/3p2V5H1pCxjmAvsT6',
     'published',
     now()
   ),
@@ -759,7 +761,7 @@ insert into public.posts (
     'iriya-peri-peri-chicken',
     '/images/posts/sample.jpg',
     'https://tabelog.com/tokyo/A1311/A131104/13268713/',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/3A6jKGiMkkdZ2G9j8',
     'published',
     now()
   ),
@@ -768,11 +770,11 @@ insert into public.posts (
     'f1b90691-6c56-41af-9368-df0bf3c4f159',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
-    '神保町のフレッシュムーン',
+    '神保町のフレッシュムーン「橘昌文銭堂」',
     'freshmoon-jimbocho',
     '/images/posts/sample.jpg',
     '邪神ちゃんドロップキックに出てくるやつ。https://kanda-bunsendo.com/wagashi/freshmoon_freshroman',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/KKeTBzezgEnSyeEt5',
     'published',
     now()
   ),
@@ -785,7 +787,7 @@ insert into public.posts (
     'okachimachi-rabbit',
     '/images/posts/sample.jpg',
     'https://tabelog.com/tokyo/A1311/A131101/13189152/',
-    'GoogleマップのURL',
+    null,
     'published',
     now()
   ),
@@ -798,7 +800,7 @@ insert into public.posts (
     'zoogunzoo',
     '/images/posts/sample.jpg',
     'https://zoogunzoo.com/',
-    'GoogleマップのURL',
+    null,
     'published',
     now()
   ),
@@ -811,92 +813,92 @@ insert into public.posts (
     'porkman',
     '/images/posts/sample.jpg',
     '中野にある豚肉のお店。けっこうがっつりめのお店。ツイテルの系列店っぽい。 https://tabelog.com/tokyo/A1319/A131902/13214614/',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/UzmUkYBjFjYRHfyh6',
     'published',
     now()
   ),
-  -- ニューヨークチーズケーキ(専門店の通販) 
+  -- ニューヨークチーズケーキ(専門店の通販)
   (
-    'b1c79d35-8dc5-428f-a7b9-ec542337a39c',
+    '1ba49844-2525-426d-9c33-95294861bba1',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     'ニューヨークチーズケーキ(専門店の通販)',
-    'zoogunzoo',
+    'papajons-ny-cheesecake',
     '/images/posts/sample.jpg',
     'https://www.papajons.net/shopdetail/010001000002/',
-    'GoogleマップのURL',
+    null,
     'published',
     now()
   ),
-  -- 邪神ちゃんドロップキックに出てきた神保町のカレー屋さん ボンディ 
+  -- 邪神ちゃんドロップキックに出てきた神保町のカレー屋さん ボンディ
   (
-    'b1c79d35-8dc5-428f-a7b9-ec542337a39c',
+    '4b6495bb-a016-4af5-8b8b-1f94d5846f0e',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     '神保町のカレー「ボンディ」',
-    'zoogunzoo',
+    'bondy-jimbocho',
     '/images/posts/sample.jpg',
     '邪神ちゃんドロップキックに出てきたカレー屋さん。 https://tabelog.com/tokyo/A1310/A131003/13000439/',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/M4QhcGrmmFaCwXKP8',
     'published',
     now()
   ),
   -- 邪神ちゃんドロップキックに出てきた神保町の大丸やき
   (
-    'b1c79d35-8dc5-428f-a7b9-ec542337a39c',
+    '16030160-97d6-4d24-8440-0868251fd11d',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
-    '邪神ちゃんドロップキックに出てきた神保町の大丸やきのお店',
-    'zoogunzoo',
+    '「大丸やき茶房」邪神ちゃんドロップキックに出てきた神保町の大丸やきのお店',
+    'daimaruyaki-jimbocho',
     '/images/posts/sample.jpg',
     'https://retty.me/area/PRE13/ARE11/SUB1104/100000862770/',
-    'GoogleマップのURL',
+    'https://maps.app.goo.gl/LxGmAd6giJgbeePy5',
     'published',
     now()
   ),
   -- 邪神ちゃんドロップキックの生いちごジュース
   (
-    'b1c79d35-8dc5-428f-a7b9-ec542337a39c',
+    'bfa336b8-6354-4fd9-9612-1e02a80e1c94',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
-    '神保町の生いちごジュース。邪神ちゃんドロップキックに出てきたやつ',
-    'zoogunzoo',
+    '「さぼうる」神保町の生いちごジュース',
+    'saboru-jimbocho',
     '/images/posts/sample.jpg',
-    '神保町の生いちごジュース 邪神ちゃんドロップキックに出てくるやつ。邪神ちゃんがよく飲んでる。 https://tabelog.com/tokyo/A1310/A131003/13000609/',
-    'GoogleマップのURL',
+    '2ではなく本店の方。神保町の生いちごジュース 邪神ちゃんドロップキックに出てくるやつ。邪神ちゃんがよく飲んでる。 https://tabelog.com/tokyo/A1310/A131003/13000609/',
+    'https://maps.app.goo.gl/WfWoreNv24mnermS7',
     'published',
     now()
   ),
   -- 北海道 釧路の勝手丼
   (
-    'b1c79d35-8dc5-428f-a7b9-ec542337a39c',
+    '35463dca-abdd-4bc5-b7e1-68c5c1a50ef3',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     '北海道 釧路の勝手丼',
-    'zoogunzoo',
+    'kushiro-kattedon',
     '/images/posts/sample.jpg',
     '自分の好きなものを乗せられるやつ。釧路で食べられるっぽい',
-    'GoogleマップのURL',
+    null,
     'published',
     now()
   ),
   -- 北海道 笹谷商店のいくら
   (
-    'b1c79d35-8dc5-428f-a7b9-ec542337a39c',
+    '4ccc27c4-3f16-4fe8-9dbe-7ea570aa1f0b',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
     '北海道 笹谷商店のいくら',
-    'zoogunzoo',
+    'sasaya-ikura',
     '/images/posts/sample.jpg',
     'ここのお店で食べられるっぽい。 https://tabelog.com/hokkaido/A0112/A011201/1051822/dtlrvwlst/B420467842/',
-    'GoogleマップのURL',
+    null,
     'published',
     now()
   )
 
 
 -- ・釧路のまりもようかん
--- 1953年創業の北海まりも製菓。https://hokkai-marimoseika.jimdofree.com/
+-- 1953年創業の北海まりも製菓。邪神ちゃんドロップキックに出てきた。https://hokkai-marimoseika.jimdofree.com/
 
 
 -- ・ 十勝銘菓 あんバタサン
