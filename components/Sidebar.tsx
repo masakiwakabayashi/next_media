@@ -14,6 +14,12 @@ type Tag = {
   slug: string
 }
 
+type Collection = {
+  id: string
+  title: string
+  slug: string
+}
+
 async function getCategories(): Promise<Category[]> {
   const { data, error } = await supabase
     .from('categories')
@@ -42,8 +48,27 @@ async function getTags(): Promise<Tag[]> {
   return (data as Tag[]) || []
 }
 
+async function getCollections(): Promise<Collection[]> {
+  const { data, error } = await supabase
+    .from('collections')
+    .select('id, title, slug')
+    .eq('status', 'published')
+    .order('published_at', { ascending: false })
+
+  if (error) {
+    console.error('Error fetching collections:', error)
+    return []
+  }
+
+  return (data as Collection[]) || []
+}
+
 export default async function Sidebar() {
-  const [categories, tags] = await Promise.all([getCategories(), getTags()])
+  const [categories, tags, collections] = await Promise.all([
+    getCategories(),
+    getTags(),
+    getCollections(),
+  ])
 
   return (
     <aside className="space-y-8">
@@ -85,6 +110,26 @@ export default async function Sidebar() {
               </Link>
             ))}
           </div>
+        </div>
+      )}
+
+      {collections.length > 0 && (
+        <div>
+          <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-zinc-500">
+            特集記事
+          </h3>
+          <ul className="space-y-2">
+            {collections.map((collection) => (
+              <li key={collection.id}>
+                <Link
+                  href={`/collections/${collection.slug}`}
+                  className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                >
+                  {collection.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </aside>
