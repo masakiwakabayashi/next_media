@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, FormEvent, ChangeEvent } from 'react'
+import { useEffect, useState, FormEvent, ChangeEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import { createPost, attachTagsToPost, uploadPostImage } from '../repositories/postRepository'
 import EyecatchImage from '@/components/EyecatchImage'
@@ -32,8 +32,8 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
   const [title, setTitle] = useState('')
   const [slug, setSlug] = useState('')
   const [content, setContent] = useState('')
-  const [imagePath, setImagePath] = useState('')
-  const [isUploadingImage, setIsUploadingImage] = useState(false)
+  const [imageFile, setImageFile] = useState<File | null>(null)
+  const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null)
   const [imageUploadError, setImageUploadError] = useState<string | null>(null)
   const [categoryId, setCategoryId] = useState('')
   const authorId = authors.find((a) => a.display_name === '山田太郎')?.id ?? ''
@@ -42,23 +42,26 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  async function handleImageChange(e: ChangeEvent<HTMLInputElement>) {
+  useEffect(() => {
+    return () => {
+      if (imagePreviewUrl) {
+        URL.revokeObjectURL(imagePreviewUrl)
+      }
+    }
+  }, [imagePreviewUrl])
+
+  function handleImageChange(e: ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
     if (!file) return
 
-    setIsUploadingImage(true)
     setImageUploadError(null)
 
-    const { url, error: uploadError } = await uploadPostImage(file)
-
-    if (uploadError || !url) {
-      setImageUploadError(uploadError ?? '画像のアップロードに失敗しました')
-    } else {
-      setImagePath(url)
+    if (imagePreviewUrl) {
+      URL.revokeObjectURL(imagePreviewUrl)
     }
 
-    setIsUploadingImage(false)
-    e.target.value = ''
+    setImageFile(file)
+    setImagePreviewUrl(URL.createObjectURL(file))
   }
 
   function handleTagToggle(tagId: string) {
@@ -74,11 +77,25 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
     setError(null)
     setIsSubmitting(true)
 
+    let imagePath: string | null = null
+
+    if (imageFile) {
+      const { path, error: uploadError } = await uploadPostImage(imageFile)
+
+      if (uploadError || !path) {
+        setImageUploadError(uploadError ?? '画像のアップロードに失敗しました')
+        setIsSubmitting(false)
+        return
+      }
+
+      imagePath = path
+    }
+
     const { data: post, error: postError } = await createPost({
       title,
       slug,
       content,
-      image_path: imagePath || null,
+      image_path: imagePath,
       category_id: categoryId || null,
       author_id: authorId,
       status,
@@ -101,7 +118,7 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
       }
     }
 
-    router.push(redirectTo)
+    router.push(status === 'published' ? '/' : redirectTo)
     router.refresh()
   }
 
@@ -168,18 +185,15 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
         <label htmlFor="imageFile" className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
           アイキャッチ画像
         </label>
-        {imagePath && <EyecatchImage src={imagePath} alt={title || 'アイキャッチ画像プレビュー'} />}
+        {imagePreviewUrl && <EyecatchImage src={imagePreviewUrl} alt={title || 'アイキャッチ画像プレビュー'} />}
         <input
           id="imageFile"
           type="file"
           accept="image/*"
           onChange={handleImageChange}
-          disabled={isUploadingImage}
+          disabled={isSubmitting}
           className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 file:mr-3 file:rounded-md file:border-0 file:bg-zinc-100 file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-zinc-700 hover:file:bg-zinc-200 disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:file:bg-zinc-800 dark:file:text-zinc-300 dark:hover:file:bg-zinc-700"
         />
-        {isUploadingImage && (
-          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">アップロード中...</p>
-        )}
         {imageUploadError && (
           <p className="mt-1 text-sm text-red-600 dark:text-red-400">{imageUploadError}</p>
         )}
@@ -260,7 +274,7 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
       <div className="flex gap-3">
         <button
           type="submit"
-          disabled={isSubmitting || isUploadingImage}
+          disabled={isSubmitting}
           className="rounded-lg bg-zinc-900 px-6 py-2 text-sm font-medium text-white hover:bg-zinc-700 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
         >
           {isSubmitting ? '保存中...' : '保存する'}
