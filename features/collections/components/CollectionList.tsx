@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import PostThumbnail from '@/features/posts/components/PostThumbnail'
+import EyecatchImage from '@/components/EyecatchImage'
 import { getCollections } from '../repositories/collectionRepository'
 
 export default async function CollectionList() {
@@ -23,7 +23,7 @@ export default async function CollectionList() {
               href={`/collections/${collection.slug}`}
               className="block rounded-lg border border-zinc-200 p-6 transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700"
             >
-              <PostThumbnail src={collection.image_path} alt={collection.title} />
+              <EyecatchImage src={collection.image_path} alt={collection.title} />
 
               <h2 className="mb-2 text-xl font-bold text-zinc-900 dark:text-zinc-100">
                 {collection.title}

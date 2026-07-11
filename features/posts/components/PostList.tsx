@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import PostThumbnail from './PostThumbnail'
+import EyecatchImage from '@/components/EyecatchImage'
 import { getPosts } from '../repositories/postRepository'
 
 function formatDate(dateString: string): string {
@@ -34,7 +34,7 @@ export default async function PostList({ query }: { query?: string }) {
           key={post.id}
           className="rounded-lg border border-zinc-200 p-6 transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700"
         >
-          <PostThumbnail src={post.image_path} alt={post.title} />
+          <EyecatchImage src={post.image_path} alt={post.title} />
 
           <div className="mb-2 flex items-center gap-2 text-sm text-zinc-500">
             {post.category && (

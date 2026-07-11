@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
+import { useState, FormEvent, ChangeEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import { createPost, attachTagsToPost } from '../repositories/postRepository'
+import { createPost, attachTagsToPost, uploadPostImage } from '../repositories/postRepository'
+import EyecatchImage from '@/components/EyecatchImage'
 
 type Category = {
   id: string
@@ -32,12 +33,33 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
   const [slug, setSlug] = useState('')
   const [content, setContent] = useState('')
   const [imagePath, setImagePath] = useState('')
+  const [isUploadingImage, setIsUploadingImage] = useState(false)
+  const [imageUploadError, setImageUploadError] = useState<string | null>(null)
   const [categoryId, setCategoryId] = useState('')
   const authorId = authors.find((a) => a.display_name === '山田太郎')?.id ?? ''
   const [selectedTagIds, setSelectedTagIds] = useState<string[]>([])
   const [status, setStatus] = useState<'draft' | 'published'>('draft')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  async function handleImageChange(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    setIsUploadingImage(true)
+    setImageUploadError(null)
+
+    const { url, error: uploadError } = await uploadPostImage(file)
+
+    if (uploadError || !url) {
+      setImageUploadError(uploadError ?? '画像のアップロードに失敗しました')
+    } else {
+      setImagePath(url)
+    }
+
+    setIsUploadingImage(false)
+    e.target.value = ''
+  }
 
   function handleTagToggle(tagId: string) {
     setSelectedTagIds((prev) =>
@@ -143,17 +165,24 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
 
       {/* アイキャッチ画像 */}
       <div>
-        <label htmlFor="imagePath" className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
-          アイキャッチ画像URL
+        <label htmlFor="imageFile" className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+          アイキャッチ画像
         </label>
+        {imagePath && <EyecatchImage src={imagePath} alt={title || 'アイキャッチ画像プレビュー'} />}
         <input
-          id="imagePath"
-          type="text"
-          value={imagePath}
-          onChange={(e) => setImagePath(e.target.value)}
-          placeholder="https://example.com/image.jpg"
-          className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          id="imageFile"
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          disabled={isUploadingImage}
+          className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 file:mr-3 file:rounded-md file:border-0 file:bg-zinc-100 file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-zinc-700 hover:file:bg-zinc-200 disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:file:bg-zinc-800 dark:file:text-zinc-300 dark:hover:file:bg-zinc-700"
         />
+        {isUploadingImage && (
+          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">アップロード中...</p>
+        )}
+        {imageUploadError && (
+          <p className="mt-1 text-sm text-red-600 dark:text-red-400">{imageUploadError}</p>
+        )}
       </div>
 
       {/* 本文 */}
@@ -231,7 +260,7 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
       <div className="flex gap-3">
         <button
           type="submit"
-          disabled={isSubmitting}
+          disabled={isSubmitting || isUploadingImage}
           className="rounded-lg bg-zinc-900 px-6 py-2 text-sm font-medium text-white hover:bg-zinc-700 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
         >
           {isSubmitting ? '保存中...' : '保存する'}

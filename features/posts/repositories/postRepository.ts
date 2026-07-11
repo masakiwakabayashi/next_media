@@ -293,6 +293,21 @@ export async function getPostsByCategory(categorySlug: string): Promise<{ posts:
   return { posts, categoryName }
 }
 
+export async function uploadPostImage(file: File): Promise<{ url: string | null; error: string | null }> {
+  const extension = file.name.split('.').pop()
+  const path = `posts/${crypto.randomUUID()}${extension ? `.${extension}` : ''}`
+
+  const { error: uploadError } = await supabase.storage.from('post-images').upload(path, file)
+
+  if (uploadError) {
+    return { url: null, error: uploadError.message }
+  }
+
+  const { data } = supabase.storage.from('post-images').getPublicUrl(path)
+
+  return { url: data.publicUrl, error: null }
+}
+
 export async function createPost(data: CreatePostData): Promise<{ data: { id: string } | null; error: string | null }> {
   const { data: post, error } = await supabase
     .from('posts')
