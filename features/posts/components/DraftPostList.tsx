@@ -50,11 +50,11 @@ export default async function DraftPostList() {
             </time>
           </div>
 
-          <h2 className="mb-2 text-xl font-bold text-zinc-900 dark:text-zinc-100">
+          <h2 className="mb-2 break-words text-xl font-bold text-zinc-900 dark:text-zinc-100">
             {post.title}
           </h2>
 
-          <p className="mb-3 text-zinc-600 dark:text-zinc-400">
+          <p className="mb-3 break-words text-zinc-600 dark:text-zinc-400">
             {truncateContent(post.content)}
           </p>
 

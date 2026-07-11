@@ -52,7 +52,7 @@ export default async function PostDetail({ slug }: Props) {
       </div>
 
       {/* タイトル */}
-      <h1 className="mb-6 text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+      <h1 className="mb-6 break-words text-3xl font-bold text-zinc-900 dark:text-zinc-100">
         {post.title}
       </h1>
 

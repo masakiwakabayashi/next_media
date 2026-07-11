@@ -47,12 +47,12 @@ export default async function CategoryPostList({ categorySlug }: { categorySlug:
               </div>
 
               <Link href={`/posts/${post.slug}`}>
-                <h2 className="mb-2 text-xl font-bold text-zinc-900 hover:text-zinc-600 dark:text-zinc-100 dark:hover:text-zinc-300">
+                <h2 className="mb-2 break-words text-xl font-bold text-zinc-900 hover:text-zinc-600 dark:text-zinc-100 dark:hover:text-zinc-300">
                   {post.title}
                 </h2>
               </Link>
 
-              <p className="mb-3 text-zinc-600 dark:text-zinc-400">
+              <p className="mb-3 break-words text-zinc-600 dark:text-zinc-400">
                 {truncateContent(post.content)}
               </p>
 
