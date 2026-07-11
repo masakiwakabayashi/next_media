@@ -3,6 +3,7 @@
 import { ReactNode, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthProvider'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 export default function RequireAdmin({ children }: { children: ReactNode }) {
   const { isAdmin, loading } = useAuth()
@@ -14,11 +15,7 @@ export default function RequireAdmin({ children }: { children: ReactNode }) {
   }, [loading, isAdmin, router])
 
   if (loading || !isAdmin) {
-    return (
-      <div className="py-20 text-center text-sm text-zinc-500 dark:text-zinc-400">
-        権限を確認しています...
-      </div>
-    )
+    return <LoadingSpinner />
   }
 
   return <>{children}</>

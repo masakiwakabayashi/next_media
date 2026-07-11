@@ -3,6 +3,7 @@
 import { ReactNode, useEffect, useMemo } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthProvider'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 export default function RequireAuth({ children }: { children: ReactNode }) {
   const { user, loading } = useAuth()
@@ -29,11 +30,7 @@ export default function RequireAuth({ children }: { children: ReactNode }) {
   }, [loading, user, router, redirectTo])
 
   if (loading || !user) {
-    return (
-      <div className="py-20 text-center text-sm text-zinc-500 dark:text-zinc-400">
-        認証状態を確認しています...
-      </div>
-    )
+    return <LoadingSpinner />
   }
 
   return <>{children}</>
