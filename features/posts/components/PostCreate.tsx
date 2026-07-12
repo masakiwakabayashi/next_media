@@ -2,7 +2,7 @@
 
 import { useEffect, useState, FormEvent, ChangeEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import { createPost, attachTagsToPost, uploadPostImage } from '../repositories/postRepository'
+import { createPost, attachTagsToPost, uploadPostImage } from '../../../external/repositories/postRepository'
 import EyecatchImage from '@/components/EyecatchImage'
 
 type Category = {

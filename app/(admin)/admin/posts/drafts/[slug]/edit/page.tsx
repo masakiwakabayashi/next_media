@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import PostEdit from '@/features/posts/components/PostEdit'
-import { getDraftPostForEdit } from '@/features/posts/repositories/postRepository'
+import { getDraftPostForEdit } from '@/external/repositories/postRepository'
 import { supabase } from '@/lib/supabase/client'
 
 type Props = {

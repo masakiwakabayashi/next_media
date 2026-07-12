@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import EyecatchImage from '@/components/EyecatchImage'
-import { getPost } from '../repositories/postRepository'
+import { getPost } from '../../../external/repositories/postRepository'
 
 type Props = {
   slug: string

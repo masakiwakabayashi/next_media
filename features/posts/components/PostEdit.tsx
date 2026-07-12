@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import { updatePost, updatePostTags, PostForEdit } from '../repositories/postRepository'
+import { updatePost, updatePostTags, PostForEdit } from '../../../external/repositories/postRepository'
 
 type Category = {
   id: string
