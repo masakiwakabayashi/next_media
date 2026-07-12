@@ -39,44 +39,70 @@ export type CreatePostData = {
   published_at: string | null
 }
 
-export async function getPosts(query?: string): Promise<Post[]> {
+const POST_LIST_SELECT = `
+  id,
+  title,
+  slug,
+  image_path,
+  content,
+  status,
+  published_at,
+  created_at,
+  author:profiles(display_name),
+  category:categories(name, slug),
+  post_tags(
+    tag:tags(id, name, slug)
+  )
+`
+
+export type PostListResult = {
+  posts: Post[]
+  totalCount: number
+}
+
+export async function getPosts(
+  query?: string,
+  page: number = 1,
+  pageSize: number = 20
+): Promise<PostListResult> {
+  const from = (page - 1) * pageSize
+  const to = from + pageSize - 1
+
+  if (!query) {
+    const { data, error, count } = await supabase
+      .from('posts')
+      .select(POST_LIST_SELECT, { count: 'exact' })
+      .eq('status', 'published')
+      .order('published_at', { ascending: false })
+      .range(from, to)
+
+    if (error) {
+      console.error('Error fetching posts:', error)
+      return { posts: [], totalCount: 0 }
+    }
+
+    return { posts: (data as unknown as Post[]) || [], totalCount: count ?? 0 }
+  }
+
   const { data, error } = await supabase
     .from('posts')
-    .select(`
-      id,
-      title,
-      slug,
-      image_path,
-      content,
-      status,
-      published_at,
-      created_at,
-      author:profiles(display_name),
-      category:categories(name, slug),
-      post_tags(
-        tag:tags(id, name, slug)
-      )
-    `)
+    .select(POST_LIST_SELECT)
     .eq('status', 'published')
     .order('published_at', { ascending: false })
 
   if (error) {
     console.error('Error fetching posts:', error)
-    return []
-  }
-
-  const posts = (data as unknown as Post[]) || []
-
-  if (!query) {
-    return posts
+    return { posts: [], totalCount: 0 }
   }
 
   const lowerQuery = query.toLowerCase()
-  return posts.filter(
+  const filtered = ((data as unknown as Post[]) || []).filter(
     (post) =>
       post.title.toLowerCase().includes(lowerQuery) ||
       post.content.toLowerCase().includes(lowerQuery)
   )
+
+  return { posts: filtered.slice(from, to + 1), totalCount: filtered.length }
 }
 
 export async function getPost(slug: string): Promise<Post | null> {

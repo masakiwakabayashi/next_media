@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import EyecatchImage from '@/components/EyecatchImage'
 import { getPosts } from '../repositories/postRepository'
+import Pagination from './Pagination'
+
+const PAGE_SIZE = 20
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString)
@@ -16,8 +19,15 @@ function truncateContent(content: string, maxLength: number = 100): string {
   return content.slice(0, maxLength) + '...'
 }
 
-export default async function PostList({ query }: { query?: string }) {
-  const posts = await getPosts(query)
+export default async function PostList({
+  query,
+  page = 1,
+}: {
+  query?: string
+  page?: number
+}) {
+  const { posts, totalCount } = await getPosts(query, page, PAGE_SIZE)
+  const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE))
 
   if (posts.length === 0) {
     return (
@@ -80,6 +90,8 @@ export default async function PostList({ query }: { query?: string }) {
           )}
         </article>
       ))}
+
+      <Pagination currentPage={page} totalPages={totalPages} query={query} />
     </div>
   )
 }

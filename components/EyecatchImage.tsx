@@ -38,6 +38,7 @@ export default function EyecatchImage({ src, alt }: Props) {
         src={imgSrc}
         alt={alt}
         fill
+        sizes="100vw"
         unoptimized={!imgSrc.startsWith('/')}
         className="object-cover"
         onError={() => setImgSrc('/no_image.png')}
