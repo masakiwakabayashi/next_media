@@ -2,7 +2,8 @@
 
 import { useEffect, useState, FormEvent, ChangeEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import { createPost, attachTagsToPost, uploadPostImage } from '../../../external/repositories/postRepository'
+import { uploadPostImage } from '@/external/repositories/postRepository'
+import { createPostAction } from '@/external/handler/post/createPost'
 import EyecatchImage from '@/components/EyecatchImage'
 
 type Category = {
@@ -91,31 +92,24 @@ export default function PostCreate({ categories, authors, tags, redirectTo = '/'
       imagePath = path
     }
 
-    const { data: post, error: postError } = await createPost({
-      title,
-      slug,
-      content,
-      image_path: imagePath,
-      category_id: categoryId || null,
-      author_id: authorId,
-      status,
-      published_at: status === 'published' ? new Date().toISOString() : null,
-    })
+    const { data: post, error: postError } = await createPostAction(
+      {
+        title,
+        slug,
+        content,
+        image_path: imagePath,
+        category_id: categoryId || null,
+        author_id: authorId,
+        status,
+        published_at: status === 'published' ? new Date().toISOString() : null,
+      },
+      selectedTagIds
+    )
 
     if (postError || !post) {
       setError(postError)
       setIsSubmitting(false)
       return
-    }
-
-    if (selectedTagIds.length > 0) {
-      const { error: tagError } = await attachTagsToPost(post.id, selectedTagIds)
-
-      if (tagError) {
-        setError(tagError)
-        setIsSubmitting(false)
-        return
-      }
     }
 
     router.push(status === 'published' ? '/' : redirectTo)
