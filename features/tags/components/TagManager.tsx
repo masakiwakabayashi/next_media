@@ -7,7 +7,7 @@ import {
   createTag,
   updateTag,
   deleteTag,
-} from '../repositories/tagRepository'
+} from '@/external/repositories/tagRepository'
 
 type Props = {
   initialTags: TagWithCount[]

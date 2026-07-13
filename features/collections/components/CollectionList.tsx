@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import EyecatchImage from '@/components/EyecatchImage'
-import { getCollections } from '../repositories/collectionRepository'
+import { getCollections } from '@/external/repositories/collectionRepository'
 
 export default async function CollectionList() {
   const collections = await getCollections()

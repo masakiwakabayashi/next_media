@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import EyecatchImage from '@/components/EyecatchImage'
-import { getCollection } from '../repositories/collectionRepository'
+import { getCollection } from '@/external/repositories/collectionRepository'
 import { notFound } from 'next/navigation'
 
 function formatDate(dateString: string): string {

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getRecentPosts, getRecentDrafts, RecentPost } from '../repositories/adminRepository'
+import { getRecentPosts, getRecentDrafts, RecentPost } from '@/external/repositories/adminRepository'
 
 function formatDate(dateString: string): string {
   return new Date(dateString).toLocaleDateString('ja-JP', {

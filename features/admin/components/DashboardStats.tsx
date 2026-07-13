@@ -1,4 +1,4 @@
-import { getDashboardStats } from '../repositories/adminRepository'
+import { getDashboardStats } from '@/external/repositories/adminRepository'
 
 type StatCardProps = {
   label: string
