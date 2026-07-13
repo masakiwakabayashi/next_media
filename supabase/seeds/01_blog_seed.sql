@@ -934,7 +934,9 @@ insert into public.posts (
 -- ・花見煎餅
 -- ・生果実専門店 ASAKUSA YOROZU CAFE
 -- ・高級鯛焼本舗 柳屋 創業大正五年
--- ・東京駅のカレーのお店
+-- ・東京駅のカレーのお店 チキンカレーを食べたところ
+-- ・東京駅のブラウニー専門店 オンラインでも買える https://sucreyshopping.jp/cotecour
+-- ・東京駅にあるアメのお店
 
 
 

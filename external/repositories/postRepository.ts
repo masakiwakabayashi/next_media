@@ -1,3 +1,4 @@
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase/client'
 
 export type Post = {
@@ -332,7 +333,10 @@ export async function uploadPostImage(file: File): Promise<{ path: string | null
   return { path, error: null }
 }
 
-export async function createPost(data: CreatePostData): Promise<{ data: { id: string } | null; error: string | null }> {
+export async function createPost(
+  supabase: SupabaseClient,
+  data: CreatePostData
+): Promise<{ data: { id: string } | null; error: string | null }> {
   const { data: post, error } = await supabase
     .from('posts')
     .insert(data)
@@ -346,7 +350,11 @@ export async function createPost(data: CreatePostData): Promise<{ data: { id: st
   return { data: post, error: null }
 }
 
-export async function attachTagsToPost(postId: string, tagIds: string[]): Promise<{ error: string | null }> {
+export async function attachTagsToPost(
+  supabase: SupabaseClient,
+  postId: string,
+  tagIds: string[]
+): Promise<{ error: string | null }> {
   const postTags = tagIds.map((tagId) => ({
     post_id: postId,
     tag_id: tagId,
