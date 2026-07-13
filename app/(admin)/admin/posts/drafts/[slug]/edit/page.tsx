@@ -1,38 +1,11 @@
 import { notFound } from 'next/navigation'
 import PostEdit from '@/features/posts/components/PostEdit'
 import { getDraftPostForEdit } from '@/external/repositories/postRepository'
-import { supabase } from '@/lib/supabase/client'
+import { getCategories } from '@/external/repositories/categoryRepository'
+import { getTagOptions } from '@/external/repositories/tagRepository'
 
 type Props = {
   params: Promise<{ slug: string }>
-}
-
-async function getCategories() {
-  const { data, error } = await supabase
-    .from('categories')
-    .select('id, name')
-    .order('name')
-
-  if (error) {
-    console.error('Error fetching categories:', error)
-    return []
-  }
-
-  return data || []
-}
-
-async function getTags() {
-  const { data, error } = await supabase
-    .from('tags')
-    .select('id, name')
-    .order('name')
-
-  if (error) {
-    console.error('Error fetching tags:', error)
-    return []
-  }
-
-  return data || []
 }
 
 export default async function DraftEditPage({ params }: Props) {
@@ -41,7 +14,7 @@ export default async function DraftEditPage({ params }: Props) {
   const [post, categories, tags] = await Promise.all([
     getDraftPostForEdit(slug),
     getCategories(),
-    getTags(),
+    getTagOptions(),
   ])
 
   if (!post) {

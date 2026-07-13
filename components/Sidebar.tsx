@@ -1,72 +1,13 @@
 import Link from 'next/link'
-import { supabase } from '@/lib/supabase/client'
 import AdminSidebarLinks from '@/components/AdminSidebarLinks'
-
-type Category = {
-  id: string
-  name: string
-  slug: string
-}
-
-type Tag = {
-  id: string
-  name: string
-  slug: string
-}
-
-type Collection = {
-  id: string
-  title: string
-  slug: string
-}
-
-async function getCategories(): Promise<Category[]> {
-  const { data, error } = await supabase
-    .from('categories')
-    .select('id, name, slug')
-    .order('name')
-
-  if (error) {
-    console.error('Error fetching categories:', error)
-    return []
-  }
-
-  return (data as Category[]) || []
-}
-
-async function getTags(): Promise<Tag[]> {
-  const { data, error } = await supabase
-    .from('tags')
-    .select('id, name, slug')
-    .order('name')
-
-  if (error) {
-    console.error('Error fetching tags:', error)
-    return []
-  }
-
-  return (data as Tag[]) || []
-}
-
-async function getCollections(): Promise<Collection[]> {
-  const { data, error } = await supabase
-    .from('collections')
-    .select('id, title, slug')
-    .eq('status', 'published')
-    .order('published_at', { ascending: false })
-
-  if (error) {
-    console.error('Error fetching collections:', error)
-    return []
-  }
-
-  return (data as Collection[]) || []
-}
+import { getCategories } from '@/external/repositories/categoryRepository'
+import { getTagOptions } from '@/external/repositories/tagRepository'
+import { getCollections } from '@/external/repositories/collectionRepository'
 
 export default async function Sidebar() {
   const [categories, tags, collections] = await Promise.all([
     getCategories(),
-    getTags(),
+    getTagOptions(),
     getCollections(),
   ])
 

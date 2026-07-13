@@ -2,7 +2,7 @@
 
 import { useState, useEffect, FormEvent } from 'react'
 import { useAuth } from '@/contexts/AuthProvider'
-import { supabase } from '@/lib/supabase/client'
+import { updateDisplayName } from '@/external/repositories/profileRepository'
 
 export default function ProfileEditor() {
   const { user, displayName, refreshDisplayName } = useAuth()
@@ -22,10 +22,7 @@ export default function ProfileEditor() {
     setSaved(false)
     setIsSubmitting(true)
 
-    const { error } = await supabase
-      .from('profiles')
-      .update({ display_name: value.trim() })
-      .eq('user_id', user.id)
+    const { error } = await updateDisplayName(user.id, value.trim())
 
     setIsSubmitting(false)
 

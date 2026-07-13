@@ -31,6 +31,20 @@ export async function getTags(): Promise<TagWithCount[]> {
   }))
 }
 
+export async function getTagOptions(): Promise<Tag[]> {
+  const { data, error } = await supabase
+    .from('tags')
+    .select('id, name, slug, created_at')
+    .order('name')
+
+  if (error) {
+    console.error('Error fetching tags:', error)
+    return []
+  }
+
+  return data || []
+}
+
 export async function createTag(data: {
   name: string
   slug: string

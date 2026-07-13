@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { supabase } from '@/lib/supabase/client'
+import { signInWithPassword } from '@/external/repositories/authRepository'
 
 export default function LoginForm() {
   const router = useRouter()
@@ -22,13 +22,10 @@ export default function LoginForm() {
     setError(null)
     setIsSubmitting(true)
 
-    const { error: signInError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
+    const { error: signInError } = await signInWithPassword(email, password)
 
     if (signInError) {
-      setError(signInError.message)
+      setError(signInError)
       setIsSubmitting(false)
       return
     }

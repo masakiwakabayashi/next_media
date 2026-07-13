@@ -137,6 +137,27 @@ export async function getPost(slug: string): Promise<Post | null> {
   return data as unknown as Post
 }
 
+export type PostMeta = {
+  title: string
+  content: string
+  image_path: string | null
+}
+
+export async function getPostMetaBySlug(slug: string): Promise<PostMeta | null> {
+  const { data, error } = await supabase
+    .from('posts')
+    .select('title, content, image_path')
+    .eq('slug', slug)
+    .eq('status', 'published')
+    .single()
+
+  if (error) {
+    return null
+  }
+
+  return data
+}
+
 export type PostForEdit = {
   id: string
   title: string

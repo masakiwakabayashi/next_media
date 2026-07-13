@@ -9,7 +9,8 @@ import {
   type ReactNode,
 } from 'react'
 import type { Session, User } from '@supabase/supabase-js'
-import { supabase } from '@/lib/supabase/client'
+import { getSession, onAuthStateChange, signOut as authSignOut } from '@/external/repositories/authRepository'
+import { getDisplayName } from '@/external/repositories/profileRepository'
 
 type AuthContextValue = {
   user: User | null
@@ -31,29 +32,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     let isMounted = true
 
-    supabase.auth.getSession().then(({ data }) => {
+    getSession().then((session) => {
       if (!isMounted) return
-      setSession(data.session)
+      setSession(session)
       setLoading(false)
     })
 
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, newSession) => {
+    const unsubscribe = onAuthStateChange((_event, newSession) => {
       setSession(newSession)
     })
 
     return () => {
       isMounted = false
-      listener.subscription.unsubscribe()
+      unsubscribe()
     }
   }, [])
 
   async function fetchDisplayName(userId: string) {
-    const { data } = await supabase
-      .from('profiles')
-      .select('display_name')
-      .eq('user_id', userId)
-      .single()
-    setDisplayName(data?.display_name ?? null)
+    const name = await getDisplayName(userId)
+    setDisplayName(name)
   }
 
   useEffect(() => {
@@ -75,7 +72,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (session?.user) await fetchDisplayName(session.user.id)
       },
       signOut: async () => {
-        await supabase.auth.signOut()
+        await authSignOut()
       },
     }),
     [session, loading, displayName]

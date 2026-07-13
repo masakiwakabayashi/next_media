@@ -1,30 +1,15 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import PostDetail from '@/features/posts/components/PostDetail'
-import { supabase } from '@/lib/supabase/client'
+import { getPostMetaBySlug } from '@/external/repositories/postRepository'
 
 type Props = {
   params: Promise<{ slug: string }>
 }
 
-async function getPost(slug: string) {
-  const { data, error } = await supabase
-    .from('posts')
-    .select('title, content, image_path')
-    .eq('slug', slug)
-    .eq('status', 'published')
-    .single()
-
-  if (error) {
-    return null
-  }
-
-  return data
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const post = await getPost(slug)
+  const post = await getPostMetaBySlug(slug)
 
   if (!post) {
     return {
@@ -45,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PostPage({ params }: Props) {
   const { slug } = await params
-  const post = await getPost(slug)
+  const post = await getPostMetaBySlug(slug)
 
   if (!post) {
     notFound()
