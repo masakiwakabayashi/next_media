@@ -5,11 +5,10 @@ create table public.collections (
   slug text not null unique,
   description text,
   image_path text,
-  status text not null default 'draft', -- draft | published
+  status public.content_status not null default 'draft',
   published_at timestamptz,
   created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  constraint collections_status_check check (status in ('draft', 'published'))
+  updated_at timestamptz not null default now()
 );
 
 create index collections_slug_idx on public.collections (slug);

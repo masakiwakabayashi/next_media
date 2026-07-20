@@ -37,7 +37,7 @@ export async function getCollections(): Promise<Collection[]> {
     return []
   }
 
-  return (data as Collection[]) || []
+  return data || []
 }
 
 export async function getCollection(
@@ -76,12 +76,12 @@ export async function getCollection(
 
   if (postsError) {
     console.error('Error fetching collection posts:', postsError)
-    return { collection: collection as Collection, posts: [] }
+    return { collection, posts: [] }
   }
 
-  const posts = ((collectionPosts as unknown as CollectionPost[]) || [])
+  const posts = (collectionPosts || [])
     .map((cp) => cp.post)
     .filter(Boolean)
 
-  return { collection: collection as Collection, posts }
+  return { collection, posts }
 }

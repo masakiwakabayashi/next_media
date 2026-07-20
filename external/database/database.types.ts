@@ -102,7 +102,7 @@ export type Database = {
           image_path: string | null
           published_at: string | null
           slug: string
-          status: string
+          status: Database["public"]["Enums"]["content_status"]
           title: string
           updated_at: string
         }
@@ -113,7 +113,7 @@ export type Database = {
           image_path?: string | null
           published_at?: string | null
           slug: string
-          status?: string
+          status?: Database["public"]["Enums"]["content_status"]
           title: string
           updated_at?: string
         }
@@ -124,7 +124,7 @@ export type Database = {
           image_path?: string | null
           published_at?: string | null
           slug?: string
-          status?: string
+          status?: Database["public"]["Enums"]["content_status"]
           title?: string
           updated_at?: string
         }
@@ -174,7 +174,7 @@ export type Database = {
           image_path: string | null
           published_at: string | null
           slug: string
-          status: string
+          status: Database["public"]["Enums"]["content_status"]
           title: string
           updated_at: string
         }
@@ -188,7 +188,7 @@ export type Database = {
           image_path?: string | null
           published_at?: string | null
           slug: string
-          status?: string
+          status?: Database["public"]["Enums"]["content_status"]
           title: string
           updated_at?: string
         }
@@ -202,7 +202,7 @@ export type Database = {
           image_path?: string | null
           published_at?: string | null
           slug?: string
-          status?: string
+          status?: Database["public"]["Enums"]["content_status"]
           title?: string
           updated_at?: string
         }
@@ -285,7 +285,7 @@ export type Database = {
       is_admin: { Args: never; Returns: boolean }
     }
     Enums: {
-      [_ in never]: never
+      content_status: "draft" | "published"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -415,7 +415,9 @@ export const Constants = {
     Enums: {},
   },
   public: {
-    Enums: {},
+    Enums: {
+      content_status: ["draft", "published"],
+    },
   },
 } as const
 

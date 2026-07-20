@@ -2,6 +2,31 @@ import type { SupabaseClient } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase/client'
 import type { CreatePostInput } from '@/external/schemas/postSchema'
 
+export type PostSummary = {
+  id: string
+  title: string
+  slug: string
+  image_path: string | null
+  content: string
+  status: 'draft' | 'published'
+  published_at: string | null
+  created_at: string
+  author: {
+    display_name: string
+  } | null
+  category: {
+    name: string
+    slug: string
+  } | null
+  post_tags: {
+    tag: {
+      id: string
+      name: string
+      slug: string
+    }
+  }[]
+}
+
 export type Post = {
   id: string
   title: string
@@ -49,7 +74,7 @@ const POST_LIST_SELECT = `
 `
 
 export type PostListResult = {
-  posts: Post[]
+  posts: PostSummary[]
   totalCount: number
 }
 
@@ -74,7 +99,7 @@ export async function getPosts(
       return { posts: [], totalCount: 0 }
     }
 
-    return { posts: (data as unknown as Post[]) || [], totalCount: count ?? 0 }
+    return { posts: data || [], totalCount: count ?? 0 }
   }
 
   const { data, error } = await supabase
@@ -89,7 +114,7 @@ export async function getPosts(
   }
 
   const lowerQuery = query.toLowerCase()
-  const filtered = ((data as unknown as Post[]) || []).filter(
+  const filtered = (data || []).filter(
     (post) =>
       post.title.toLowerCase().includes(lowerQuery) ||
       post.content.toLowerCase().includes(lowerQuery)
@@ -126,7 +151,7 @@ export async function getPost(slug: string): Promise<Post | null> {
     return null
   }
 
-  return data as unknown as Post
+  return data
 }
 
 export type PostMeta = {
@@ -195,7 +220,7 @@ export async function getDraftPostForEdit(slug: string): Promise<PostForEdit | n
     return null
   }
 
-  return data as unknown as PostForEdit
+  return data
 }
 
 export async function updatePost(id: string, data: Partial<CreatePostData>): Promise<{ error: string | null }> {
@@ -233,7 +258,7 @@ export async function updatePostTags(postId: string, tagIds: string[]): Promise<
   return { error: null }
 }
 
-export async function getDraftPosts(): Promise<Post[]> {
+export async function getDraftPosts(): Promise<PostSummary[]> {
   const { data, error } = await supabase
     .from('posts')
     .select(`
@@ -259,10 +284,10 @@ export async function getDraftPosts(): Promise<Post[]> {
     return []
   }
 
-  return (data as unknown as Post[]) || []
+  return data || []
 }
 
-export async function getPostsByTag(tagSlug: string): Promise<{ posts: Post[]; tagName: string | null }> {
+export async function getPostsByTag(tagSlug: string): Promise<{ posts: PostSummary[]; tagName: string | null }> {
   const { data, error } = await supabase
     .from('posts')
     .select(`
@@ -288,7 +313,7 @@ export async function getPostsByTag(tagSlug: string): Promise<{ posts: Post[]; t
     return { posts: [], tagName: null }
   }
 
-  const allPosts = (data as unknown as Post[]) || []
+  const allPosts = data || []
   const posts = allPosts.filter((p) =>
     p.post_tags.some((pt) => pt.tag.slug === tagSlug)
   )
@@ -297,7 +322,7 @@ export async function getPostsByTag(tagSlug: string): Promise<{ posts: Post[]; t
   return { posts, tagName }
 }
 
-export async function getPostsByCategory(categorySlug: string): Promise<{ posts: Post[]; categoryName: string | null }> {
+export async function getPostsByCategory(categorySlug: string): Promise<{ posts: PostSummary[]; categoryName: string | null }> {
   const { data, error } = await supabase
     .from('posts')
     .select(`
@@ -325,7 +350,7 @@ export async function getPostsByCategory(categorySlug: string): Promise<{ posts:
     return { posts: [], categoryName: null }
   }
 
-  const posts = ((data as unknown as Post[]) || []).filter(
+  const posts = (data || []).filter(
     (p) => p.category?.slug === categorySlug
   )
   const categoryName = posts[0]?.category?.name ?? null

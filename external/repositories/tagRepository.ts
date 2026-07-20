@@ -27,7 +27,7 @@ export async function getTags(): Promise<TagWithCount[]> {
     name: tag.name,
     slug: tag.slug,
     created_at: tag.created_at,
-    postCount: (tag.post_tags as unknown as { count: number }[])?.[0]?.count ?? 0,
+    postCount: tag.post_tags?.[0]?.count ?? 0,
   }))
 }
 

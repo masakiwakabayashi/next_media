@@ -3,6 +3,9 @@
 -- UUID生成用
 create extension if not exists "pgcrypto";
 
+-- 公開ステータス（記事・特集で共通）
+create type public.content_status as enum ('draft', 'published');
+
 -- updated_at 自動更新用 function
 create or replace function public.set_updated_at()
 returns trigger
@@ -68,11 +71,10 @@ create table public.posts (
   image_path text,
   content text not null, -- ここに食べログのリンクを入れたり詳細とかを書く想定
   google_maps_url text, -- Googleマップのリンクがあった方が場所がわかりやすい
-  status text not null default 'draft', -- draft | published
+  status public.content_status not null default 'draft',
   published_at timestamptz,
   created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  constraint posts_status_check check (status in ('draft', 'published'))
+  updated_at timestamptz not null default now()
 );
 
 create index posts_slug_idx on public.posts (slug);

@@ -56,7 +56,7 @@ export async function getRecentPosts(limit = 5): Promise<RecentPost[]> {
     return []
   }
 
-  return (data as unknown as RecentPost[]) || []
+  return data || []
 }
 
 export async function getRecentDrafts(limit = 5): Promise<RecentPost[]> {
@@ -81,5 +81,5 @@ export async function getRecentDrafts(limit = 5): Promise<RecentPost[]> {
     return []
   }
 
-  return (data as unknown as RecentPost[]) || []
+  return data || []
 }

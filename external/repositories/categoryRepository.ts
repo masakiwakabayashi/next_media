@@ -17,5 +17,5 @@ export async function getCategories(): Promise<Category[]> {
     return []
   }
 
-  return (data as Category[]) || []
+  return data || []
 }
