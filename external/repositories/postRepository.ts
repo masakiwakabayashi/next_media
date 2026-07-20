@@ -1,5 +1,6 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase/client'
+import type { CreatePostInput } from '@/external/schemas/postSchema'
 
 export type Post = {
   id: string
@@ -29,16 +30,7 @@ export type Post = {
   }[]
 }
 
-export type CreatePostData = {
-  title: string
-  slug: string
-  content: string
-  image_path: string | null
-  category_id: string | null
-  author_id: string
-  status: 'draft' | 'published'
-  published_at: string | null
-}
+export type CreatePostData = CreatePostInput
 
 const POST_LIST_SELECT = `
   id,
