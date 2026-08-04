@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 type Props = {
   src: string | null
@@ -25,11 +25,13 @@ function resolveSrc(src: string | null): string {
 }
 
 export default function EyecatchImage({ src, alt }: Props) {
+  const [prevSrc, setPrevSrc] = useState(src)
   const [imgSrc, setImgSrc] = useState(() => resolveSrc(src))
 
-  useEffect(() => {
+  if (src !== prevSrc) {
+    setPrevSrc(src)
     setImgSrc(resolveSrc(src))
-  }, [src])
+  }
 
   return (
     <div className="relative mb-4 aspect-video w-full overflow-hidden rounded-lg">

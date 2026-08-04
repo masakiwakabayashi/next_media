@@ -1,19 +1,21 @@
 'use client'
 
-import { useState, useEffect, FormEvent } from 'react'
+import { useState, FormEvent } from 'react'
 import { useAuth } from '@/contexts/AuthProvider'
 import { updateDisplayName } from '@/external/repositories/profileRepository'
 
 export default function ProfileEditor() {
   const { user, displayName, refreshDisplayName } = useAuth()
+  const [prevDisplayName, setPrevDisplayName] = useState(displayName)
   const [value, setValue] = useState(displayName ?? '')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [saved, setSaved] = useState(false)
 
-  useEffect(() => {
+  if (displayName !== prevDisplayName) {
+    setPrevDisplayName(displayName)
     setValue(displayName ?? '')
-  }, [displayName])
+  }
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()

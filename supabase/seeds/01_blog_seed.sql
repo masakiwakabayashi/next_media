@@ -896,6 +896,19 @@ insert into public.posts (
   )
 
 
+-- ・月島もんじゃ どてや 月島本店
+-- マグロのレモンソテーがめっちゃ美味しい。アスパラとかも美味しかった。どら焼きとかのデザートもあるっぽい。
+
+
+
+
+
+
+
+
+
+
+
 -- ・イリヤプラスカフェ
 -- パンケーキがおすすめっぽい。 https://tabelog.com/tokyo/A1311/A131104/13090365/
 
@@ -952,6 +965,10 @@ insert into public.posts (
 
 
 -- ・オーガニックの金平糖 彩輪商店
+
+-- ・冷しみたらし
+-- https://eclat.hpplus.jp/jmadam/yumiko01/gourmet/204131/01/
+
 
 
 

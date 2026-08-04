@@ -54,11 +54,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   useEffect(() => {
-    if (!session?.user) {
-      setDisplayName(null)
-      return
+    let ignore = false
+    const userId = session?.user?.id
+
+    async function syncDisplayName() {
+      if (!userId) {
+        if (!ignore) setDisplayName(null)
+        return
+      }
+      const name = await getDisplayName(userId)
+      if (!ignore) setDisplayName(name)
     }
-    fetchDisplayName(session.user.id)
+
+    syncDisplayName()
+
+    return () => {
+      ignore = true
+    }
   }, [session?.user?.id])
 
   const value = useMemo<AuthContextValue>(
