@@ -1,25 +1,22 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { Suspense } from 'react'
-import UserManager, { UserProfile } from '@/features/users/components/UserManager'
+import UserManager from '@/features/users/components/UserManager'
+import { getUserProfiles } from '@/external/repositories/profileRepository'
 
 // 実装する機能
 // ・ユーザーの一覧表示
 // ・ユーザーの無効化
 // ・ユーザーの招待
 
+// 次はユーザー招待をつくる
 
 export const metadata: Metadata = {
   title: 'ユーザー管理',
 }
 
-// TODO: repository 実装後に差し替える
-async function getUsers(): Promise<UserProfile[]> {
-  return []
-}
-
 export default async function AdminUsersPage() {
-  const users = await getUsers()
+  const users = await getUserProfiles()
 
   return (
     <div className="space-y-6">
