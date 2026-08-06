@@ -18,10 +18,9 @@ export default async function DashboardStats() {
   const stats = await getDashboardStats()
 
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+    <div className="grid grid-cols-3 gap-4">
       <StatCard label="公開記事" value={stats.publishedCount} />
       <StatCard label="下書き" value={stats.draftCount} />
-      <StatCard label="カテゴリー" value={stats.categoryCount} />
       <StatCard label="タグ" value={stats.tagCount} />
     </div>
   )

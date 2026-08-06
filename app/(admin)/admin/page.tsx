@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import AdminQuickLinks from '@/features/admin/components/AdminQuickLinks'
 import DashboardStats from '@/features/admin/components/DashboardStats'
 import RecentPostList from '@/features/admin/components/RecentPostList'
 
@@ -14,13 +15,9 @@ export default function AdminPage() {
         <h1 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
           ダッシュボード
         </h1>
-        <Link
-          href="/admin/posts/new"
-          className="rounded-md bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-zinc-700 dark:hover:bg-zinc-600"
-        >
-          記事を作成
-        </Link>
       </div>
+
+      <AdminQuickLinks />
 
       <DashboardStats />
 
