@@ -37,3 +37,20 @@ export async function getAuthUserStatuses(): Promise<Map<string, AuthUserStatus>
 
   return statuses
 }
+
+export async function inviteUser(
+  email: string,
+  displayName: string | null,
+  redirectTo: string
+): Promise<{ error: string | null }> {
+  const { error } = await supabaseAdmin.auth.admin.inviteUserByEmail(email, {
+    data: displayName ? { full_name: displayName } : undefined,
+    redirectTo,
+  })
+
+  if (error) {
+    return { error: error.message }
+  }
+
+  return { error: null }
+}

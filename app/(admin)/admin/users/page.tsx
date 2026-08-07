@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import UserManager from '@/features/users/components/UserManager'
+import InviteUserForm from '@/features/users/components/InviteUserForm'
 import { getUserProfiles } from '@/external/repositories/profileRepository'
 import { getAuthUserStatuses } from '@/external/repositories/authAdminRepository'
 
@@ -9,8 +10,6 @@ import { getAuthUserStatuses } from '@/external/repositories/authAdminRepository
 // ・ユーザーの一覧表示
 // ・ユーザーの無効化
 // ・ユーザーの招待
-
-// 次はユーザー招待をつくる
 
 export const metadata: Metadata = {
   title: 'ユーザー管理',
@@ -46,7 +45,10 @@ export default async function AdminUsersPage() {
       </div>
 
       <Suspense>
-        <UserManager initialUsers={users} />
+        <InviteUserForm />
+        <div className="mt-6">
+          <UserManager initialUsers={users} />
+        </div>
       </Suspense>
     </div>
   )
