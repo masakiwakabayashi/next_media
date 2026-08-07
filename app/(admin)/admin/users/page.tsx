@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Suspense } from 'react'
 import UserManager from '@/features/users/components/UserManager'
 import { getUserProfiles } from '@/external/repositories/profileRepository'
+import { getAuthUserStatuses } from '@/external/repositories/authAdminRepository'
 
 // 実装する機能
 // ・ユーザーの一覧表示
@@ -16,7 +17,19 @@ export const metadata: Metadata = {
 }
 
 export default async function AdminUsersPage() {
-  const users = await getUserProfiles()
+  const [profiles, authStatuses] = await Promise.all([
+    getUserProfiles(),
+    getAuthUserStatuses(),
+  ])
+
+  const users = profiles.map((profile) => {
+    const status = profile.user_id ? authStatuses.get(profile.user_id) : undefined
+    return {
+      ...profile,
+      email: status?.email ?? undefined,
+      banned: status?.banned ?? false,
+    }
+  })
 
   return (
     <div className="space-y-6">
