@@ -20,7 +20,7 @@ export async function inviteUserAction(
   const host = headersList.get('host')
   const protocol = headersList.get('x-forwarded-proto') ?? 'https'
   const origin = host ? `${protocol}://${host}` : ''
-  const redirectTo = `${origin}/invite`
+  const redirectTo = `${origin}/auth/confirm?next=/invite`
 
   const { error } = await inviteUser(email, displayName || null, redirectTo)
 
