@@ -6,11 +6,6 @@ import InviteUserForm from '@/features/users/components/InviteUserForm'
 import { getUserProfiles } from '@/external/repositories/profileRepository'
 import { getAuthUserStatuses } from '@/external/repositories/authAdminRepository'
 
-// 実装する機能
-// ・ユーザーの一覧表示
-// ・ユーザーの無効化
-// ・ユーザーの招待
-
 export const metadata: Metadata = {
   title: 'ユーザー管理',
 }
