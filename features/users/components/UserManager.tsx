@@ -14,6 +14,7 @@ export type UserProfile = {
   updated_at: string
   email?: string
   banned?: boolean
+  isAdmin?: boolean
 }
 
 type Props = {
@@ -86,6 +87,11 @@ export default function UserManager({ initialUsers }: Props) {
                     {user.email && (
                       <span className="text-xs text-zinc-400 dark:text-zinc-500">
                         {user.email}
+                      </span>
+                    )}
+                    {user.isAdmin && (
+                      <span className="rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-400">
+                        管理者
                       </span>
                     )}
                     {user.banned && (

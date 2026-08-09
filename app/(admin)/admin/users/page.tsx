@@ -27,6 +27,7 @@ export default async function AdminUsersPage() {
       ...profile,
       email: status?.email ?? undefined,
       banned: status?.banned ?? false,
+      isAdmin: status?.isAdmin ?? false,
     }
   })
 

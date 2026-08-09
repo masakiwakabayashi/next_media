@@ -4,6 +4,7 @@ import { supabaseAdmin } from '@/lib/supabase/server'
 export type AuthUserStatus = {
   email: string | null
   banned: boolean
+  isAdmin: boolean
 }
 
 function isBanned(bannedUntil: string | null | undefined): boolean {
@@ -28,6 +29,7 @@ export async function getAuthUserStatuses(): Promise<Map<string, AuthUserStatus>
       statuses.set(user.id, {
         email: user.email ?? null,
         banned: isBanned(user.banned_until),
+        isAdmin: user.app_metadata?.role === 'admin',
       })
     }
 
