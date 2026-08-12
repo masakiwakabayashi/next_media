@@ -962,6 +962,11 @@ insert into public.posts (
 -- ・フランス ナント リゴレット フルーツ 缶
 -- ーーーーーーーー
 
+-- ・信玄餅
+-- https://kinseiken.co.jp/product/
+
+-- ・プリン ちょっと高級そうなやつ
+-- https://thpurin.com/
 
 
 -- ・オーガニックの金平糖 彩輪商店

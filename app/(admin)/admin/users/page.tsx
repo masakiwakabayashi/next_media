@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   title: 'ユーザー管理',
 }
 
+// 次は全体的にテストコードを書いていく
+
 export default async function AdminUsersPage() {
   const [profiles, authStatuses] = await Promise.all([
     getUserProfiles(),
