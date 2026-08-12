@@ -1,0 +1,44 @@
+import { describe, it, expect, vi } from 'vitest'
+import { render, screen } from '@testing-library/react'
+import NewPostPage from './page'
+import { getCategories, type Category } from '@/external/repositories/categoryRepository'
+import { getAuthors, type Author } from '@/external/repositories/profileRepository'
+import { getTagOptions, type Tag } from '@/external/repositories/tagRepository'
+
+vi.mock('@/external/repositories/categoryRepository', () => ({
+  getCategories: vi.fn(),
+}))
+vi.mock('@/external/repositories/profileRepository', () => ({
+  getAuthors: vi.fn(),
+}))
+vi.mock('@/external/repositories/tagRepository', () => ({
+  getTagOptions: vi.fn(),
+}))
+vi.mock('@/features/posts/components/PostCreate', () => ({
+  default: (props: unknown) => <div data-testid="post-create">{JSON.stringify(props)}</div>,
+}))
+
+const categories: Category[] = [{ id: 'c1', name: 'ニュース', slug: 'news' }]
+const authors: Author[] = [{ id: 'a1', display_name: 'Alice' }]
+const tags: Tag[] = [{ id: 't1', name: 'グルメ', slug: 'gourmet', created_at: '2026-01-01' }]
+
+describe('NewPostPage', () => {
+  it('カテゴリ・著者・タグをPostCreateに渡す', async () => {
+    vi.mocked(getCategories).mockResolvedValue(categories)
+    vi.mocked(getAuthors).mockResolvedValue(authors)
+    vi.mocked(getTagOptions).mockResolvedValue(tags)
+
+    const jsx = await NewPostPage()
+    render(jsx)
+
+    expect(screen.getByRole('heading', { name: '記事を作成' })).toBeInTheDocument()
+
+    const props = JSON.parse(screen.getByTestId('post-create').textContent ?? '{}')
+    expect(props).toEqual({
+      categories,
+      authors,
+      tags,
+      redirectTo: '/admin/posts/drafts',
+    })
+  })
+})
