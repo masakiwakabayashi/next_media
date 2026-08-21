@@ -14,9 +14,10 @@ AS $$
   SELECT (auth.jwt() -> 'app_metadata' ->> 'role') = 'admin'
 $$;
 
--- posts: 公開済みは全認証ユーザー、下書きは管理者のみ
+-- posts: 公開済みは全認証ユーザー、下書きは管理者のみ（未ログインユーザーは閲覧不可）
 CREATE POLICY "posts_select"
   ON public.posts FOR SELECT
+  TO authenticated
   USING (status = 'published' OR public.is_admin());
 
 CREATE POLICY "posts_insert"
