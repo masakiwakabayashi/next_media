@@ -26,7 +26,7 @@ supabase db diff -f create
 ```
 
 ```
-supabase db dump --local --data-only -f dump.sql
+supabase db dump --local --data-only --schema public -f dump.sql
 ```
 
 #### Supabaseの型定義を更新
