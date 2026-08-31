@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 import AdminQuickLinks from '@/features/admin/components/AdminQuickLinks'
 import DashboardStats from '@/features/admin/components/DashboardStats'
 import RecentPostList from '@/features/admin/components/RecentPostList'

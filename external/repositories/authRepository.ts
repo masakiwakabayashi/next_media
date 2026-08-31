@@ -1,4 +1,9 @@
-import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
+import type {
+  AuthChangeEvent,
+  EmailOtpType,
+  Session,
+  SupabaseClient,
+} from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase/client'
 
 export async function signInWithPassword(
@@ -28,6 +33,19 @@ export function onAuthStateChange(
 
 export async function signOut(): Promise<void> {
   await supabase.auth.signOut()
+}
+
+export async function verifyEmailOtp(
+  client: SupabaseClient,
+  params: { type: EmailOtpType; token_hash: string }
+): Promise<{ error: string | null }> {
+  const { error } = await client.auth.verifyOtp(params)
+
+  if (error) {
+    return { error: error.message }
+  }
+
+  return { error: null }
 }
 
 export async function updatePassword(password: string): Promise<{ error: string | null }> {
