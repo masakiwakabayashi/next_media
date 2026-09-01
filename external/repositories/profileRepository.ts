@@ -15,33 +15,8 @@ export type UserProfile = {
   updated_at: string
 }
 
-export async function getUserProfiles(): Promise<UserProfile[]> {
-  const { data, error } = await supabase
-    .from('profiles')
-    .select('id, user_id, display_name, bio, avatar_url, created_at, updated_at')
-    .order('created_at', { ascending: false })
-
-  if (error) {
-    console.error('Error fetching user profiles:', error)
-    return []
-  }
-
-  return data || []
-}
-
-export async function getAuthors(): Promise<Author[]> {
-  const { data, error } = await supabase
-    .from('profiles')
-    .select('id, display_name')
-    .order('display_name')
-
-  if (error) {
-    console.error('Error fetching authors:', error)
-    return []
-  }
-
-  return data || []
-}
+// 読み取り（サーバーコンポーネントから利用）は profileRepository.server.ts を参照。
+// getDisplayName / updateDisplayName はクライアントから呼ばれるためここに残す。
 
 export async function getDisplayName(userId: string): Promise<string | null> {
   const { data } = await supabase

@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import PostDetail from '@/features/posts/components/PostDetail'
-import { getPostMetaBySlug } from '@/external/repositories/postRepository'
+import { getPostMetaBySlug } from '@/external/repositories/postRepository.server'
 
 type Props = {
   params: Promise<{ slug: string }>

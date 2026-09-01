@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import TagManager from '@/features/tags/components/TagManager'
-import { getTags } from '@/external/repositories/tagRepository'
+import { getTags } from '@/external/repositories/tagRepository.server'
 
 export const metadata: Metadata = {
   title: 'タグ管理',

@@ -1,4 +1,6 @@
-import { supabase } from '@/lib/supabase/client'
+// server-side only: サーバーコンポーネントからのみ利用。ログインユーザーの
+// セッション（Cookie）を引き継ぎ、RLS を適用した状態で collections を読み取る。
+import { createServerSupabaseClient } from '@/lib/supabase/server'
 
 export type Collection = {
   id: string
@@ -26,6 +28,7 @@ export type CollectionPost = {
 }
 
 export async function getCollections(): Promise<Collection[]> {
+  const supabase = await createServerSupabaseClient()
   const { data, error } = await supabase
     .from('collections')
     .select('id, title, slug, description, image_path, published_at')
@@ -43,6 +46,7 @@ export async function getCollections(): Promise<Collection[]> {
 export async function getCollection(
   slug: string
 ): Promise<{ collection: Collection | null; posts: CollectionPost['post'][] }> {
+  const supabase = await createServerSupabaseClient()
   const { data: collection, error: collectionError } = await supabase
     .from('collections')
     .select('id, title, slug, description, image_path, published_at')

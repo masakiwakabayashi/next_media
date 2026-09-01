@@ -2,13 +2,13 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import Sidebar from './Sidebar'
 import { getCategories } from '@/external/repositories/categoryRepository'
-import { getTagOptions } from '@/external/repositories/tagRepository'
+import { getTagOptions } from '@/external/repositories/tagRepository.server'
 import { getCollections } from '@/external/repositories/collectionRepository'
 
 vi.mock('@/external/repositories/categoryRepository', () => ({
   getCategories: vi.fn(),
 }))
-vi.mock('@/external/repositories/tagRepository', () => ({
+vi.mock('@/external/repositories/tagRepository.server', () => ({
   getTagOptions: vi.fn(),
 }))
 vi.mock('@/external/repositories/collectionRepository', () => ({

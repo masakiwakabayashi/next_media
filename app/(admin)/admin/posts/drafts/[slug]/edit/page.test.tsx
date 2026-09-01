@@ -4,18 +4,18 @@ import DraftEditPage from './page'
 import {
   getDraftPostForEdit,
   type PostForEdit,
-} from '@/external/repositories/postRepository'
+} from '@/external/repositories/postRepository.server'
 import { getCategories, type Category } from '@/external/repositories/categoryRepository'
-import { getTagOptions, type Tag } from '@/external/repositories/tagRepository'
+import { getTagOptions, type Tag } from '@/external/repositories/tagRepository.server'
 import { notFound } from 'next/navigation'
 
-vi.mock('@/external/repositories/postRepository', () => ({
+vi.mock('@/external/repositories/postRepository.server', () => ({
   getDraftPostForEdit: vi.fn(),
 }))
 vi.mock('@/external/repositories/categoryRepository', () => ({
   getCategories: vi.fn(),
 }))
-vi.mock('@/external/repositories/tagRepository', () => ({
+vi.mock('@/external/repositories/tagRepository.server', () => ({
   getTagOptions: vi.fn(),
 }))
 vi.mock('@/features/posts/components/PostEdit', () => ({

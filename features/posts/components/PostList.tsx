@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import EyecatchImage from '@/components/EyecatchImage'
-import { getPosts } from '../../../external/repositories/postRepository'
+import { getPosts } from '../../../external/repositories/postRepository.server'
 import Pagination from './Pagination'
 
 const PAGE_SIZE = 20

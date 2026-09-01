@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import AdminSidebarLinks from '@/components/AdminSidebarLinks'
 import { getCategories } from '@/external/repositories/categoryRepository'
-import { getTagOptions } from '@/external/repositories/tagRepository'
+import { getTagOptions } from '@/external/repositories/tagRepository.server'
 import { getCollections } from '@/external/repositories/collectionRepository'
 
 export default async function Sidebar() {

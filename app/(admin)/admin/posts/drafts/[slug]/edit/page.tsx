@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation'
 import PostEdit from '@/features/posts/components/PostEdit'
-import { getDraftPostForEdit } from '@/external/repositories/postRepository'
+import { getDraftPostForEdit } from '@/external/repositories/postRepository.server'
 import { getCategories } from '@/external/repositories/categoryRepository'
-import { getTagOptions } from '@/external/repositories/tagRepository'
+import { getTagOptions } from '@/external/repositories/tagRepository.server'
 
 type Props = {
   params: Promise<{ slug: string }>

@@ -11,39 +11,7 @@ export type TagWithCount = Tag & {
   postCount: number
 }
 
-export async function getTags(): Promise<TagWithCount[]> {
-  const { data, error } = await supabase
-    .from('tags')
-    .select('id, name, slug, created_at, post_tags(count)')
-    .order('name')
-
-  if (error) {
-    console.error('Error fetching tags:', error)
-    return []
-  }
-
-  return (data || []).map((tag) => ({
-    id: tag.id,
-    name: tag.name,
-    slug: tag.slug,
-    created_at: tag.created_at,
-    postCount: tag.post_tags?.[0]?.count ?? 0,
-  }))
-}
-
-export async function getTagOptions(): Promise<Tag[]> {
-  const { data, error } = await supabase
-    .from('tags')
-    .select('id, name, slug, created_at')
-    .order('name')
-
-  if (error) {
-    console.error('Error fetching tags:', error)
-    return []
-  }
-
-  return data || []
-}
+// 読み取り（サーバーコンポーネントから利用）は tagRepository.server.ts を参照。
 
 export async function createTag(data: {
   name: string

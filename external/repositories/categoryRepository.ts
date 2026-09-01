@@ -1,4 +1,6 @@
-import { supabase } from '@/lib/supabase/client'
+// server-side only: サーバーコンポーネントからのみ利用。ログインユーザーの
+// セッション（Cookie）を引き継ぎ、RLS を適用した状態で categories を読み取る。
+import { createServerSupabaseClient } from '@/lib/supabase/server'
 
 export type Category = {
   id: string
@@ -7,6 +9,7 @@ export type Category = {
 }
 
 export async function getCategories(): Promise<Category[]> {
+  const supabase = await createServerSupabaseClient()
   const { data, error } = await supabase
     .from('categories')
     .select('id, name, slug')

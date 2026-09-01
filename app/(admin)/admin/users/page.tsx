@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Suspense } from 'react'
 import UserManager from '@/features/users/components/UserManager'
 import InviteUserForm from '@/features/users/components/InviteUserForm'
-import { getUserProfiles } from '@/external/repositories/profileRepository'
+import { getUserProfiles } from '@/external/repositories/profileRepository.server'
 import { getAuthUserStatuses } from '@/external/repositories/authAdminRepository'
 
 export const metadata: Metadata = {

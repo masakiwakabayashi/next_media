@@ -24,9 +24,14 @@ export async function createServerSupabaseClient() {
           return cookieStore.getAll()
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) =>
-            cookieStore.set(name, value, options)
-          )
+          try {
+            cookiesToSet.forEach(({ name, value, options }) =>
+              cookieStore.set(name, value, options)
+            )
+          } catch {
+            // Server Component からの呼び出しでは Cookie を書き込めないため無視する。
+            // トークンのリフレッシュは middleware / Route Handler 側で行う。
+          }
         },
       },
     }

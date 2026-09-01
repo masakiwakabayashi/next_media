@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import PostCreate from '@/features/posts/components/PostCreate'
 import { getCategories } from '@/external/repositories/categoryRepository'
-import { getAuthors } from '@/external/repositories/profileRepository'
-import { getTagOptions } from '@/external/repositories/tagRepository'
+import { getAuthors } from '@/external/repositories/profileRepository.server'
+import { getTagOptions } from '@/external/repositories/tagRepository.server'
 
 export const metadata: Metadata = {
   title: '記事を作成',
