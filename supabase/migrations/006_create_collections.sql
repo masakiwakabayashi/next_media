@@ -34,9 +34,10 @@ create index collection_posts_post_id_idx on public.collection_posts (post_id);
 ALTER TABLE public.collections ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.collection_posts ENABLE ROW LEVEL SECURITY;
 
--- collections: 公開済みは全認証ユーザー、下書きは管理者のみ
+-- collections: 公開済みは全認証ユーザー、下書きは管理者のみ（未ログインユーザーは閲覧不可）
 CREATE POLICY "collections_select"
   ON public.collections FOR SELECT
+  TO authenticated
   USING (status = 'published' OR public.is_admin());
 
 CREATE POLICY "collections_insert"
@@ -52,9 +53,11 @@ CREATE POLICY "collections_delete"
   USING (public.is_admin());
 
 -- collection_posts: 読み取りは全認証ユーザー（collections/posts の RLS で下書きへのアクセスは制限される）
--- 書き込みは管理者のみ
+-- 書き込みは管理者のみ（未ログインユーザーは閲覧不可）
 CREATE POLICY "collection_posts_select"
-  ON public.collection_posts FOR SELECT USING (true);
+  ON public.collection_posts FOR SELECT
+  TO authenticated
+  USING (true);
 
 CREATE POLICY "collection_posts_insert"
   ON public.collection_posts FOR INSERT WITH CHECK (public.is_admin());

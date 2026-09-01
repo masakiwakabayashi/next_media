@@ -33,8 +33,11 @@ CREATE POLICY "posts_delete"
   USING (public.is_admin());
 
 -- profiles: 全認証ユーザーが読み取り可、書き込みは管理者のみ（自分自身の更新は本人も可）
+-- 未ログインユーザーは閲覧不可
 CREATE POLICY "profiles_select"
-  ON public.profiles FOR SELECT USING (true);
+  ON public.profiles FOR SELECT
+  TO authenticated
+  USING (true);
 
 CREATE POLICY "profiles_insert"
   ON public.profiles FOR INSERT WITH CHECK (public.is_admin());
@@ -45,9 +48,11 @@ CREATE POLICY "profiles_update"
 CREATE POLICY "profiles_delete"
   ON public.profiles FOR DELETE USING (public.is_admin());
 
--- categories: 全認証ユーザーが読み取り可、書き込みは管理者のみ
+-- categories: 全認証ユーザーが読み取り可、書き込みは管理者のみ（未ログインユーザーは閲覧不可）
 CREATE POLICY "categories_select"
-  ON public.categories FOR SELECT USING (true);
+  ON public.categories FOR SELECT
+  TO authenticated
+  USING (true);
 
 CREATE POLICY "categories_insert"
   ON public.categories FOR INSERT WITH CHECK (public.is_admin());
@@ -58,9 +63,11 @@ CREATE POLICY "categories_update"
 CREATE POLICY "categories_delete"
   ON public.categories FOR DELETE USING (public.is_admin());
 
--- tags: 全認証ユーザーが読み取り可、書き込みは管理者のみ
+-- tags: 全認証ユーザーが読み取り可、書き込みは管理者のみ（未ログインユーザーは閲覧不可）
 CREATE POLICY "tags_select"
-  ON public.tags FOR SELECT USING (true);
+  ON public.tags FOR SELECT
+  TO authenticated
+  USING (true);
 
 CREATE POLICY "tags_insert"
   ON public.tags FOR INSERT WITH CHECK (public.is_admin());
@@ -72,9 +79,11 @@ CREATE POLICY "tags_delete"
   ON public.tags FOR DELETE USING (public.is_admin());
 
 -- post_tags: 読み取りは全認証ユーザー（posts の RLS で下書きへのアクセスは制限される）
--- 書き込みは管理者のみ
+-- 書き込みは管理者のみ（未ログインユーザーは閲覧不可）
 CREATE POLICY "post_tags_select"
-  ON public.post_tags FOR SELECT USING (true);
+  ON public.post_tags FOR SELECT
+  TO authenticated
+  USING (true);
 
 CREATE POLICY "post_tags_insert"
   ON public.post_tags FOR INSERT WITH CHECK (public.is_admin());
