@@ -13,7 +13,7 @@ export type RecentPost = {
   slug: string
   published_at: string | null
   created_at: string
-  status: 'draft' | 'published'
+  status: 'draft' | 'published' | 'archived'
   category: { name: string } | null
   author: { display_name: string } | null
 }

@@ -30,7 +30,7 @@ export default function PostEdit({ post, categories, tags }: Props) {
   const [selectedTagIds, setSelectedTagIds] = useState<string[]>(
     post.post_tags.map((pt) => pt.tag.id)
   )
-  const [status, setStatus] = useState<'draft' | 'published'>(post.status)
+  const [status, setStatus] = useState<'draft' | 'published' | 'archived'>(post.status)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -218,6 +218,17 @@ export default function PostEdit({ post, categories, tags }: Props) {
               className="accent-zinc-900 dark:accent-zinc-100"
             />
             公開
+          </label>
+          <label className="flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">
+            <input
+              type="radio"
+              name="status"
+              value="archived"
+              checked={status === 'archived'}
+              onChange={() => setStatus('archived')}
+              className="accent-zinc-900 dark:accent-zinc-100"
+            />
+            非公開
           </label>
         </div>
       </div>

@@ -7,7 +7,7 @@ export const createPostSchema = z.object({
   image_path: z.string().nullable(),
   category_id: z.string().nullable(),
   author_id: z.string().min(1, '著者を選択してください'),
-  status: z.enum(['draft', 'published']),
+  status: z.enum(['draft', 'published', 'archived']),
   published_at: z.string().nullable(),
 })
 

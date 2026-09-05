@@ -285,7 +285,7 @@ export type Database = {
       is_admin: { Args: never; Returns: boolean }
     }
     Enums: {
-      content_status: "draft" | "published"
+      content_status: "draft" | "published" | "archived"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -416,7 +416,7 @@ export const Constants = {
   },
   public: {
     Enums: {
-      content_status: ["draft", "published"],
+      content_status: ["draft", "published", "archived"],
     },
   },
 } as const

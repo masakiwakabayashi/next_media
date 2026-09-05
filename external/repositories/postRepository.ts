@@ -11,7 +11,7 @@ export type PostSummary = {
   slug: string
   image_path: string | null
   content: string
-  status: 'draft' | 'published'
+  status: 'draft' | 'published' | 'archived'
   published_at: string | null
   created_at: string
   author: {
@@ -37,7 +37,7 @@ export type Post = {
   image_path: string | null
   content: string
   google_maps_url: string | null
-  status: 'draft' | 'published'
+  status: 'draft' | 'published' | 'archived'
   published_at: string | null
   created_at: string
   author: {
@@ -77,7 +77,7 @@ export type PostForEdit = {
   slug: string
   image_path: string | null
   content: string
-  status: 'draft' | 'published'
+  status: 'draft' | 'published' | 'archived'
   published_at: string | null
   category_id: string | null
   author_id: string

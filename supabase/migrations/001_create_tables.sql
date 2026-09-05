@@ -4,7 +4,7 @@
 create extension if not exists "pgcrypto";
 
 -- 公開ステータス（記事・特集で共通）
-create type public.content_status as enum ('draft', 'published');
+create type public.content_status as enum ('draft', 'published', 'archived');
 
 -- updated_at 自動更新用 function
 create or replace function public.set_updated_at()
