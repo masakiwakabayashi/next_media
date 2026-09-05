@@ -893,6 +893,19 @@ insert into public.posts (
     null,
     'published',
     now()
+  ),
+  -- 下書きサンプル記事
+  (
+    '5ddd38d5-4027-5cf9-0ecf-8fb681bb2c1c',
+    'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    'c3d4e5f6-a7b8-9012-cdef-123456789012',
+    '下書きサンプル記事',
+    'draft-sample-post',
+    null,
+    'まだ執筆中の下書き記事です。',
+    null,
+    'draft',
+    null
   )
 
 

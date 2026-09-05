@@ -152,6 +152,36 @@ export async function getDraftPostForEdit(slug: string): Promise<PostForEdit | n
   return data
 }
 
+export async function getPublishedPostForEdit(slug: string): Promise<PostForEdit | null> {
+  const supabase = await createServerSupabaseClient()
+  const { data, error } = await supabase
+    .from('posts')
+    .select(`
+      id,
+      title,
+      slug,
+      image_path,
+      content,
+      status,
+      published_at,
+      category_id,
+      author_id,
+      post_tags(
+        tag:tags(id, name, slug)
+      )
+    `)
+    .eq('slug', slug)
+    .eq('status', 'published')
+    .single()
+
+  if (error) {
+    console.error('Error fetching published post for edit:', error)
+    return null
+  }
+
+  return data
+}
+
 export async function getDraftPosts(): Promise<PostSummary[]> {
   const supabase = await createServerSupabaseClient()
   const { data, error } = await supabase

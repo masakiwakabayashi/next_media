@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import EyecatchImage from '@/components/EyecatchImage'
+import AdminEditLink from './AdminEditLink'
 import { getPost } from '../../../external/repositories/postRepository.server'
 
 type Props = {
@@ -91,6 +92,11 @@ export default async function PostDetail({ slug }: Props) {
           </a>
         </div>
       )}
+
+      {/* 編集リンク（管理者のみ） */}
+      <div className="mt-6">
+        <AdminEditLink slug={post.slug} />
+      </div>
 
       {/* 著者情報 */}
       {post.author && (

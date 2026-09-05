@@ -74,7 +74,7 @@ export default function PostEdit({ post, categories, tags }: Props) {
       return
     }
 
-    router.push('/admin/posts/drafts')
+    router.push(status === 'published' ? `/posts/${slug}` : '/admin/posts/drafts')
     router.refresh()
   }
 
