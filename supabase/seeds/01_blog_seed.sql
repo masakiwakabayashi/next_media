@@ -28,7 +28,7 @@ insert into public.categories (
 ) values
   (
     'c3d4e5f6-a7b8-9012-cdef-123456789012',
-    'また行きたい！',
+    'リピート！',
     'repeat'
   ),
   (
@@ -38,7 +38,7 @@ insert into public.categories (
   ),
   (
     'e5f6a7b8-c9d0-1234-ef12-345678901234',
-    '行ってみたい！',
+    '気になる！',
     'want_to_go'
   )
 on conflict (id) do update
