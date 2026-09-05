@@ -7,17 +7,6 @@ export type DashboardStats = {
   tagCount: number
 }
 
-export type RecentPost = {
-  id: string
-  title: string
-  slug: string
-  published_at: string | null
-  created_at: string
-  status: 'draft' | 'published' | 'archived'
-  category: { name: string } | null
-  author: { display_name: string } | null
-}
-
 export async function getDashboardStats(): Promise<DashboardStats> {
   const [published, drafts, categories, tags] = await Promise.all([
     supabase.from('posts').select('id', { count: 'exact', head: true }).eq('status', 'published'),
@@ -32,54 +21,4 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     categoryCount: categories.count ?? 0,
     tagCount: tags.count ?? 0,
   }
-}
-
-export async function getRecentPosts(limit = 5): Promise<RecentPost[]> {
-  const { data, error } = await supabase
-    .from('posts')
-    .select(`
-      id,
-      title,
-      slug,
-      published_at,
-      created_at,
-      status,
-      category:categories(name),
-      author:profiles(display_name)
-    `)
-    .eq('status', 'published')
-    .order('published_at', { ascending: false })
-    .limit(limit)
-
-  if (error) {
-    console.error('Error fetching recent posts:', error)
-    return []
-  }
-
-  return data || []
-}
-
-export async function getRecentDrafts(limit = 5): Promise<RecentPost[]> {
-  const { data, error } = await supabase
-    .from('posts')
-    .select(`
-      id,
-      title,
-      slug,
-      published_at,
-      created_at,
-      status,
-      category:categories(name),
-      author:profiles(display_name)
-    `)
-    .eq('status', 'draft')
-    .order('created_at', { ascending: false })
-    .limit(limit)
-
-  if (error) {
-    console.error('Error fetching recent drafts:', error)
-    return []
-  }
-
-  return data || []
 }

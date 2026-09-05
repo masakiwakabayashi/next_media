@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import AdminQuickLinks from '@/features/admin/components/AdminQuickLinks'
 import DashboardStats from '@/features/admin/components/DashboardStats'
-import RecentPostList from '@/features/admin/components/RecentPostList'
 
 export const metadata: Metadata = {
   title: '管理者ダッシュボード',
@@ -19,8 +18,6 @@ export default function AdminPage() {
       <AdminQuickLinks />
 
       <DashboardStats />
-
-      <RecentPostList />
     </div>
   )
 }

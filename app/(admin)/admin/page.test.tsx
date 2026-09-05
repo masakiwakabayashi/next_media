@@ -8,9 +8,6 @@ vi.mock('@/features/admin/components/AdminQuickLinks', () => ({
 vi.mock('@/features/admin/components/DashboardStats', () => ({
   default: () => <div data-testid="dashboard-stats" />,
 }))
-vi.mock('@/features/admin/components/RecentPostList', () => ({
-  default: () => <div data-testid="recent-post-list" />,
-}))
 
 describe('AdminPage', () => {
   it('見出しと各セクションを表示する', () => {
@@ -19,6 +16,5 @@ describe('AdminPage', () => {
     expect(screen.getByRole('heading', { name: 'ダッシュボード' })).toBeInTheDocument()
     expect(screen.getByTestId('admin-quick-links')).toBeInTheDocument()
     expect(screen.getByTestId('dashboard-stats')).toBeInTheDocument()
-    expect(screen.getByTestId('recent-post-list')).toBeInTheDocument()
   })
 })
