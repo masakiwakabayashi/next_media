@@ -65,6 +65,18 @@ export type PostListResult = {
   totalCount: number
 }
 
+// 無限スクロール用のカーソル。(published_at, id) の複合キーで
+// 「最後に読み込んだ記事より後ろ」を表す。
+export type PostsCursor = {
+  publishedAt: string
+  id: string
+}
+
+export type PostsPage = {
+  posts: PostSummary[]
+  nextCursor: PostsCursor | null
+}
+
 export type PostMeta = {
   title: string
   content: string

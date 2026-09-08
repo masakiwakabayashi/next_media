@@ -14,3 +14,16 @@ export const createPostSchema = z.object({
 export type CreatePostInput = z.infer<typeof createPostSchema>
 
 export const postTagIdsSchema = z.array(z.string())
+
+// 無限スクロールの1ページ取得（Server Action）の入力
+export const postsPageInputSchema = z.object({
+  query: z.string().optional(),
+  cursor: z
+    .object({
+      publishedAt: z.string(),
+      id: z.string(),
+    })
+    .nullish(),
+})
+
+export type PostsPageInput = z.infer<typeof postsPageInputSchema>
