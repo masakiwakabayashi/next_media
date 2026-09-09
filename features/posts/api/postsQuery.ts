@@ -3,3 +3,11 @@
 export function postsQueryKey(query?: string) {
   return ['posts', 'infinite', { q: query?.trim() || null }] as const
 }
+
+export function categoryPostsQueryKey(categorySlug: string) {
+  return ['posts', 'infinite', 'category', categorySlug] as const
+}
+
+export function tagPostsQueryKey(tagSlug: string) {
+  return ['posts', 'infinite', 'tag', tagSlug] as const
+}

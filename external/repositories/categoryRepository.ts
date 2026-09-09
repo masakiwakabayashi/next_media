@@ -22,3 +22,19 @@ export async function getCategories(): Promise<Category[]> {
 
   return data || []
 }
+
+export async function getCategoryBySlug(slug: string): Promise<Category | null> {
+  const supabase = await createServerSupabaseClient()
+  const { data, error } = await supabase
+    .from('categories')
+    .select('id, name, slug')
+    .eq('slug', slug)
+    .maybeSingle()
+
+  if (error) {
+    console.error('Error fetching category by slug:', error)
+    return null
+  }
+
+  return data
+}

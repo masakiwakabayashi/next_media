@@ -26,6 +26,22 @@ export async function getTags(): Promise<TagWithCount[]> {
   }))
 }
 
+export async function getTagBySlug(slug: string): Promise<Tag | null> {
+  const supabase = await createServerSupabaseClient()
+  const { data, error } = await supabase
+    .from('tags')
+    .select('id, name, slug, created_at')
+    .eq('slug', slug)
+    .maybeSingle()
+
+  if (error) {
+    console.error('Error fetching tag by slug:', error)
+    return null
+  }
+
+  return data
+}
+
 export async function getTagOptions(): Promise<Tag[]> {
   const supabase = await createServerSupabaseClient()
   const { data, error } = await supabase
